@@ -108,16 +108,12 @@ function NavBar() {
                             }`}
             >
               <div className="py-2 flex flex-col">
-                <div className="py-2 px-4">
-                  <Link to="/works" className="">
-                    Works
-                  </Link>
-                </div>
-                <div className="py-2 px-4">
-                  <Link to="/uses" className="">
-                    Uses
-                  </Link>
-                </div>
+                <Link to="/works" className="py-2 px-4">
+                  Works
+                </Link>
+                <Link to="/uses" className="py-2 px-4">
+                  Uses
+                </Link>
                 {/* <div className="py-2 px-4">
                   <Link to="/works" className="">
                     Works
