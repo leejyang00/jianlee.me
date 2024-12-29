@@ -13,8 +13,8 @@ function RouteComponent() {
         Hello, I'm a DevOps Engineer based in Brisbane, Australia!
       </div>
 
-      <div className="flex flex-row justify-between items-start">
-        <div className="flex flex-col w-3/4">
+      <div className="flex flex-col sm:flex-row justify-center items-center sm:justify-between sm:items-start">
+        <div className="flex flex-col w-3/4 text-center sm:text-left mb-4 sm:mb-0">
           <h1 className="text-3xl font-bold mb-1">Jian Yang Lee</h1>
           <p className="text-sm">DevOps Engineer (SRE)</p>
         </div>
