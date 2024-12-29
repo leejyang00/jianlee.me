@@ -1,11 +1,16 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
-import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
+import { createFileRoute } from '@tanstack/react-router'
+import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded'
+import { useEffect } from 'react'
 
-export const Route = createLazyFileRoute("/")({
+export const Route = createFileRoute('/')({
   component: RouteComponent,
-});
+})
 
 function RouteComponent() {
+  useEffect(() => {
+    document.title = 'Jian Lee - Home Page'
+  }, [])
+
   return (
     <div className="max-w-xl m-auto px-4">
       {/* Hello Section */}
@@ -45,7 +50,7 @@ function RouteComponent() {
         <div className="flex justify-center">
           <button className="bg-[#339995] text-[#eeefef] rounded-lg py-2 px-4 my-2 text-sm font-semibold flex items-center gap-2">
             <div className="flex items-center justify-center gap-2">
-              My Portfolio{" "}
+              My Portfolio{' '}
               <KeyboardArrowRightRoundedIcon sx={{ fontSize: 16 }} />
             </div>
           </button>
@@ -59,26 +64,27 @@ function RouteComponent() {
         </h2>
         <div className="flex flex-col gap-1 text-sm text-justify ">
           <div className="flex flex-row gap-4">
-            <span className="font-bold">2000</span>{" "}
+            <span className="font-bold">2000</span>{' '}
             <div className="">
               Born & raised in Subang Jaya, Selangor, Malaysia
             </div>
           </div>
           <div className="flex flex-row gap-4">
-            <span className="font-bold">2022</span>{" "}
+            <span className="font-bold">2022</span>{' '}
             <div className="">
               Completed Bachelor of Computer Science Majoring in Machine
               Learning at University of Queensland (UQ)
             </div>
           </div>
           <div className="flex flex-row gap-4">
-            <span className="font-bold">2022</span>{" "}
+            <span className="font-bold">2022</span>{' '}
             <div className="">
-              Got my first job as a Software Engineer, worked at Algomint (using Algorand Blockchain) and ProcurePro (ConTech)
+              Got my first job as a Software Engineer, worked at Algomint (using
+              Algorand Blockchain) and ProcurePro (ConTech)
             </div>
           </div>
           <div className="flex flex-row gap-4">
-            <span className="font-bold">2024</span>{" "}
+            <span className="font-bold">2024</span>{' '}
             <div className="">
               Started working as a DevOps Engineer at Flight Centre Travel Group
             </div>
@@ -86,5 +92,5 @@ function RouteComponent() {
         </div>
       </div>
     </div>
-  );
+  )
 }
