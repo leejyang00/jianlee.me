@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import Introduction from "@/components/Home/Introduction";
 import Bio from "@/components/Home/Bio";
 import Socials from "@/components/Home/Socials";
+import ScrollToTop from "@/shared/ScrollToTop";
 
 export const Route = createFileRoute("/")({
-  component: RouteComponent,
+  component: ScrollToTop(RouteComponent),
 });
 
 function RouteComponent() {

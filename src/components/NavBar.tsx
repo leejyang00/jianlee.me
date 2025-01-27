@@ -1,7 +1,7 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
-import Face6Icon from '@mui/icons-material/Face6';
+import Face6Icon from "@mui/icons-material/Face6";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { useEffect, useRef, useState } from "react";
 
@@ -67,21 +67,24 @@ function NavBar() {
 
   return (
     <nav className="w-100% flex justify-center bg-[#f4ece5]/80 dark:bg-[#202122]/80 dark:text-white fixed top-0 left-0 right-0 z-10 backdrop-blur-sm">
-      <div className="relative m-auto w-full sm:max-w-2xl flex flex-row justify-between items-center py-4 px-4">
-        <div className="font-semibold w-40 flex items-center gap-2 p-0">
-          <Face6Icon
-            sx={{ fontSize: 20 }}
-            className="hover:-rotate-20 transition-transform duration-1000"
-          />
-          <Link to="/" className="text-lg">
-            Jian Lee
+      <div className="relative m-auto w-full sm:max-w-2xl flex flex-row justify-between items-center p-4">
+        <div className="font-semibold w-40 flex items-center gap-2">
+          <Link to="/" className="text-lg gap-2 flex flex-row items-center">
+            <Face6Icon sx={{ fontSize: 20 }} />
+            <span className="text-lg">Jian Lee</span>
           </Link>
         </div>
-        <div className="hidden sm:grid grid-cols-6 gap-6 font-medium text-sm">
-          <Link to="/works" className={`p-1 hover:underline hover:underline-offset-4 ${currentPath === '/works' ? 'underline underline-offset-4' : ''}`}>
+        <div className="hidden sm:flex flex-row items-start font-medium text-sm">
+          <Link
+            to="/works"
+            className={`py-2 px-4 rounded-md hover:bg-slate-300/50 dark:hover:bg-slate-600/50 transition-all duration-300 ${currentPath === "/works" ? "bg-slate-300 dark:bg-slate-600 " : "bg-[#f4ece5]/80 dark:bg-[#202122]/80"}`}
+          >
             Works
           </Link>
-          <Link to="/uses" className={`p-1 hover:underline hover:underline-offset-4 ${currentPath === '/uses' ? 'underline underline-offset-4' : ''}`}>
+          <Link
+            to="/uses"
+            className={`py-2 px-4 rounded-md hover:bg-slate-300/50 dark:hover:bg-slate-600/50 transition-all duration-300 ${currentPath === "/uses" ? "bg-slate-300 dark:bg-slate-600" : "bg-[#f4ece5]/80 dark:bg-[#202122]/80"}`}
+          >
             Uses
           </Link>
           {/* <Link to="/" className="p-1">
@@ -96,7 +99,10 @@ function NavBar() {
             <button onClick={toggleDarkModeHandler} className="drop-shadow-md">
               {dark ? <IoMoon /> : <IoSun />}
             </button>
-            <button onClick={openBurgerMenuHandler} className="block sm:hidden drop-shadow-md">
+            <button
+              onClick={openBurgerMenuHandler}
+              className="block sm:hidden drop-shadow-md"
+            >
               <IoBurgerMenu />
             </button>
 
@@ -110,10 +116,16 @@ function NavBar() {
                             }`}
             >
               <div className="py-2 flex flex-col font-medium">
-                <Link to="/works" className={`py-2 px-4 ${currentPath === '/works' ? 'underline underline-offset-4' : ''}`}>
+                <Link
+                  to="/works"
+                  className={`py-2 px-4 ${currentPath === "/works" ? "underline underline-offset-4" : ""}`}
+                >
                   Works
                 </Link>
-                <Link to="/uses" className={`py-2 px-4 ${currentPath === '/uses' ? 'underline underline-offset-4': ''}`}>
+                <Link
+                  to="/uses"
+                  className={`py-2 px-4 ${currentPath === "/uses" ? "underline underline-offset-4" : ""}`}
+                >
                   Uses
                 </Link>
                 {/* <div className="py-2 px-4">

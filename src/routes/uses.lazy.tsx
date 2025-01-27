@@ -1,8 +1,9 @@
+import ScrollToTop from '@/shared/ScrollToTop';
 import { createLazyFileRoute } from '@tanstack/react-router'
 import { useEffect } from 'react';
 
 export const Route = createLazyFileRoute('/uses')({
-  component: RouteComponent,
+  component: ScrollToTop(RouteComponent),
 })
 
 function RouteComponent() {
