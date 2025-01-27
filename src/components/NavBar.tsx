@@ -93,15 +93,15 @@ function NavBar() {
         </div>
         <div ref={menuRef}>
           <div className="ml-8 flex flex-row gap-2 ">
-            <button onClick={toggleDarkModeHandler} className="">
+            <button onClick={toggleDarkModeHandler} className="drop-shadow-md">
               {dark ? <IoMoon /> : <IoSun />}
             </button>
-            <button onClick={openBurgerMenuHandler} className="block sm:hidden">
-              {dark ? <IoBurgerMenu /> : <IoBurgerMenu />}
+            <button onClick={openBurgerMenuHandler} className="block sm:hidden drop-shadow-md">
+              <IoBurgerMenu />
             </button>
 
             <div
-              className={`backdrop-blur-sm border border-gray-400 bg-white dark:bg-gray-600 text-[#202122] dark:text-[#f4ece5] w-48 absolute top-12 left-auto right-4 rounded-md my-2 
+              className={`drop-shadow-lg backdrop-blur-sm border border-gray-400 bg-white dark:bg-gray-600 text-[#202122] dark:text-[#f4ece5] w-48 absolute top-12 left-auto right-4 rounded-md my-2 
                             origin-top-right transform transition-all duration-200 ease-in-out
                             ${
                               openBurgerMenu

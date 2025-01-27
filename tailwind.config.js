@@ -6,7 +6,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["M PLUS Rounded 1c", "sans-serif"],
-        text: ["Inter", "sans-serif"],
+        display: ["DM Sans", "sans-serif"],
       },
     },
   },
