@@ -15,14 +15,14 @@ function RouteComponent() {
   return (
     <div className="max-w-xl m-auto px-4">
       {/* Hello Section */}
-      <div className="text-center text-sm bg-[#f5f0e8] dark:bg-[#313134] rounded-lg p-2 my-6">
+      <div className="text-center text-sm bg-[#f5f0e8] dark:bg-[#313134] rounded-lg p-2 my-6 font-text font-normal">
         Hello, I'm a DevOps Engineer based in Brisbane, Australia!
       </div>
 
       <div className="flex flex-col sm:flex-row justify-center items-center sm:justify-between sm:items-start">
         <div className="flex flex-col w-3/4 text-center sm:text-left mb-4 sm:mb-0">
           <h1 className="text-3xl font-bold mb-1">Jian Yang Lee</h1>
-          <p className="text-sm">DevOps Engineer (SRE)</p>
+          <p className="text-sm font-text font-normal">DevOps Engineer (SRE)</p>
         </div>
         <div>
           <img
