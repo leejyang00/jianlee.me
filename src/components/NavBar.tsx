@@ -77,13 +77,13 @@ function NavBar() {
         <div className="hidden sm:flex flex-row items-start font-medium text-sm">
           <Link
             to="/works"
-            className={`py-2 px-4 rounded-md hover:bg-slate-300/50 dark:hover:bg-slate-600/50 transition-all duration-300 ${currentPath === "/works" ? "bg-slate-300 dark:bg-slate-600 " : "bg-[#f4ece5]/80 dark:bg-[#202122]/80"}`}
+            className={`py-2 px-4 rounded-md hover:bg-slate-300/50 dark:hover:bg-slate-600/50 transition-all duration-300 ${currentPath === "/works" ? "bg-slate-300 dark:bg-slate-600 " : ""}`}
           >
             Works
           </Link>
           <Link
             to="/uses"
-            className={`py-2 px-4 rounded-md hover:bg-slate-300/50 dark:hover:bg-slate-600/50 transition-all duration-300 ${currentPath === "/uses" ? "bg-slate-300 dark:bg-slate-600" : "bg-[#f4ece5]/80 dark:bg-[#202122]/80"}`}
+            className={`py-2 px-4 rounded-md hover:bg-slate-300/50 dark:hover:bg-slate-600/50 transition-all duration-300 ${currentPath === "/uses" ? "bg-slate-300 dark:bg-slate-600" : ""}`}
           >
             Uses
           </Link>
