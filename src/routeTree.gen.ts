@@ -14,6 +14,8 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as WorksV2IndexImport } from './routes/works-v2/index'
+import { Route as WorksV2slugImport } from './routes/wor./routes/works-v2/${slug}
 
 // Create Virtual Routes
 
@@ -37,6 +39,18 @@ const UsesLazyRoute = UsesLazyImport.update({
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const WorksV2IndexRoute = WorksV2IndexImport.update({
+  id: '/works-v2/',
+  path: '/works-v2/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const WorksV2slugRoute = WorksV2slugImport.update({
+  id: '/works-v2/${slug}',
+  path: '/works-v2/${slug}',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -65,6 +79,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorksLazyImport
       parentRoute: typeof rootRoute
     }
+    '/works-v2/${slug}': {
+      id: '/works-v2/${slug}'
+      path: '/works-v2/${slug}'
+      fullPath: '/works-v2/${slug}'
+      preLoaderRoute: typeof WorksV2slugImport
+      parentRoute: typeof rootRoute
+    }
+    '/works-v2/': {
+      id: '/works-v2/'
+      path: '/works-v2'
+      fullPath: '/works-v2'
+      preLoaderRoute: typeof WorksV2IndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -74,12 +102,16 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/uses': typeof UsesLazyRoute
   '/works': typeof WorksLazyRoute
+  '/works-v2/${slug}': typeof WorksV2slugRoute
+  '/works-v2': typeof WorksV2IndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/uses': typeof UsesLazyRoute
   '/works': typeof WorksLazyRoute
+  '/works-v2/${slug}': typeof WorksV2slugRoute
+  '/works-v2': typeof WorksV2IndexRoute
 }
 
 export interface FileRoutesById {
@@ -87,14 +119,16 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/uses': typeof UsesLazyRoute
   '/works': typeof WorksLazyRoute
+  '/works-v2/${slug}': typeof WorksV2slugRoute
+  '/works-v2/': typeof WorksV2IndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/uses' | '/works'
+  fullPaths: '/' | '/uses' | '/works' | '/works-v2/${slug}' | '/works-v2'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/uses' | '/works'
-  id: '__root__' | '/' | '/uses' | '/works'
+  to: '/' | '/uses' | '/works' | '/works-v2/${slug}' | '/works-v2'
+  id: '__root__' | '/' | '/uses' | '/works' | '/works-v2/${slug}' | '/works-v2/'
   fileRoutesById: FileRoutesById
 }
 
@@ -102,12 +136,16 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   UsesLazyRoute: typeof UsesLazyRoute
   WorksLazyRoute: typeof WorksLazyRoute
+  WorksV2slugRoute: typeof WorksV2slugRoute
+  WorksV2IndexRoute: typeof WorksV2IndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   UsesLazyRoute: UsesLazyRoute,
   WorksLazyRoute: WorksLazyRoute,
+  WorksV2slugRoute: WorksV2slugRoute,
+  WorksV2IndexRoute: WorksV2IndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -122,7 +160,9 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/uses",
-        "/works"
+        "/works",
+        "/works-v2/${slug}",
+        "/works-v2/"
       ]
     },
     "/": {
@@ -133,6 +173,12 @@ export const routeTree = rootRoute
     },
     "/works": {
       "filePath": "works.lazy.tsx"
+    },
+    "/works-v2/${slug}": {
+      "filePath": "works-v2/${slug}.tsx"
+    },
+    "/works-v2/": {
+      "filePath": "works-v2/index.tsx"
     }
   }
 }

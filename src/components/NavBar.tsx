@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 const IoMoon = () => {
   return (
-    <div className="p-2 bg-[#c2656d] hover:bg-[#c2656d]/80 hover:scale-105 transition-all duration-300 rounded-md text-white flex items-center justify-center">
+    <div className="p-2 bg-[#c2656d] hover:bg-[#c2656d]/80 hover:scale-105 transition-all duration-300 rounded-lg text-white flex items-center justify-center">
       <DarkModeRoundedIcon
         className="hover:cursor-pointer"
         sx={{ fontSize: 20 }}
@@ -18,7 +18,7 @@ const IoMoon = () => {
 
 const IoSun = () => {
   return (
-    <div className="p-2 bg-[#fad38d] hover:bg-[#fad38d]/80 hover:scale-105 transition-all duration-300 rounded-md text-[#202122] flex items-center justify-center">
+    <div className="p-2 bg-[#fad38d] hover:bg-[#fad38d]/80 hover:scale-105 transition-all duration-300 rounded-lg text-[#202122] flex items-center justify-center">
       <WbSunnyOutlinedIcon
         className="hover:cursor-pointer"
         sx={{ fontSize: 20 }}
@@ -29,7 +29,7 @@ const IoSun = () => {
 
 const IoBurgerMenu = () => {
   return (
-    <div className="p-2 border border-gray-400 text-[#202122] dark:text-[#f4ece5] hover:scale-105 transition-all duration-300 rounded-md  flex items-center justify-center">
+    <div className="p-2 border border-gray-400 text-[#202122] dark:text-[#f4ece5] hover:scale-105 transition-all duration-300 rounded-lg  flex items-center justify-center">
       <MenuRoundedIcon className="hover:cursor-pointer" sx={{ fontSize: 20 }} />
     </div>
   );
@@ -58,7 +58,14 @@ function NavBar() {
 
   const toggleDarkModeHandler = () => {
     setDark(!dark);
-    document.documentElement.classList.toggle("dark");
+    // document.documentElement.classList.toggle("dark");
+    if (document.documentElement.classList.contains("dark")) {
+      document.documentElement.classList.remove("dark");
+      localStorage.theme = "light";
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
+    }
   };
 
   const openBurgerMenuHandler = () => {
@@ -74,16 +81,16 @@ function NavBar() {
             <span className="text-lg">Jian Lee</span>
           </Link>
         </div>
-        <div className="hidden sm:flex flex-row items-start font-medium text-sm">
+        <div className="hidden sm:flex flex-row items-start font-medium text-sm font-display">
           <Link
             to="/works"
-            className={`py-2 px-4 rounded-md hover:bg-slate-300/50 dark:hover:bg-slate-600/50 transition-all duration-300 ${currentPath === "/works" ? "bg-slate-300 dark:bg-slate-600 " : ""}`}
+            className={`py-2 px-4 rounded-lg hover:bg-slate-300/50 dark:hover:bg-slate-600/50 transition-all duration-300 ${currentPath === "/works" ? "bg-slate-300 dark:bg-slate-600 " : ""}`}
           >
             Works
           </Link>
           <Link
             to="/uses"
-            className={`py-2 px-4 rounded-md hover:bg-slate-300/50 dark:hover:bg-slate-600/50 transition-all duration-300 ${currentPath === "/uses" ? "bg-slate-300 dark:bg-slate-600" : ""}`}
+            className={`py-2 px-4 rounded-lg hover:bg-slate-300/50 dark:hover:bg-slate-600/50 transition-all duration-300 ${currentPath === "/uses" ? "bg-slate-300 dark:bg-slate-600" : ""}`}
           >
             Uses
           </Link>
@@ -107,7 +114,7 @@ function NavBar() {
             </button>
 
             <div
-              className={`drop-shadow-lg backdrop-blur-sm border border-gray-400 bg-white dark:bg-gray-600 text-[#202122] dark:text-[#f4ece5] w-48 absolute top-12 left-auto right-4 rounded-md my-2 
+              className={`drop-shadow-lg backdrop-blur-sm border border-gray-400 bg-white dark:bg-gray-600 text-[#202122] dark:text-[#f4ece5] w-48 absolute top-12 left-auto right-4 rounded-lg my-2 
                             origin-top-right transform transition-all duration-200 ease-in-out
                             ${
                               openBurgerMenu
@@ -115,7 +122,7 @@ function NavBar() {
                                 : "opacity-0 invisible translate-z-0 scale-80"
                             }`}
             >
-              <div className="py-2 flex flex-col font-medium">
+              <div className="py-2 flex flex-col font-medium font-display">
                 <Link
                   to="/works"
                   className={`py-2 px-4 ${currentPath === "/works" ? "underline underline-offset-4" : ""}`}

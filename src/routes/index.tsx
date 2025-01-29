@@ -17,7 +17,7 @@ function RouteComponent() {
   return (
     <div className="max-w-xl m-auto px-4">
       {/* Hello Section */}
-      <div className="text-center text-sm bg-[#f5f0e8] dark:bg-[#313134] rounded-md p-2 my-6 font-display font-normal">
+      <div className="text-center text-sm bg-[#f5f0e8] dark:bg-[#313134] rounded-lg p-2 my-6 font-display font-normal">
         Hello, I'm a DevOps Engineer based in Brisbane, Australia!
       </div>
 

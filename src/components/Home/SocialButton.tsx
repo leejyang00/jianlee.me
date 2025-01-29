@@ -13,7 +13,7 @@ export default function SocialButton(props: Props) {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 hover:bg-[#a3e4d7]/30 hover:dark:bg-[#339995]/30 hover:cursor-pointer transition-all duration-300 py-2 px-4 rounded-md"
+        className="flex items-center gap-2 hover:bg-[#a3e4d7]/30 hover:dark:bg-[#339995]/30 hover:cursor-pointer transition-all duration-300 py-2 px-4 rounded-lg"
       >
         <span className="text-black dark:text-[#f5f0e8]">{icon}</span>{label}
       </a>

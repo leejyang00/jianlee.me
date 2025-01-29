@@ -16,7 +16,7 @@ const Introduction = () => {
         YouTube channel called "Dev as Life" has more than 100k subscribers.
       </div>
       <div className="flex justify-center mt-4">
-        <button className="bg-[#339995] text-[#eeefef] dark:bg-[#80e7d9] hover:bg-[#339995]/80 dark:hover:bg-[#80e7d9]/80 dark:text-[#313134] transition-all duration-300   rounded-md py-2 px-4 my-2 text-sm font-semibold flex items-center gap-2 shadow-md">
+        <button className="bg-[#339995] text-[#eeefef] dark:bg-[#80e7d9] hover:bg-[#339995]/80 dark:hover:bg-[#80e7d9]/80 dark:text-[#313134] transition-all duration-300 rounded-lg py-2 px-4 my-2 text-sm font-semibold flex items-center gap-2 shadow-md">
           <div className="flex items-center justify-center gap-2">
             My Portfolio <KeyboardArrowRightRoundedIcon sx={{ fontSize: 16 }} />
           </div>
