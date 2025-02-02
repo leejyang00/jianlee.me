@@ -29,7 +29,7 @@ function RouteComponent() {
             </p>
           </div>
         </div>
-        <Link to="/works-v2/pacemates-run-club">
+        {/* <Link to="/works-v2/pacemates-run-club"> */}
           <div className="flex flex-col gap-2 items-center justify-center">
             <img
               src="/images/pacemates.jpg"
@@ -45,7 +45,7 @@ function RouteComponent() {
               </p>
             </div>
           </div>
-        </Link>
+        {/* </Link> */}
       </div>
     </div>
   );
