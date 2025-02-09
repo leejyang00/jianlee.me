@@ -14,20 +14,15 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
-import { Route as WorksV2IndexImport } from './routes/works-v2/index'
+import { Route as WorksIndexImport } from './routes/works/index'
+import { Route as WorksPacematesImport } from './routes/works/pacemates'
+import { Route as WorksGbrgroupcoImport } from './routes/works/gbrgroupco'
 
 // Create Virtual Routes
 
-const WorksLazyImport = createFileRoute('/works')()
 const UsesLazyImport = createFileRoute('/uses')()
 
 // Create/Update Routes
-
-const WorksLazyRoute = WorksLazyImport.update({
-  id: '/works',
-  path: '/works',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/works.lazy').then((d) => d.Route))
 
 const UsesLazyRoute = UsesLazyImport.update({
   id: '/uses',
@@ -41,9 +36,21 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const WorksV2IndexRoute = WorksV2IndexImport.update({
-  id: '/works-v2/',
-  path: '/works-v2/',
+const WorksIndexRoute = WorksIndexImport.update({
+  id: '/works/',
+  path: '/works/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const WorksPacematesRoute = WorksPacematesImport.update({
+  id: '/works/pacemates',
+  path: '/works/pacemates',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const WorksGbrgroupcoRoute = WorksGbrgroupcoImport.update({
+  id: '/works/gbrgroupco',
+  path: '/works/gbrgroupco',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -65,18 +72,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsesLazyImport
       parentRoute: typeof rootRoute
     }
-    '/works': {
-      id: '/works'
-      path: '/works'
-      fullPath: '/works'
-      preLoaderRoute: typeof WorksLazyImport
+    '/works/gbrgroupco': {
+      id: '/works/gbrgroupco'
+      path: '/works/gbrgroupco'
+      fullPath: '/works/gbrgroupco'
+      preLoaderRoute: typeof WorksGbrgroupcoImport
       parentRoute: typeof rootRoute
     }
-    '/works-v2/': {
-      id: '/works-v2/'
-      path: '/works-v2'
-      fullPath: '/works-v2'
-      preLoaderRoute: typeof WorksV2IndexImport
+    '/works/pacemates': {
+      id: '/works/pacemates'
+      path: '/works/pacemates'
+      fullPath: '/works/pacemates'
+      preLoaderRoute: typeof WorksPacematesImport
+      parentRoute: typeof rootRoute
+    }
+    '/works/': {
+      id: '/works/'
+      path: '/works'
+      fullPath: '/works'
+      preLoaderRoute: typeof WorksIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -87,46 +101,57 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/uses': typeof UsesLazyRoute
-  '/works': typeof WorksLazyRoute
-  '/works-v2': typeof WorksV2IndexRoute
+  '/works/gbrgroupco': typeof WorksGbrgroupcoRoute
+  '/works/pacemates': typeof WorksPacematesRoute
+  '/works': typeof WorksIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/uses': typeof UsesLazyRoute
-  '/works': typeof WorksLazyRoute
-  '/works-v2': typeof WorksV2IndexRoute
+  '/works/gbrgroupco': typeof WorksGbrgroupcoRoute
+  '/works/pacemates': typeof WorksPacematesRoute
+  '/works': typeof WorksIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/uses': typeof UsesLazyRoute
-  '/works': typeof WorksLazyRoute
-  '/works-v2/': typeof WorksV2IndexRoute
+  '/works/gbrgroupco': typeof WorksGbrgroupcoRoute
+  '/works/pacemates': typeof WorksPacematesRoute
+  '/works/': typeof WorksIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/uses' | '/works' | '/works-v2'
+  fullPaths: '/' | '/uses' | '/works/gbrgroupco' | '/works/pacemates' | '/works'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/uses' | '/works' | '/works-v2'
-  id: '__root__' | '/' | '/uses' | '/works' | '/works-v2/'
+  to: '/' | '/uses' | '/works/gbrgroupco' | '/works/pacemates' | '/works'
+  id:
+    | '__root__'
+    | '/'
+    | '/uses'
+    | '/works/gbrgroupco'
+    | '/works/pacemates'
+    | '/works/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   UsesLazyRoute: typeof UsesLazyRoute
-  WorksLazyRoute: typeof WorksLazyRoute
-  WorksV2IndexRoute: typeof WorksV2IndexRoute
+  WorksGbrgroupcoRoute: typeof WorksGbrgroupcoRoute
+  WorksPacematesRoute: typeof WorksPacematesRoute
+  WorksIndexRoute: typeof WorksIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   UsesLazyRoute: UsesLazyRoute,
-  WorksLazyRoute: WorksLazyRoute,
-  WorksV2IndexRoute: WorksV2IndexRoute,
+  WorksGbrgroupcoRoute: WorksGbrgroupcoRoute,
+  WorksPacematesRoute: WorksPacematesRoute,
+  WorksIndexRoute: WorksIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -141,8 +166,9 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/uses",
-        "/works",
-        "/works-v2/"
+        "/works/gbrgroupco",
+        "/works/pacemates",
+        "/works/"
       ]
     },
     "/": {
@@ -151,11 +177,14 @@ export const routeTree = rootRoute
     "/uses": {
       "filePath": "uses.lazy.tsx"
     },
-    "/works": {
-      "filePath": "works.lazy.tsx"
+    "/works/gbrgroupco": {
+      "filePath": "works/gbrgroupco.tsx"
     },
-    "/works-v2/": {
-      "filePath": "works-v2/index.tsx"
+    "/works/pacemates": {
+      "filePath": "works/pacemates.tsx"
+    },
+    "/works/": {
+      "filePath": "works/index.tsx"
     }
   }
 }
