@@ -40,23 +40,23 @@ function NavBar() {
 
   return (
     <nav className="w-100% flex justify-center bg-[#f4ece5]/80 dark:bg-[#202122]/80 dark:text-white fixed top-0 left-0 right-0 z-10 backdrop-blur-sm">
-      <div className="relative m-auto w-full sm:max-w-2xl flex flex-row justify-between items-center px-4">
+      <div className="relative max-w-xl m-auto w-full sm:max-w-2xl flex flex-row justify-between items-center px-4">
         <div className="font-semibold w-40 flex items-center gap-2">
           <Link to="/" className="text-lg flex flex-row items-center">
-            <img src="/images/notion-face.png" alt="Notion Face" className="w-12" />
+            <img src="/images/notion-trans.png" alt="Notion Face" className="w-12" />
             <span className="text-lg">Jian Lee</span>
           </Link>
         </div>
         <div className="hidden sm:flex flex-row items-start font-medium text-sm font-display">
           <Link
             to="/works"
-            className={`py-2 px-4 rounded-lg hover:underline hover:underline-offset-4 transition-all duration-300 ${currentPath === "/works" ? "underline underline-offset-4" : ""}`}
+            className={`py-2 px-4 hover:underline underline-offset-4 transition-all duration-300 ${currentPath === "/works" ? "underline" : ""}`}
           >
             Works
           </Link>
           <Link
             to="/uses"
-            className={`py-2 px-4 rounded-lg hover:underline hover:underline-offset-4 transition-all duration-300 ${currentPath === "/uses" ? "underline underline-offset-4" : ""}`}
+            className={`py-2 px-4 hover:underline underline-offset-4 transition-all duration-300 ${currentPath === "/uses" ? "underline" : ""}`}
           >
             Uses
           </Link>

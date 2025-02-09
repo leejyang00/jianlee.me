@@ -4,7 +4,7 @@ const Introduction = () => {
   return (
     <div className="flex flex-col">
       <h2 className="text-lg font-bold underline underline-offset-8 my-4 decoration-4 decoration-gray-500">
-        Work
+        About
       </h2>
       <div className="text-sm text-justify leading-[1.7] indent-8 font-display font-normal">
         Jian is a DevOps Engineer based in Brisbane, Australia with a passion

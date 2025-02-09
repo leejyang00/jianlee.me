@@ -11,7 +11,7 @@ function RootComponent() {
     <React.Fragment>
       <NavBar />
       <div className="w-100% bg-[#f1e6db] dark:bg-[#202122] dark:text-[#eeefef]">
-        <div className="max-w-2xl m-auto pt-16">
+        <div className="max-w-2xl mx-auto pt-16">
           <Outlet />
           <Footer />
         </div>
