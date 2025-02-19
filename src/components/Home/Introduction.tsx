@@ -7,13 +7,42 @@ const Introduction = () => {
         About
       </h2>
       <div className="text-sm text-justify leading-[1.7] indent-8 font-display font-normal">
-        Jian is a DevOps Engineer based in Brisbane, Australia with a passion
-        for building digital services/stuff he wants. He has a knack for all
-        things launching products, from planning and designing all the way to
-        solving real-life problems with code. When not online, he loves hanging
-        out with his camera. Currently, he is living off of his own product
-        called Inkdrop. He publishes content for marketing his products and his
-        YouTube channel called "Dev as Life" has more than 100k subscribers.
+        Jian is a DevOps Engineer based in Brisbane, Australia, spezializing in
+        cloud infrastructure, Kubernetes and CI/CD Automation. With experience
+        at Flight Centre and startups, he optimises SaaS platforms using AWS,
+        Terraform, and GitHub Actions. Beyond tech, he’s a three-time marathoner
+        (Sydney, Brisbane, Sunshine Coast) and founder of{" "}
+        <a
+          href="https://www.strava.com/clubs/1180710"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-pink hover:underline font-semibold"
+        >
+          Pacemates Run Club.
+        </a>{" "}
+        When he's not coding, you’ll find him behind a camera, at the gym, or
+        sharing his journey through reels at{" "}
+        <a
+          href="https://www.instagram.com/jian.shorts/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-pink hover:underline font-semibold"
+        >
+          @jian.shorts
+        </a>{" "}
+        on Instagram/TikTok.
+        <br />
+        <br />
+        ⬇️ Grab my latest resume{" "}
+        <a
+          href="/public/assets/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-pink hover:underline font-semibold"
+        >
+          here
+        </a>
+        .
       </div>
       <div className="flex justify-center mt-4">
         <button className="bg-[#339995] text-[#eeefef] dark:bg-[#80e7d9] hover:bg-[#339995]/80 dark:hover:bg-[#80e7d9]/80 dark:text-[#313134] transition-all duration-300 rounded-lg py-2 px-4 my-2 text-sm font-semibold flex items-center gap-2 shadow-md">

@@ -8,6 +8,9 @@ export default {
         sans: ["M PLUS Rounded 1c", "sans-serif"],
         display: ["DM Sans", "sans-serif"],
       },
+      colors: {
+        'pink': '#f304ec',
+      },
     },
   },
   plugins: [],

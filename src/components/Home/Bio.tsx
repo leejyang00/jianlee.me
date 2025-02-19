@@ -31,6 +31,12 @@ const Bio = () => {
             Started working as a DevOps Engineer at Flight Centre Travel Group
           </div>
         </div>
+        <div className="flex flex-row gap-4">
+          <span className="font-bold">2025</span>{" "}
+          <div className="font-display">
+            (? still writing my own story)
+          </div>
+        </div>
       </div>
     </div>
   );

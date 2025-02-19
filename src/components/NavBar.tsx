@@ -54,12 +54,12 @@ function NavBar() {
           >
             Works
           </Link>
-          <Link
+          {/* <Link
             to="/uses"
             className={`py-2 px-4 hover:underline underline-offset-4 transition-all duration-300 ${currentPath === "/uses" ? "underline" : ""}`}
           >
             Uses
-          </Link>
+          </Link> */}
           {/* <Link to="/" className="p-1">
             About
           </Link>
@@ -96,13 +96,13 @@ function NavBar() {
                 >
                   Works
                 </Link>
-                <Link
+                {/* <Link
                   to="/uses"
                   className={`py-2 px-4 ${currentPath === "/uses" ? "underline underline-offset-4" : ""}`}
                   onClick={() => setOpenBurgerMenu(false)}
                 >
                   Uses
-                </Link>
+                </Link> */}
                 {/* <div className="py-2 px-4">
                   <Link to="/works" className="">
                     Works
