@@ -6,7 +6,7 @@ import XIcon from '@mui/icons-material/X';
 
 export default function Socials() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pb-6">
       <h2 className="text-lg font-bold underline underline-offset-8 my-4 decoration-4 decoration-gray-500">
         Reach me!
       </h2>
