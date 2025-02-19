@@ -7,9 +7,9 @@ const Introduction = () => {
         About
       </h2>
       <div className="text-sm text-justify leading-[1.7] indent-8 font-display font-normal">
-        Jian is a DevOps Engineer based in Brisbane, Australia, spezializing in
+        Jian is a DevOps Engineer based in Brisbane, Australia, specializing in
         cloud infrastructure, Kubernetes and CI/CD Automation. With experience
-        at Flight Centre and startups, he optimises SaaS platforms using AWS,
+        at Flight Centre and startups, he optimizes SaaS platforms using AWS,
         Terraform, and GitHub Actions. Beyond tech, he’s a three-time marathoner
         (Sydney, Brisbane, Sunshine Coast) and founder of{" "}
         <a

@@ -10,6 +10,7 @@ export default {
       },
       colors: {
         'pink': '#f304ec',
+        'mint': '#339995',
       },
     },
   },

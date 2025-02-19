@@ -19,7 +19,7 @@ const Highlight = () => {
             <div className="mt-2 gap-1 flex flex-col items-center justify-center">
               <h3 className="text-lg font-medium font-display">GBR Group Co</h3>
               <p className="text-xs/relaxed font-normal font-display text-center mx-2">
-                A corporate website designed and built to launch and showcase
+                A corporate website designed and built to launch, showcasing
                 the brand's new values and offerings
               </p>
             </div>
