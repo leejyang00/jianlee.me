@@ -13,14 +13,12 @@ const Introduction = () => {
         at Flight Centre and startups, he optimizes SaaS platforms using AWS,
         Terraform, and GitHub Actions. Beyond tech, he’s a three-time marathoner
         (Sydney, Brisbane, Sunshine Coast) and founder of{" "}
-        <a
-          href="https://www.strava.com/clubs/1180710"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to="/works/pacemates"
           className="text-pink hover:underline font-semibold"
         >
-          Pacemates Run Club.
-        </a>{" "}
+          Pacemates Run Club
+        </Link>.
         When he's not coding, you’ll find him behind a camera, at the gym, or
         sharing his journey through reels at{" "}
         <a
