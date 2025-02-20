@@ -1,9 +1,10 @@
 import Article from "@/components/Layout/Article";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
+import ScrollToTop from "@/shared/ScrollToTop";
 
 export const Route = createFileRoute("/works/pacemates")({
-  component: RouteComponent,
+  component: ScrollToTop(RouteComponent),
 });
 
 function RouteComponent() {

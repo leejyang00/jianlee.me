@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { IoMoon, IoSun, IoBurgerMenu } from "@/shared/NavbarIcons";
 
 function NavBar() {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(() =>
+    document.documentElement.classList.contains('dark')
+  );
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -70,7 +72,7 @@ function NavBar() {
         <div ref={menuRef}>
           <div className="ml-8 flex flex-row gap-2 ">
             <button onClick={toggleDarkModeHandler} className="drop-shadow-md">
-              {dark ? <IoMoon /> : <IoSun />}
+              {dark ? <IoSun /> : <IoMoon />}
             </button>
             <button
               onClick={openBurgerMenuHandler}
@@ -80,15 +82,21 @@ function NavBar() {
             </button>
 
             <div
-              className={`drop-shadow-lg backdrop-blur-sm border border-gray-400 bg-white dark:bg-gray-600 text-[#202122] dark:text-[#f4ece5] w-48 absolute top-12 left-auto right-4 rounded-lg my-2 
+              className={`drop-shadow-lg backdrop-blur-sm border border-gray-400 bg-white dark:bg-gray-600 text-[#202122] dark:text-[#f4ece5] w-48 absolute top-12 left-auto right-4 rounded-lg my-2
                             origin-top-right transform transition-all duration-200 ease-in-out
-                            ${
-                              openBurgerMenu
-                                ? "opacity-100 visible translate-z-0 scale-100"
-                                : "opacity-0 invisible translate-z-0 scale-80"
-                            }`}
+                            ${openBurgerMenu
+                  ? "opacity-100 visible translate-z-0 scale-100"
+                  : "opacity-0 invisible translate-z-0 scale-80"
+                }`}
             >
               <div className="py-2 flex flex-col font-medium font-display">
+                <Link
+                  to="/"
+                  className={`py-2 px-4 ${currentPath === "/" ? "underline underline-offset-4" : ""}`}
+                  onClick={() => setOpenBurgerMenu(false)}
+                >
+                  Home
+                </Link>
                 <Link
                   to="/works"
                   className={`py-2 px-4 ${currentPath === "/works" ? "underline underline-offset-4" : ""}`}
