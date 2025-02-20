@@ -24,4 +24,5 @@ Visit the live site: [jianlee.me](https://jianlee.me)
 
 ## 📧 Contact
 Jian Yang Lee - [jianyang.lee75@gmail.com](mailto:jianyang.lee75@gmail.com)
+
 Project Link: [https://github.com/leejyang00/jianlee.me](https://github.com/leejyang00/jianlee.me)
