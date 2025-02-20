@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
 
 function RouteComponent() {
   useEffect(() => {
-    document.title = "Jian Lee - Home Page";
+    document.title = "Jian Yang Lee | Home Page";
   }, []);
 
   return (

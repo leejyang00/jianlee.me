@@ -8,7 +8,7 @@ export const Route = createFileRoute('/works/gbrgroupco')({
 
 function RouteComponent() {
   useEffect(() => {
-    document.title = 'GBR Group Co - Jian Lee'
+    document.title = 'Jian | GBR Group Co'
   }, [])
 
   return (

@@ -7,7 +7,7 @@ export const Route = createFileRoute("/works/")({
 
 function RouteComponent() {
   useEffect(() => {
-    document.title = "Works - Jian Lee";
+    document.title = "Jian | Works";
   }, []);
 
   return (
