@@ -25,9 +25,6 @@ jobs:
       - name: Build project
         run: bun run build
 
-      # token:
-      #   MT1Lw4NW8cRAPgAGHx6yTK-QzuzuL_wXkMgwUOJ6
-
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
