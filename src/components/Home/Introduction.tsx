@@ -34,7 +34,7 @@ const Introduction = () => {
         <br />
         ⬇️ Grab my latest resume{" "}
         <a
-          href="/public/assets/resume.pdf"
+          href="/assets/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           download="Jian Yang Lee - Resume"
