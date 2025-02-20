@@ -15,7 +15,7 @@ function RouteComponent() {
     <div>
       <Article title="GBR Group Co" date="2024">
         <div className="text-sm">
-          <p>This is the start of the story of GBR Group Co</p>
+          <p>This is the start of the story of GBR Group Co. </p>
         </div>
       </Article>
     </div>
