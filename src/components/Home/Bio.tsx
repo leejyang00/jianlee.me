@@ -21,14 +21,36 @@ const Bio = () => {
         <div className="flex flex-row gap-4">
           <span className="font-bold">2022</span>{" "}
           <div className="font-display">
-            Got my first job as a Software Engineer, worked at Algomint (built on
-            Algorand Blockchain) and ProcurePro (ConTech)
+            Started working as a Software Engineer at <a
+              href="https://algomint.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink hover:underline font-semibold"
+            >
+              Algomint
+            </a>{" "}
+            (contract), before going to <a
+              href="https://procurepro.co/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink hover:underline font-semibold"
+            >
+              ProcurePro
+            </a>{" "}
+            (full-time)
           </div>
         </div>
         <div className="flex flex-row gap-4">
           <span className="font-bold">2024</span>{" "}
           <div className="font-display">
-            Started working as a DevOps Engineer at Flight Centre Travel Group
+            Transitioned to a DevOps Engineer at <a
+              href="https://www.flightcentre.com.au/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink hover:underline font-semibold"
+            >
+              Flight Centre Travel Group
+            </a>{" "}
           </div>
         </div>
         <div className="flex flex-row gap-4">
