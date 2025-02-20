@@ -37,7 +37,7 @@ const Introduction = () => {
           href="/assets/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          download="Jian Yang Lee - Resume"
+          download="JianYangLee-Resume"
           className="text-pink hover:underline font-semibold"
         >
           here
