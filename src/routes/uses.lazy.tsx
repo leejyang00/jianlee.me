@@ -9,7 +9,7 @@ export const Route = createLazyFileRoute('/uses')({
 function RouteComponent() {
 
   useEffect(() => {
-    document.title = "Jian | Uses";
+    document.title = "Uses | Jian";
   }, []);
 
   return <div>Hello "/uses"!</div>

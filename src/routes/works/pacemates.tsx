@@ -9,7 +9,7 @@ export const Route = createFileRoute("/works/pacemates")({
 
 function RouteComponent() {
   useEffect(() => {
-    document.title = "Jian | Pacemates Run Club";
+    document.title = "Pacemates Run Club | Jian";
   }, []);
 
   return (
