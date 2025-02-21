@@ -19,8 +19,8 @@ const Introduction = () => {
           className="text-pink hover:underline font-semibold"
         >
           Pacemates Run Club
-        </Link>.
-        When he's not coding, you’ll find him behind a camera, at the gym, or
+        </Link>
+        . When he's not coding, you’ll find him behind a camera, at the gym, or
         sharing his journey through reels at{" "}
         <a
           href="https://www.instagram.com/jian.shorts/"
@@ -34,11 +34,36 @@ const Introduction = () => {
         <br />
         <br />
         ⬇️ Grab my latest resume{" "}
-        <a
+        {/* <a
           href={`${ASSETS.DOCUMENTS}/resume.pdf`}
           target="_blank"
           rel="noopener noreferrer"
           download="JianYangLee-Resume.pdf"
+          className="text-pink hover:underline font-semibold"
+        >
+          here
+        </a> */}
+        <a
+          href={`${ASSETS.DOCUMENTS}/resume.pdf`}
+          onClick={async (e) => {
+            e.preventDefault();
+            try {
+              const response = await fetch(`${ASSETS.DOCUMENTS}/resume.pdf`);
+              const blob = await response.blob();
+              const url = window.URL.createObjectURL(blob);
+              const link = document.createElement("a");
+              link.href = url;
+              link.download = "JianYangLee-Resume.pdf";
+              document.body.appendChild(link);
+              link.click();
+              window.URL.revokeObjectURL(url);
+              document.body.removeChild(link);
+            } catch (error) {
+              console.error("Download failed:", error);
+              // Fallback to direct link if download fails
+              window.open(`${ASSETS.DOCUMENTS}/resume.pdf`, "_blank");
+            }
+          }}
           className="text-pink hover:underline font-semibold"
         >
           here
