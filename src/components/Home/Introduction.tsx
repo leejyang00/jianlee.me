@@ -37,38 +37,12 @@ const Introduction = () => {
         <a
           href={`${ASSETS.DOCUMENTS}/resume.pdf`}
           download="JianYangLee-Resume.pdf"
-          // target="_blank"
-          // rel="noopener noreferrer"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-pink hover:underline font-semibold"
         >
           here
-        </a> or {" "}
-        <a
-          href={`${ASSETS.DOCUMENTS}/resume.pdf`}
-          onClick={async (e) => {
-            e.preventDefault();
-            try {
-              const response = await fetch(`${ASSETS.DOCUMENTS}/resume.pdf`);
-              const blob = await response.blob();
-              const url = window.URL.createObjectURL(blob);
-              const link = document.createElement("a");
-              link.href = url;
-              link.download = "JianYangLee-Resume.pdf";
-              document.body.appendChild(link);
-              link.click();
-              window.URL.revokeObjectURL(url);
-              document.body.removeChild(link);
-            } catch (error) {
-              console.error("Download failed:", error);
-              // Fallback to direct link if download fails
-              window.open(`${ASSETS.DOCUMENTS}/resume.pdf`, "_blank");
-            }
-          }}
-          className="text-pink hover:underline font-semibold"
-        >
-          download
-        </a> it
-        .
+        </a>.
       </div>
       <div className="flex justify-center mt-4">
         <Link to="/works">
