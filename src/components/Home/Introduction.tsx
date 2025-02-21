@@ -34,7 +34,7 @@ const Introduction = () => {
         <br />
         <br />
         ⬇️ Grab my latest resume{" "}
-        {/* <a
+        <a
           href={`${ASSETS.DOCUMENTS}/resume.pdf`}
           target="_blank"
           rel="noopener noreferrer"
@@ -42,8 +42,8 @@ const Introduction = () => {
           className="text-pink hover:underline font-semibold"
         >
           here
-        </a> */}
-        <a
+        </a>
+        {/* <a
           href={`${ASSETS.DOCUMENTS}/resume.pdf`}
           onClick={async (e) => {
             e.preventDefault();
@@ -67,7 +67,7 @@ const Introduction = () => {
           className="text-pink hover:underline font-semibold"
         >
           here
-        </a>
+        </a> */}
         .
       </div>
       <div className="flex justify-center mt-4">
