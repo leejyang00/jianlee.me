@@ -36,14 +36,14 @@ const Introduction = () => {
         ⬇️ Grab my latest resume{" "}
         <a
           href={`${ASSETS.DOCUMENTS}/resume.pdf`}
-          target="_blank"
-          rel="noopener noreferrer"
           download="JianYangLee-Resume.pdf"
+          // target="_blank"
+          // rel="noopener noreferrer"
           className="text-pink hover:underline font-semibold"
         >
           here
-        </a>
-        {/* <a
+        </a> or {" "}
+        <a
           href={`${ASSETS.DOCUMENTS}/resume.pdf`}
           onClick={async (e) => {
             e.preventDefault();
@@ -66,8 +66,8 @@ const Introduction = () => {
           }}
           className="text-pink hover:underline font-semibold"
         >
-          here
-        </a> */}
+          download
+        </a> it
         .
       </div>
       <div className="flex justify-center mt-4">
