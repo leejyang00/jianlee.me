@@ -1,3 +1,4 @@
+import { ASSETS } from "@/shared/Constants";
 import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
 import { Link } from "@tanstack/react-router";
 
@@ -34,10 +35,10 @@ const Introduction = () => {
         <br />
         ⬇️ Grab my latest resume{" "}
         <a
-          href="/assets/resume.pdf"
+          href={`${ASSETS.DOCUMENTS}/resume.pdf`}
           target="_blank"
           rel="noopener noreferrer"
-          download="JianYangLee-Resume"
+          download="JianYangLee-Resume.pdf"
           className="text-pink hover:underline font-semibold"
         >
           here
