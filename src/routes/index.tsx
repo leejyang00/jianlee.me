@@ -5,6 +5,7 @@ import Bio from "@/components/Home/Bio";
 import Socials from "@/components/Home/Socials";
 import ScrollToTop from "@/shared/ScrollToTop";
 import Highlight from "@/components/Home/Highlight";
+import { ASSETS } from "@/shared/Constants";
 
 export const Route = createFileRoute("/")({
   component: ScrollToTop(RouteComponent),
@@ -31,7 +32,7 @@ function RouteComponent() {
         </div>
         <div>
           <img
-            src="/images/prof.jpg"
+            src={`${ASSETS.IMAGES}/prof.jpg`}
             alt="Profile"
             className="w-28 h-28 rounded-full border-2 border-white object-cover brightness-80"
           />

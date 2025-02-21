@@ -1,6 +1,7 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { IoMoon, IoSun, IoBurgerMenu } from "@/shared/NavbarIcons";
+import { ASSETS } from "@/shared/Constants";
 
 function NavBar() {
   const [dark, setDark] = useState(() =>
@@ -45,7 +46,7 @@ function NavBar() {
       <div className="relative max-w-xl m-auto w-full sm:max-w-2xl flex flex-row justify-between items-center px-4">
         <div className="font-semibold w-40 flex items-center gap-2">
           <Link to="/" className="text-lg flex flex-row items-center">
-            <img src="/images/notion-trans.png" alt="Notion Face" className="w-14" />
+            <img src={`${ASSETS.IMAGES}/notion-trans.png`} alt="Notion Face" className="w-14" />
             <span className="text-lg">Jian Lee</span>
           </Link>
         </div>

@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import ScrollToTop from "@/shared/ScrollToTop";
+import { ASSETS } from "@/shared/Constants";
+
 export const Route = createFileRoute("/works/")({
   component: ScrollToTop(RouteComponent),
 });
@@ -18,7 +20,7 @@ function RouteComponent() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-6 py-4">
         <div className="flex flex-col gap-2 items-center justify-center">
           <img
-            src="/images/gbrgroup.png"
+            src={`${ASSETS.IMAGES}/gbrgroup.png`}
             alt="Work 1"
             className="rounded-lg w-full md:h-44 h-52 object-cover"
           />
@@ -32,7 +34,7 @@ function RouteComponent() {
         </div>
         <div className="flex flex-col gap-2 items-center justify-center">
           <img
-            src="/images/pacemates.jpg"
+            src={`${ASSETS.IMAGES}/pacemates.jpg`}
             alt="Work 1"
             className="rounded-lg w-full md:h-44 h-52 object-cover"
           />
