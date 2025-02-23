@@ -12,6 +12,10 @@ export default {
         'pink': '#f304ec',
         'mint': '#339995',
       },
+      fontSize: {
+        'xxs': '0.7rem',
+        'xs': '0.75rem',
+      },
     },
   },
   plugins: [],

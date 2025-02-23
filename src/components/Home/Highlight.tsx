@@ -17,7 +17,7 @@ const Highlight = () => {
             className="rounded-lg w-full md:h-44 h-52 object-cover"
           />
           <div className="mt-2 gap-1 flex flex-col items-center justify-center">
-            <h3 className="text-lg font-medium font-display">GBR Group Co</h3>
+            <h3 className="text-lg font-medium font-sans">GBR Group Co</h3>
             <p className="text-xs/relaxed font-normal font-display text-center mx-2">
               A corporate website designed and built to launch, showcasing
               the brand's new values and offerings, {" "}<Link to="/works/gbrgroupco">{" "}<span className="underline font-semibold">read more</span></Link>
