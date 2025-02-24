@@ -2,6 +2,9 @@ import Article from "@/components/Layout/Article";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 import ScrollToTop from "@/shared/ScrollToTop";
+import { ASSETS } from "@/shared/Constants";
+import Tag from "@/shared/Tag";
+import LaunchRoundedIcon from "@mui/icons-material/LaunchRounded";
 
 export const Route = createFileRoute("/works/pacemates")({
   component: ScrollToTop(RouteComponent),
@@ -16,17 +19,47 @@ function RouteComponent() {
     <div>
       <Article title="Pacemates Run Club" date="2023">
         <div className="text-sm text-justify">
+          <div className="mb-8">
+            <img
+              src={`${ASSETS.IMAGES}/pacemates.jpg`}
+              alt="Pacemates Run Club"
+              className="rounded-lg h-[295px] w-full object-cover"
+            />
+          </div>
           From an ideation to reality. This was one of my favourite projects
           that I’ve done, so much so that it was out of my comfort zone.
-          <br />
+          <div className="flex flex-col gap-2 ml-2 pt-4">
+            <div className="flex flex-row items-center gap-1">
+              <Tag tag="INSTAGRAM" />
+              <a
+                href="https://www.instagram.com/pacematesrunclub/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-pink hover:underline flex flex-row items-center gap-1"
+              >
+                @pacematesrunclub <LaunchRoundedIcon sx={{ fontSize: 16 }} />
+              </a>
+            </div>
+            <div className="flex flex-row items-center gap-1">
+              <Tag tag="Strava" />
+              <a
+                href="https://www.strava.com/clubs/1180710"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-pink hover:underline flex flex-row items-center gap-1"
+              >
+                Pacemates Run Club <LaunchRoundedIcon sx={{ fontSize: 16 }} />
+              </a>
+            </div>
+          </div>
           <br />
           <div className="font-bold text-lg mb-2">background:</div>
           <div className="indent-4">
-            My running journey began back in 2020 when Covid hit, couldn’t do
-            much exercise with places restricted or high risk to exposure. My
-            only available options was running. Plus, I was pretty active in
-            Strava previously for my road cycling adventures, so what other ways
-            to gamify it! Fast forward to 2023, when my good friend, Ethan,
+            My journey began back in 2020 when Covid hit, couldn’t do much
+            exercise with places restricted or high risk to exposure. My only
+            available options was running. Plus, I was pretty active in Strava
+            previously for my road cycling adventures, so what other ways to
+            gamify it! Fast forward to 2023, when my good friend, Ethan,
             introduced me the ideation of running a marathon. 42.2 km.
           </div>
           <br />
@@ -39,7 +72,7 @@ function RouteComponent() {
           always up for a challenge. "COUNT ME IN!", I said.
           <br />
           <br />
-          <div className="font-bold text-lg mb-2">why</div>
+          <div className="font-bold text-lg mb-2 uppercase">why</div>
           <div className="indent-4">
             Why a run club? Because I’ve been running alone and I want to build
             a community. You know that saying,{" "}
@@ -53,7 +86,7 @@ function RouteComponent() {
             bring them to me :)
           </div>
           <br />
-          <div className="font-bold text-lg mb-2">journey</div>
+          <div className="font-bold text-lg mb-2 uppercase">journey</div>
           <div className="indent-4">
             We started off in October 2023. It was fresh, we were excited,
             called in a few friends, plus friends of friends, to join us in our
@@ -76,6 +109,11 @@ function RouteComponent() {
             “easy”…
             <br />
             <br />
+            <img
+              src={`${ASSETS.IMAGES}/pacemates/last-dance.jpg`}
+              alt="Pacemates Run Club"
+              className="rounded-lg w-full object-cover mb-4"
+            />
             <div className="indent-4">
               We started off from 3 to 5 runners per week, and once word got
               out, we were peaking around 15 runners in a week. I know, 172 IG
@@ -89,34 +127,21 @@ function RouteComponent() {
           </div>
           <br />
           <div className="indent-4">
-            We had{" "}
-            <a
-              href="https://www.instagram.com/pacematesrunclub/"
-              target="_blank"
-              rel="noreferrer"
-              className="text-pink hover:underline font-semibold"
-            >
-              Instagram
-            </a>{" "}
-            as our social platform, WhatsApp group to give live updates,{" "}
-            <a
-              href="https://www.strava.com/clubs/1180710"
-              target="_blank"
-              rel="noreferrer"
-              className="text-pink hover:underline font-semibold"
-            >
-              Strava
-            </a>{" "}
-            club and a website that never got used to it’s fullest potential. We
-            had all the social reachability as much as we could, yet, the
-            numbers weren’t peaking as much as we thought we could. And did you
-            know we’ve got a merch? Pacemates Run Club merch. Shopify store,
-            online purchase + delivery, our communities running all in our
-            merch. Dollars spent, $240. Dollars earned, $0. Profit -$240. Here’s
-            one of my last marathon I did where i wore the merch.
+            We have Instagram, WhatsApp group, Strava club to give updates, plus
+            a website that never got used to it’s fullest potential. We had all
+            the social reachability as much as we could, yet, the numbers
+            weren’t peaking as much as we thought we could. And did you know
+            we’ve got a merch? Pacemates Run Club merch. Shopify store, online
+            purchase + delivery, our communities running all in our merch... [it
+            was all a dream]
+            <br />
+            <br />
+            What really happened was, a POC shirt, bought 6 of them from a local
+            supplier. Dollars spent, $240. Dollars earned, $0. Profit -$240.
+            Here’s one of my last marathon I did where i wore the merch.
           </div>
           <br />
-          <div className="font-bold text-lg mb-2">learnings</div>
+          <div className="font-bold text-lg mb-2 uppercase">learnings</div>
           <div className="indent-4">
             The best thing about running your own club is meeting new people.
             Every week it was almost always a surprise to have new runners
@@ -136,7 +161,12 @@ function RouteComponent() {
             </div>
           </div>
           <br />
-          <div className="font-bold text-lg mb-2">closing</div>
+          <div id="closing" className="font-bold text-lg mb-2 uppercase">
+            closing{" "}
+            {/* <span className="opacity-0 group-hover:opacity-100 transition-opacity text-pink text-sm">
+              #
+            </span> */}
+          </div>
           <div className="indent-4">
             Unfortunately it ended on July 2024, I was retiring the club as the
             people joining our weekly runs were stagnating, friends that helped

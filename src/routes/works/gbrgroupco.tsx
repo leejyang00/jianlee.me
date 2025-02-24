@@ -45,20 +45,15 @@ function RouteComponent() {
 
           <div className="flex flex-col gap-2 ml-2 py-4">
             <div className="flex flex-row items-center gap-1">
-              {/* <Tag tag="WEBSITE" /> */}
-              <p className="flex flex-row items-center gap-1">
-                <span className="font-sans bg-[#c6f7d4] text-[#22553c] dark:text-[#9be6b5] dark:bg-[#2d4a43] text-xxs font-semibold px-1 rounded text-center mr-2 w-fit">
-                  WEBSITE
-                </span>{" "}
-                <a
-                  href="https://www.gbrgroupco.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-pink hover:underline flex flex-row items-center gap-1"
-                >
-                  www.gbrgroupco.com <LaunchRoundedIcon sx={{ fontSize: 16 }} />
-                </a>
-              </p>
+              <Tag tag="WEBSITE" />
+              <a
+                href="https://www.gbrgroupco.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-pink hover:underline flex flex-row items-center gap-1"
+              >
+                www.gbrgroupco.com <LaunchRoundedIcon sx={{ fontSize: 16 }} />
+              </a>
             </div>
             <div className="flex flex-row items-center gap-1">
               <Tag tag="STACK" />
