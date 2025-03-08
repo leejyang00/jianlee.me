@@ -3,9 +3,19 @@ import { useEffect, useRef, useState } from "react";
 import { IoMoon, IoSun, IoBurgerMenu } from "@/shared/NavbarIcons";
 import { ASSETS } from "@/shared/Constants";
 
+const navLinks: NavLink[] = [
+  { to: "/works", title: "Works" },
+  { to: "/books", title: "Books" },
+];
+
+type NavLink = {
+  to: string;
+  title: string;
+};
+
 function NavBar() {
   const [dark, setDark] = useState(() =>
-    document.documentElement.classList.contains('dark')
+    document.documentElement.classList.contains("dark")
   );
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -41,34 +51,46 @@ function NavBar() {
     setOpenBurgerMenu(!openBurgerMenu);
   };
 
+  const NavLinkComponent = ({ to, title }: NavLink) => {
+    return (
+      <Link
+        to={to}
+        className={`py-2 px-4 hover:underline underline-offset-4 transition-all duration-300 ${currentPath === to ? "underline" : ""}`}
+      >
+        {title}
+      </Link>
+    );
+  };
+
+  const BurgerLinkComponent = ({ to, title }: NavLink) => {
+    return (
+      <Link
+        to={to}
+        className={`py-2 px-4 text-sm ${currentPath === to ? "underline underline-offset-4" : ""}`}
+        onClick={() => setOpenBurgerMenu(false)}
+      >
+        {title}
+      </Link>
+    );
+  };
+
   return (
     <nav className="w-100% flex justify-center bg-[#f4ece5]/80 dark:bg-[#202122]/80 dark:text-white fixed top-0 left-0 right-0 z-10 backdrop-blur-sm">
       <div className="relative max-w-xl m-auto w-full sm:max-w-2xl flex flex-row justify-between items-center px-4">
         <div className="font-semibold w-40 flex items-center gap-2">
           <Link to="/" className="text-lg flex flex-row items-center">
-            <img src={`${ASSETS.IMAGES}/notion-trans.png`} alt="Notion Face" className="w-14" />
+            <img
+              src={`${ASSETS.IMAGES}/notion-trans.png`}
+              alt="Notion Face"
+              className="w-14"
+            />
             <span className="text-lg">Jian Lee</span>
           </Link>
         </div>
         <div className="hidden sm:flex flex-row items-start font-medium text-sm font-display">
-          <Link
-            to="/works"
-            className={`py-2 px-4 hover:underline underline-offset-4 transition-all duration-300 ${currentPath === "/works" ? "underline" : ""}`}
-          >
-            Works
-          </Link>
-          {/* <Link
-            to="/uses"
-            className={`py-2 px-4 hover:underline underline-offset-4 transition-all duration-300 ${currentPath === "/uses" ? "underline" : ""}`}
-          >
-            Uses
-          </Link> */}
-          {/* <Link to="/" className="p-1">
-            About
-          </Link>
-          <Link to="/" className="p-1">
-            About
-          </Link> */}
+          {navLinks.map((link) => (
+            <NavLinkComponent key={link.to} to={link.to} title={link.title} />
+          ))}
         </div>
         <div ref={menuRef}>
           <div className="ml-8 flex flex-row gap-2 ">
@@ -84,47 +106,23 @@ function NavBar() {
 
             <div
               className={`drop-shadow-lg backdrop-blur-sm border border-gray-400 bg-white dark:bg-gray-600 text-[#202122] dark:text-[#f4ece5] w-48 absolute top-12 left-auto right-4 rounded-lg my-2
-                            origin-top-right transform transition-all duration-200 ease-in-out
-                            ${openBurgerMenu
-                  ? "opacity-100 visible translate-z-0 scale-100"
-                  : "opacity-0 invisible translate-z-0 scale-80"
-                }`}
+                            ${
+                              openBurgerMenu
+                                ? "opacity-100 visible"
+                                : "opacity-0 invisible"
+                            }`}
             >
               <div className="py-2 flex flex-col font-medium font-display">
-                <Link
-                  to="/"
-                  className={`py-2 px-4 ${currentPath === "/" ? "underline underline-offset-4" : ""}`}
-                  onClick={() => setOpenBurgerMenu(false)}
-                >
-                  Home
-                </Link>
-                <Link
-                  to="/works"
-                  className={`py-2 px-4 ${currentPath === "/works" ? "underline underline-offset-4" : ""}`}
-                  onClick={() => setOpenBurgerMenu(false)}
-                >
-                  Works
-                </Link>
-                {/* <Link
-                  to="/uses"
-                  className={`py-2 px-4 ${currentPath === "/uses" ? "underline underline-offset-4" : ""}`}
-                  onClick={() => setOpenBurgerMenu(false)}
-                >
-                  Uses
-                </Link> */}
-                {/* <div className="py-2 px-4">
-                  <Link to="/works" className="">
-                    Works
-                  </Link>
-                </div>
-                <div className="py-2 px-4">
-                  <Link to="/works" className="">
-                    Works
-                  </Link>
-                </div> */}
+                <BurgerLinkComponent to="/" title="Home" />
+                {navLinks.map((link) => (
+                  <BurgerLinkComponent
+                    key={link.to}
+                    to={link.to}
+                    title={link.title}
+                  />
+                ))}
               </div>
             </div>
-            {/* )} */}
           </div>
         </div>
       </div>
