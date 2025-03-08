@@ -1,0 +1,14 @@
+name = "jianlee-api"
+compatibility_date = "2025-03-07"
+
+account_id = "b42da07ed261327cba62e40c067fc22c"
+
+main = "src/index.ts"
+workers_dev = true
+
+routes = [
+  { pattern = "api.jianlee.me", custom_domain = true }
+]
+
+[vars]
+CLOUDFLARE_API_URL = "https://jianlee-api.jianyanglee-dl75.workers.dev"
