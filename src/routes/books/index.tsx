@@ -6,6 +6,14 @@ export const Route = createFileRoute("/books/")({
   component: RouteComponent,
 });
 
+const ListOfBooks = [
+  {
+    title: "AI 2041: Ten Visions for Our Future",
+    author: "Kai-fu Lee, Chen Qiufan",
+    image: `${ASSETS.BOOKS}/2041.jpg`,
+  },
+];
+
 function RouteComponent() {
   useEffect(() => {
     document.title = "Books | Jian";
