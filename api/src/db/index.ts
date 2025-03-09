@@ -10,6 +10,6 @@ console.log(process.env, 'all env variables');
 console.log(process.env.URL_DB, 'database url');
 
 // const client = postgres(process.env.DATABASE_URL!);
-const client = postgres("postgresql://postgres:C0micb00k4!@db.hwzdpumncxpshgvhewht.supabase.co:5432/postgres");
+const client = postgres("");
 
 export const db = drizzle({ client });
