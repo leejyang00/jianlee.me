@@ -11,6 +11,3 @@ routes = [
 ]
 
 compatibility_flags = ["nodejs_compat"]
-
-[vars]
-CLOUDFLARE_API_URL = "https://jianlee-api.jianyanglee-dl75.workers.dev"

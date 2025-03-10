@@ -1,30 +1,34 @@
 import { Hono } from "hono";
-import { db } from "../db";
-import { booksTable } from "../db/schema/books";
+import { createClient } from "@supabase/supabase-js";
 
-export const booksRoute = new Hono()
-  // .get('/', (c) => {
-  //   return c.text('Hello Hono! - Books Route')
-  // })
-  .post('/add-book', async (c) => {
+type Bindings = {
+  SUPABASE_URL: string;
+  SUPABASE_KEY: string;
+}
 
-    console.log('add-book');
+export const booksRoute = new Hono<{ Bindings: Bindings }>();
 
-    const result = await db
-      .insert(booksTable)
-      .values({
-        title: 'The Great Gatsby',
-        author: 'F. Scott Fitzgerald'
-      })
-      .returning() // retunrs the newly created row
-      .then(res => res[0]);
-    
-    c.status(201);
-    return c.json(result);
-  })
-  // .put('/:id', (c) => {
-  //   return c.text('Hello Hono! - Books Route')
-  // })
-  // .delete('/:id', (c) => {
-  //   return c.text('Hello Hono! - Books Route')
-  // })
+booksRoute.get("/", async (c) => {
+  const supabaseUrl = c.env.SUPABASE_URL
+  const supabaseKey = c.env.SUPABASE_KEY
+
+  console.log('supabaseUrl', supabaseUrl);
+  console.log('supabaseKey', supabaseKey);
+
+  if (!supabaseUrl || !supabaseKey) {
+    return c.json({ error: 'Supabase credentials not found' }, 500)
+  }
+
+  const supabase = createClient(supabaseUrl, supabaseKey)
+  
+  let { data: books_table, error } = await supabase
+  .from('books_table')
+  .select('*')
+
+  if (error) {
+    return c.json({ error: error.message }, 500)
+  }
+  c.status(200);
+  console.log('books_table', books_table);
+  return c.json(books_table);
+});
