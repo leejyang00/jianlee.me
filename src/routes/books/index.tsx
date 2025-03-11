@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { booksQueryOptions } from "@/lib/api";
-
+import { InsertBookBody } from "../../../api/src/routes/type/booksType";
 export const Route = createFileRoute("/books/")({
   component: RouteComponent,
 });
@@ -19,7 +19,7 @@ const ListOfBooks = [
 function RouteComponent() {
   const { data } = useQuery(booksQueryOptions);
 
-  console.log(data, 'data of books from api server');
+  const books: InsertBookBody[] = data;
 
   useEffect(() => {
     document.title = "Books | Jian";
@@ -31,32 +31,24 @@ function RouteComponent() {
       <p className="text-sm my-4">(in progress... 🚧)</p>
       {/* list of books */}
       <div className="flex flex-col gap-6 font-display">
-        <div className="flex flex-row gap-6">
-          <img
-            src={`${ASSETS.BOOKS}/2041.jpg`}
-            alt="2041"
-            className="w-24 h-32"
-          />
-          <div className="flex flex-col">
-            <h3 className="text-lg font-bold leading-tight">
-              AI 2041: Ten Visions for Our Future
-            </h3>
-            <p className="text-xs text-gray-500">by Kai-fu Lee, Chen Qiufan</p>
+        {books?.map((book) => (
+          <div className="flex flex-row gap-6">
+            <img
+              src={book.thumbnail}
+              alt={book.title}
+              className="w-24 h-32"
+            />
+            <div className="flex flex-col w-full gap-1">
+              <h3 className="text-lg font-bold leading-tight">
+                {book.title}
+              </h3>
+              <p className="text-sm font-medium">{book.subtitle}</p>
+              <p className="text-xs font-medium text-gray-500">by {book.authors.name.join(", ")}</p>
+              <p className="text-xs font-medium text-gray-500">Published: {book.published_date}</p>
+              <p className="text-xs font-medium text-gray-500">Page count: {book.page_count}</p>
+            </div>
           </div>
-        </div>
-        <div className="flex flex-row gap-6">
-          <img
-            src={`${ASSETS.BOOKS}/2041.jpg`}
-            alt="2041"
-            className="w-24 h-32"
-          />
-          <div className="flex flex-col">
-            <h3 className="text-lg font-bold leading-tight">
-              AI 2041: Ten Visions for Our Future
-            </h3>
-            <p className="text-xs text-gray-500">by Kai-fu Lee, Chen Qiufan</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ const client = hc<ApiRoutes>(BASE_URL);
 export const api = client.v1;
 
 async function getBooks() {
-  const res = await api.books.$get();
+  const res = await api.books.books_v1.$get();
   if (!res.ok) {
     throw new Error("Server Error");
   }
