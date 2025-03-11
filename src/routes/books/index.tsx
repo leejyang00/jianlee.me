@@ -1,6 +1,8 @@
 import { ASSETS } from "@/shared/Constants";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { booksQueryOptions } from "@/lib/api";
 
 export const Route = createFileRoute("/books/")({
   component: RouteComponent,
@@ -15,6 +17,10 @@ const ListOfBooks = [
 ];
 
 function RouteComponent() {
+  const { data } = useQuery(booksQueryOptions);
+
+  console.log(data, 'data of books from api server');
+
   useEffect(() => {
     document.title = "Books | Jian";
   }, []);
