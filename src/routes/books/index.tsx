@@ -1,23 +1,17 @@
-import { ASSETS } from "@/shared/Constants";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { booksQueryOptions } from "@/lib/api";
 import { InsertBookBody } from "../../../api/src/routes/type/booksType";
+import PageHeader from "@/shared/PageHeader";
+import BookDisplay from "@/components/Books/BookDisplay";
+
 export const Route = createFileRoute("/books/")({
   component: RouteComponent,
 });
 
-const ListOfBooks = [
-  {
-    title: "AI 2041: Ten Visions for Our Future",
-    author: "Kai-fu Lee, Chen Qiufan",
-    image: `${ASSETS.BOOKS}/2041.jpg`,
-  },
-];
-
 function RouteComponent() {
-  const { data } = useQuery(booksQueryOptions);
+  const { data, isLoading } = useQuery(booksQueryOptions);
 
   const books: InsertBookBody[] = data;
 
@@ -25,31 +19,43 @@ function RouteComponent() {
     document.title = "Books | Jian";
   }, []);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="max-w-xl m-auto px-6">
-      <h2 className="text-xl font-bold my-4">Books </h2>
-      <p className="text-sm my-4">(in progress... 🚧)</p>
+    <div className="max-w-2xl m-auto px-6">
+      <PageHeader title="Books" />
+
+      <p className="text-sm my-4 font-display text-justify">
+        <span className="font-bold">
+          "Not all readers are leaders, but all leaders are readers."
+        </span>{" "}
+        — Harry S. Truman
+      </p>
+
+      <p className="text-sm my-4 indent-4 font-display text-justify">
+        Welcome to my collection of books I’ve read over the years. I enjoy
+        reading <span className="font-bold italic">books</span> and writing
+        wasn't my best skills, which was why I started collecting them! The
+        topics that interests me are Philosophy, Business & Entrepreneurship,
+        Tech & AI, Leadership, and Biographies.
+      </p>
+      <p className="text-xs my-4 italic font-display text-justify">
+        Feel free to click on them to grab a copy on Amazon if it interests you{" "}
+        <span className="not-italic text-sm ml-1">😉</span>
+      </p>
+
       {/* list of books */}
-      <div className="flex flex-col gap-6 font-display">
-        {books?.map((book) => (
-          <div className="flex flex-row gap-6">
-            <img
-              src={book.thumbnail}
-              alt={book.title}
-              className="w-24 h-32"
-            />
-            <div className="flex flex-col w-full gap-1">
-              <h3 className="text-lg font-bold leading-tight">
-                {book.title}
-              </h3>
-              <p className="text-sm font-medium">{book.subtitle}</p>
-              <p className="text-xs font-medium text-gray-500">by {book.authors.name.join(", ")}</p>
-              <p className="text-xs font-medium text-gray-500">Published: {book.published_date}</p>
-              <p className="text-xs font-medium text-gray-500">Page count: {book.page_count}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      {isLoading ? (
+        <div>... Hold still, grabbing knowledge from the cloud ... 🏃‍♂️</div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-6 py-6">
+          {books?.map((book) => (
+            <BookDisplay key={book.volume_id} book={book} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
