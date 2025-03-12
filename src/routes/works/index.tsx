@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect } from "react";
 import ScrollToTop from "@/shared/ScrollToTop";
 import { ASSETS } from "@/shared/Constants";
+import PageHeader from "@/shared/PageHeader";
 
 export const Route = createFileRoute("/works/")({
   component: ScrollToTop(RouteComponent),
@@ -14,7 +15,7 @@ function RouteComponent() {
 
   return (
     <div className="max-w-xl m-auto px-6">
-      <h2 className="text-xl font-bold my-4">Works</h2>
+      <PageHeader title="Works" />
 
       {/* Grid of Works */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-6 py-4">
