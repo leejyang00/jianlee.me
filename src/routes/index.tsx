@@ -32,7 +32,7 @@ function RouteComponent() {
         </div>
         <div>
           <img
-            src={`${ASSETS.IMAGES}/prof.jpg`}
+            src={`${ASSETS.IMAGES}/profile.jpg`}
             alt="Profile"
             className="w-28 h-28 rounded-full border-2 border-white object-cover brightness-80"
           />

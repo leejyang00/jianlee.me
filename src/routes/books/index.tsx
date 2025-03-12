@@ -19,10 +19,6 @@ function RouteComponent() {
     document.title = "Books | Jian";
   }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className="max-w-2xl m-auto px-6">
       <PageHeader title="Books" />
