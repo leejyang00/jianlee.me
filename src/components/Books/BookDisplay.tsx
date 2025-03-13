@@ -6,7 +6,7 @@ export default function BookDisplay({ book }: { book: InsertBookBody }) {
     <div className="flex flex-row gap-6">
       <img src={book.thumbnail} alt={book.title} className="w-24 h-32" />
       <div className="flex flex-col w-full gap-1">
-        <h3 className="flex flex-row text-lg font-bold items-center leading-tight gap-1">
+        <h3 className="flex flex-row text-lg font-bold items-center leading-tight gap-3">
           <div className="hover:underline hover:cursor-pointer">
             <a
               href={book.affiliate_link}
