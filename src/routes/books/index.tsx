@@ -5,6 +5,7 @@ import { booksQueryOptions } from "@/lib/api";
 import { InsertBookBody } from "../../../api/src/routes/type/booksType";
 import PageHeader from "@/shared/PageHeader";
 import BookDisplay from "@/components/Books/BookDisplay";
+import LoadingComponent from "@/shared/LoadingComponent";
 
 export const Route = createFileRoute("/books/")({
   component: RouteComponent,
@@ -44,7 +45,7 @@ function RouteComponent() {
 
       {/* list of books */}
       {isLoading ? (
-        <div>... Hold still, grabbing knowledge from the cloud ... 🏃‍♂️</div>
+        <LoadingComponent />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-6 py-6">
           {books?.map((book) => (

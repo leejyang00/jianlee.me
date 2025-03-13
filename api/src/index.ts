@@ -18,7 +18,7 @@ app.use(cors({
 const apiRoutes = app
   .basePath('/v1')
   .route('/', appRoute)
-  .route('/books', booksRoute);
+  .route('/books_v1', booksRoute);
 
 export default app;
 export type ApiRoutes = typeof apiRoutes;
