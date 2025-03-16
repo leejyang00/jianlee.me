@@ -67,7 +67,7 @@ const Bio = () => {
       </div>
 
       <div className="flex justify-center mt-4">
-        <Link to="/works">
+        <Link to="/books">
           <button className="bg-[#339995] text-[#eeefef] dark:bg-[#80e7d9] hover:bg-[#339995]/80 dark:hover:bg-[#80e7d9]/80 dark:text-[#313134] transition-all duration-300 rounded-lg py-2 px-4 my-2 text-sm font-semibold flex items-center gap-2 shadow-md">
             <div className="flex items-center justify-center gap-2">
               Books Collection{" "}
