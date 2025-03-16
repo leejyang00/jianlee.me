@@ -1,3 +1,7 @@
+import { Link } from "@tanstack/react-router";
+import KeyboardArrowRightRoundedIcon from "@mui/icons-material/KeyboardArrowRightRounded";
+
+
 const Bio = () => {
   return (
     <div className="flex flex-col pb-6">
@@ -60,6 +64,17 @@ const Bio = () => {
             Born & raised in Subang Jaya, Selangor, Malaysia 🇲🇾
           </div>
         </div>
+      </div>
+
+      <div className="flex justify-center mt-4">
+        <Link to="/works">
+          <button className="bg-[#339995] text-[#eeefef] dark:bg-[#80e7d9] hover:bg-[#339995]/80 dark:hover:bg-[#80e7d9]/80 dark:text-[#313134] transition-all duration-300 rounded-lg py-2 px-4 my-2 text-sm font-semibold flex items-center gap-2 shadow-md">
+            <div className="flex items-center justify-center gap-2">
+              Books Collection{" "}
+              <KeyboardArrowRightRoundedIcon sx={{ fontSize: 16 }} />
+            </div>
+          </button>
+        </Link>
       </div>
     </div>
   );

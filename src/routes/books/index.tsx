@@ -32,9 +32,9 @@ function RouteComponent() {
       </p>
 
       <p className="text-sm my-4 indent-4 font-display text-justify">
-        My collection of books that I've read over the years. I enjoy reading
-        them and writing wasn't my best skills, which was why I started
-        collecting them! Hope you enjoy them as much as I do.
+        My collection of books that I've read that has shaped my life over the
+        years. I enjoy reading them + writing wasn't my best skills, which was
+        why I started collecting them! Hope you enjoy them as much as I do.
       </p>
 
       <p className="text-sm my-4 indent-4 font-display text-justify">
