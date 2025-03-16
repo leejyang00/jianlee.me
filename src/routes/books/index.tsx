@@ -32,12 +32,16 @@ function RouteComponent() {
       </p>
 
       <p className="text-sm my-4 indent-4 font-display text-justify">
-        Welcome to my collection of books I’ve read over the years. I enjoy
-        reading <span className="font-bold italic">books</span> and writing
-        wasn't my best skills, which was why I started collecting them! The
-        topics that interests me are Philosophy, Business & Entrepreneurship,
-        Tech & AI, Leadership, and Biographies.
+        My collection of books that I've read over the years. I enjoy reading
+        them and writing wasn't my best skills, which was why I started
+        collecting them! Hope you enjoy them as much as I do.
       </p>
+
+      <p className="text-sm my-4 indent-4 font-display text-justify">
+        The topics that interests me are Philosophy, Business &
+        Entrepreneurship, Tech & AI, Leadership, and Biographies.
+      </p>
+
       <p className="text-xs my-4 italic font-display text-justify">
         Feel free to click on them to grab a copy on Amazon if it interests you{" "}
         <span className="not-italic text-sm ml-1">😉</span>
