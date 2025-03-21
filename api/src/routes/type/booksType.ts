@@ -1,12 +1,12 @@
 type BookRequestBody = {
   affiliate_link: string;
   volume_id: string;
-  read_at: string;
+  read_at: number;
 };
 
 type InsertBookBody = {
   volume_id: string;
-  read_at: string;
+  read_at: number;
   title: string;
   subtitle: string;
   authors: { name: string[] };
