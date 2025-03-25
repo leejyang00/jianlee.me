@@ -6,6 +6,7 @@ import { ASSETS } from "@/shared/Constants";
 const navLinks: NavLink[] = [
   { to: "/works", title: "Works" },
   { to: "/books", title: "Books" },
+  { to: "/gears", title: "Gears" },
 ];
 
 type NavLink = {
@@ -66,7 +67,7 @@ function NavBar() {
     return (
       <Link
         to={to}
-        className={`py-2 px-4 text-sm ${currentPath === to ? "underline underline-offset-4" : ""}`}
+        className={`py-1 px-4 text-sm ${currentPath === to ? "underline underline-offset-4" : ""}`}
         onClick={() => setOpenBurgerMenu(false)}
       >
         {title}

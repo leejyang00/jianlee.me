@@ -5,4 +5,5 @@ export const ASSETS = {
   IMAGES: `${CLOUDFRONT_URL}/images`,
   DOCUMENTS: `${CLOUDFRONT_URL}/documents`,
   BOOKS: `${CLOUDFRONT_URL}/books`,
+  GEARS: `${CLOUDFRONT_URL}/gears`,
 };
