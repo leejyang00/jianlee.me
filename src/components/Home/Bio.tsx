@@ -11,11 +11,11 @@ const Bio = () => {
       <div className="flex flex-col gap-2 text-sm font-normal text-justify">
         <div className="flex flex-row gap-4">
           <span className="font-bold">2025</span>{" "}
-          <div className="font-display">(? still writing my own story)</div>
+          <div className="font-apple">(? still writing my own story)</div>
         </div>
         <div className="flex flex-row gap-4">
           <span className="font-bold">2024</span>{" "}
-          <div className="font-display">
+          <div className="font-apple">
             Transitioned to a DevOps Engineer at{" "}
             <a
               href="https://www.flightcentre.com.au/"
@@ -29,7 +29,7 @@ const Bio = () => {
         </div>
         <div className="flex flex-row gap-4">
           <span className="font-bold">2022</span>{" "}
-          <div className="font-display">
+          <div className="font-apple">
             Started working as a Software Engineer at{" "}
             <a
               href="https://algomint.io/"
@@ -53,14 +53,14 @@ const Bio = () => {
         </div>
         <div className="flex flex-row gap-4">
           <span className="font-bold">2022</span>{" "}
-          <div className="flex flex-row gap-2 items-center font-display">
+          <div className="flex flex-row gap-2 items-center font-apple">
             Completed my Bachelor of Computer Science (Machine Learning) at the
             University of Queensland, Australia 🇦🇺
           </div>
         </div>
         <div className="flex flex-row gap-4 items-start">
           <span className="font-bold">2000</span>{" "}
-          <div className="flex flex-row gap-2 items-center font-display text-justify">
+          <div className="flex flex-row gap-2 items-center font-apple text-justify">
             Born & raised in Subang Jaya, Selangor, Malaysia 🇲🇾
           </div>
         </div>

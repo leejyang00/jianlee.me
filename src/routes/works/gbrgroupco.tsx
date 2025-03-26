@@ -43,8 +43,8 @@ function RouteComponent() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 ml-2 py-4">
-            <div className="flex flex-row items-center gap-1">
+          <div className="flex flex-col gap-2 py-4">
+            <div className="flex flex-row items-center gap-1 w-full">
               <Tag tag="WEBSITE" />
               <a
                 href="https://www.gbrgroupco.com/"
@@ -55,7 +55,7 @@ function RouteComponent() {
                 www.gbrgroupco.com <LaunchRoundedIcon sx={{ fontSize: 16 }} />
               </a>
             </div>
-            <div className="flex flex-row items-center gap-1">
+            <div className="flex flex-row items-center gap-1 w-full whitespace-nowrap">
               <Tag tag="STACK" />
               Vite, React, Tailwind CSS, TypeScript, Shadcn UI, Material UI,
               Cloudflare

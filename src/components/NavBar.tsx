@@ -88,7 +88,7 @@ function NavBar() {
             <span className="text-lg">Jian Lee</span>
           </Link>
         </div>
-        <div className="hidden sm:flex flex-row items-start font-medium text-sm font-display">
+        <div className="hidden sm:flex flex-row items-start font-medium text-sm font-apple">
           {navLinks.map((link) => (
             <NavLinkComponent key={link.to} to={link.to} title={link.title} />
           ))}
@@ -113,7 +113,7 @@ function NavBar() {
                                 : "opacity-0 invisible"
                             }`}
             >
-              <div className="py-2 flex flex-col font-medium font-display">
+              <div className="py-2 flex flex-col font-medium font-apple">
                 <BurgerLinkComponent to="/" title="Home" />
                 {navLinks.map((link) => (
                   <BurgerLinkComponent

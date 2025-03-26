@@ -1,7 +1,7 @@
 import { ASSETS } from "@/shared/Constants";
 import PageHeader from "@/shared/PageHeader";
 import { createFileRoute } from "@tanstack/react-router";
-import LaunchRoundedIcon from "@mui/icons-material/LaunchRounded";
+
 import { useEffect } from "react";
 import ItemDisplay from "@/components/Gears/ItemDisplay";
 
@@ -14,16 +14,22 @@ function RouteComponent() {
     document.title = "Gears | Jian";
   }, []);
 
+  // TODO: Add a gear list: Productivity Tools, Desktop Setup, Accessories, etc.
+
   return (
     <div className="max-w-2xl m-auto px-6">
       <PageHeader title="Gears" />
 
       <div className="flex flex-col py-2 gap-y-4">
-        <p className="text-sm font-display text-justify indent-4">
-          My collection of gears that I've used that has shaped my life over the
-          years. I enjoy using them + writing wasn't my best skills, which was
-          why I started collecting them! I've organized them by the year I've
-          read them, hope you enjoy them as much as I do.
+        <p className="text-sm font-apple text-justify indent-4">
+          Here's my gear wonderland! It's a collection of products that I use
+          for content creation, productivity, and daily work. The is one never
+          ending list, making my wallet go broke. But it's whatever it takes to
+          keep my productivity up and content crisp.
+        </p>
+
+        <p className="text-sm font-apple text-justify">
+          Enjoy! 🎉
         </p>
       </div>
 

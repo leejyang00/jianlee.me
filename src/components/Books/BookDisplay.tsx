@@ -7,17 +7,17 @@ export default function BookDisplay({ book }: { book: InsertBookBody }) {
       <img src={book.thumbnail} alt={book.title} className="w-24 h-32" />
       <div className="flex flex-col w-full gap-1">
         <h3 className="flex flex-row text-lg font-bold items-center leading-tight gap-3">
-          <div className="hover:underline hover:cursor-pointer">
+          <div className="hover:cursor-pointer">
             <a
               href={book.affiliate_link}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline font-bold flex flex-row items-center gap-1"
+              className="hover:underline hover:underline-offset-2 font-bold flex flex-row items-center gap-1"
             >
               {book.title}
             </a>
           </div>
-          <LaunchRoundedIcon sx={{ fontSize: 13 }} className="inline" />
+          <LaunchRoundedIcon sx={{ fontSize: 14 }} className="inline" />
         </h3>
         <p className="text-xs font-bold">{book.subtitle}</p>
         <div className="mt-1">

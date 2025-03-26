@@ -6,7 +6,7 @@ export default function PageHeader({ title }: { title: string }) {
     <div className="flex flex-row items-center justify-start py-4 gap-1">
       <Link
         to="/"
-        className="text-mint dark:text-pink hover:underline hover:underline-offset-4 font-display font-medium"
+        className="text-mint dark:text-pink hover:underline hover:underline-offset-4 font-apple font-medium"
       >
         Home
       </Link>

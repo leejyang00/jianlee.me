@@ -8,7 +8,7 @@ const Introduction = () => {
       <h2 className="text-lg font-bold underline underline-offset-8 my-4 decoration-4 decoration-gray-500">
         About
       </h2>
-      <div className="text-sm text-justify leading-[1.7] indent-8 font-display font-normal">
+      <div className="text-sm text-justify leading-[1.7] indent-8 font-apple font-normal">
         Jian is a DevOps Engineer based in Brisbane, Australia, specializing in
         cloud infrastructure, Kubernetes and CI/CD Automation. With experience
         at Flight Centre and startups, he optimizes SaaS platforms using AWS,
