@@ -26,6 +26,8 @@ function RouteComponent() {
       <PageHeader title="Books" />
 
       <div className="flex flex-col py-2 gap-y-4">
+
+        {/* Quote  */}
         <p className="text-sm font-apple text-justify">
           <span className="font-bold">
             "Not all readers are leaders, but all leaders are readers."

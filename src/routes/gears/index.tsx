@@ -21,6 +21,15 @@ function RouteComponent() {
       <PageHeader title="Gears" />
 
       <div className="flex flex-col py-2 gap-y-4">
+
+        {/* // Quote */}
+        <p className="text-sm font-apple text-justify">
+          <span className="font-bold">
+            "The size of your library is inversely proportional to the size of your wallet."
+          </span>{" "}
+          — Jian Lee
+        </p>
+
         <p className="text-sm font-apple text-justify indent-4">
           Here's my gear wonderland! It's a collection of products that I use
           for content creation, productivity, and daily work. The is one never
