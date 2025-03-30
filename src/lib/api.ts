@@ -24,3 +24,18 @@ export const booksQueryOptions = queryOptions({
   queryFn: getBooks,
   staleTime: Infinity,
 });
+
+async function getGears() {
+  const res = await api.gears.$get();
+  if (!res.ok) {
+    throw new Error("Server Error");
+  }
+  const data = await res.json();
+  return data;
+}
+
+export const gearsQueryOptions = queryOptions({
+  queryKey: ["get-gears"],
+  queryFn: getGears,
+  staleTime: Infinity,
+});

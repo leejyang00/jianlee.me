@@ -1,31 +1,36 @@
-import { ASSETS } from "@/shared/Constants";
 import PageHeader from "@/shared/PageHeader";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { useEffect } from "react";
 import ItemDisplay from "@/components/Gears/ItemDisplay";
+import { gearsQueryOptions } from "@/lib/api";
+import { useQuery } from "@tanstack/react-query";
+import { InsertGearBody } from "../../../api/src/routes/type/gearsType";
+import LoadingComponent from "@/shared/LoadingComponent";
 
 export const Route = createFileRoute("/gears/")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
+  const { data, isLoading } = useQuery(gearsQueryOptions);
+
+  const gears: InsertGearBody[] = data;
+
   useEffect(() => {
     document.title = "Gears | Jian";
   }, []);
-
-  // TODO: Add a gear list: Productivity Tools, Desktop Setup, Accessories, etc.
 
   return (
     <div className="max-w-2xl m-auto px-6">
       <PageHeader title="Gears" />
 
       <div className="flex flex-col py-2 gap-y-4">
-
         {/* // Quote */}
         <p className="text-sm font-apple text-justify">
           <span className="font-bold">
-            "The size of your library is inversely proportional to the size of your wallet."
+            "The size of your library is inversely proportional to the size of
+            your wallet."
           </span>{" "}
           — Jian Lee
         </p>
@@ -37,51 +42,49 @@ function RouteComponent() {
           keep my productivity up and content crisp.
         </p>
 
-        <p className="text-sm font-apple text-justify">
-          Enjoy! 🎉
-        </p>
+        <p className="text-sm font-apple text-justify">Enjoy! 🎉</p>
       </div>
+      {isLoading ? (
+        <LoadingComponent text="loading gears..." />
+      ) : (
+        <>
+          <h2 className="text-lg font-bold underline underline-offset-8 my-4 decoration-4 decoration-gray-500">
+            Filming
+          </h2>
 
-      <h2 className="text-lg font-bold underline underline-offset-8 my-4 decoration-4 decoration-gray-500">
-        Filming
-      </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-2 rounded-lg p-4">
+            {gears
+              .filter((gear) => gear.category === "filming")
+              .map((gear) => (
+                <ItemDisplay
+                  key={gear.title}
+                  src={`${gear.image_link}`}
+                  title={gear.title}
+                  description={gear.description}
+                  amazonLink={gear.amazon_link}
+                />
+              ))}
+          </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-2 rounded-lg p-4">
-        <ItemDisplay
-          src={`${ASSETS.GEARS}/zve10m2.jpg`}
-          title="Sony Alpha ZVE10 II"
-          description="APS-C Interchangeable Lens Mirrorless"
-          amazonLink="https://amzn.to/3DUFJce"
-        />
+          <h2 className="text-lg font-bold underline underline-offset-8 my-4 decoration-4 decoration-gray-500">
+            Productivity
+          </h2>
 
-        <ItemDisplay
-          src={`${ASSETS.GEARS}/sony11mm.jpg`}
-          title="Sony 11mm F1.8"
-          description="Ultra-Wide-Angle Prime for APS-C Cameras"
-          amazonLink="https://amzn.to/3QNFjXV"
-        />
-
-        <ItemDisplay
-          src={`${ASSETS.GEARS}/djimic.jpg`}
-          title="DJI Mic"
-          description="(2 TX + 1 RX + Charging Case) - Wireless Lavalier Microphone"
-          amazonLink="https://amzn.to/4j2HoLC"
-        />
-
-        <ItemDisplay
-          src={`${ASSETS.GEARS}/joby.jpg`}
-          title="JOBY GorillaPod"
-          description="Action Video Tripod (Black and Red)"
-          amazonLink="https://amzn.to/4hROr93"
-        />
-
-        <ItemDisplay
-          src={`${ASSETS.GEARS}/samsungt7.jpg`}
-          title="SAMSUNG T7 Shield"
-          description="SSD (1TB) - up to 1050MB/s, USB 3.2 Gen2, IP65 Rated"
-          amazonLink="https://amzn.to/41O9tAQ"
-        />
-      </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-2 rounded-lg p-4">
+            {gears
+              .filter((gear) => gear.category === "productivity")
+              .map((gear) => (
+                <ItemDisplay
+                  key={gear.title}
+                  src={`${gear.image_link}`}
+                  title={gear.title}
+                  description={gear.description}
+                  amazonLink={gear.amazon_link}
+                />
+              ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
