@@ -3,6 +3,7 @@ import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
 import { appRoute } from './routes/app';
 import { booksRoute } from './routes/books';
+import { gearsRoute } from './routes/gears';
 
 const app = new Hono()
 
@@ -18,7 +19,8 @@ app.use(cors({
 const apiRoutes = app
   .basePath('/v1')
   .route('/', appRoute)
-  .route('/books_v1', booksRoute);
+  .route('/books_v1', booksRoute)
+  .route('/gears', gearsRoute);
 
 export default app;
 export type ApiRoutes = typeof apiRoutes;
