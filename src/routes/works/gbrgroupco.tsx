@@ -47,7 +47,7 @@ function RouteComponent() {
             <div className="flex flex-row items-center gap-1 w-full">
               <Tag tag="WEBSITE" />
               <a
-                href="https://www.gbrgroupco.com/"
+                href="https://kitsui-v2.pages.dev/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-pink hover:underline flex flex-row items-center gap-1"
