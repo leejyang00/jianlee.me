@@ -17,6 +17,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as WorksIndexImport } from './routes/works/index'
 import { Route as GearsIndexImport } from './routes/gears/index'
 import { Route as BooksIndexImport } from './routes/books/index'
+import { Route as BlogIndexImport } from './routes/blog/index'
 import { Route as WorksPacematesImport } from './routes/works/pacemates'
 import { Route as WorksGbrgroupcoImport } from './routes/works/gbrgroupco'
 
@@ -53,6 +54,12 @@ const GearsIndexRoute = GearsIndexImport.update({
 const BooksIndexRoute = BooksIndexImport.update({
   id: '/books/',
   path: '/books/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BlogIndexRoute = BlogIndexImport.update({
+  id: '/blog/',
+  path: '/blog/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -100,6 +107,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorksPacematesImport
       parentRoute: typeof rootRoute
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/books/': {
       id: '/books/'
       path: '/books'
@@ -131,6 +145,7 @@ export interface FileRoutesByFullPath {
   '/uses': typeof UsesLazyRoute
   '/works/gbrgroupco': typeof WorksGbrgroupcoRoute
   '/works/pacemates': typeof WorksPacematesRoute
+  '/blog': typeof BlogIndexRoute
   '/books': typeof BooksIndexRoute
   '/gears': typeof GearsIndexRoute
   '/works': typeof WorksIndexRoute
@@ -141,6 +156,7 @@ export interface FileRoutesByTo {
   '/uses': typeof UsesLazyRoute
   '/works/gbrgroupco': typeof WorksGbrgroupcoRoute
   '/works/pacemates': typeof WorksPacematesRoute
+  '/blog': typeof BlogIndexRoute
   '/books': typeof BooksIndexRoute
   '/gears': typeof GearsIndexRoute
   '/works': typeof WorksIndexRoute
@@ -152,6 +168,7 @@ export interface FileRoutesById {
   '/uses': typeof UsesLazyRoute
   '/works/gbrgroupco': typeof WorksGbrgroupcoRoute
   '/works/pacemates': typeof WorksPacematesRoute
+  '/blog/': typeof BlogIndexRoute
   '/books/': typeof BooksIndexRoute
   '/gears/': typeof GearsIndexRoute
   '/works/': typeof WorksIndexRoute
@@ -164,6 +181,7 @@ export interface FileRouteTypes {
     | '/uses'
     | '/works/gbrgroupco'
     | '/works/pacemates'
+    | '/blog'
     | '/books'
     | '/gears'
     | '/works'
@@ -173,6 +191,7 @@ export interface FileRouteTypes {
     | '/uses'
     | '/works/gbrgroupco'
     | '/works/pacemates'
+    | '/blog'
     | '/books'
     | '/gears'
     | '/works'
@@ -182,6 +201,7 @@ export interface FileRouteTypes {
     | '/uses'
     | '/works/gbrgroupco'
     | '/works/pacemates'
+    | '/blog/'
     | '/books/'
     | '/gears/'
     | '/works/'
@@ -193,6 +213,7 @@ export interface RootRouteChildren {
   UsesLazyRoute: typeof UsesLazyRoute
   WorksGbrgroupcoRoute: typeof WorksGbrgroupcoRoute
   WorksPacematesRoute: typeof WorksPacematesRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   BooksIndexRoute: typeof BooksIndexRoute
   GearsIndexRoute: typeof GearsIndexRoute
   WorksIndexRoute: typeof WorksIndexRoute
@@ -203,6 +224,7 @@ const rootRouteChildren: RootRouteChildren = {
   UsesLazyRoute: UsesLazyRoute,
   WorksGbrgroupcoRoute: WorksGbrgroupcoRoute,
   WorksPacematesRoute: WorksPacematesRoute,
+  BlogIndexRoute: BlogIndexRoute,
   BooksIndexRoute: BooksIndexRoute,
   GearsIndexRoute: GearsIndexRoute,
   WorksIndexRoute: WorksIndexRoute,
@@ -222,6 +244,7 @@ export const routeTree = rootRoute
         "/uses",
         "/works/gbrgroupco",
         "/works/pacemates",
+        "/blog/",
         "/books/",
         "/gears/",
         "/works/"
@@ -238,6 +261,9 @@ export const routeTree = rootRoute
     },
     "/works/pacemates": {
       "filePath": "works/pacemates.tsx"
+    },
+    "/blog/": {
+      "filePath": "blog/index.tsx"
     },
     "/books/": {
       "filePath": "books/index.tsx"

@@ -4,7 +4,7 @@ import { IoMoon, IoSun, IoBurgerMenu } from "@/shared/NavbarIcons";
 import { ASSETS } from "@/shared/Constants";
 
 const navLinks: NavLink[] = [
-  // { to: "/works", title: "Works" },
+  { to: "/blog", title: "Blog" },
   { to: "/books", title: "Books" },
   { to: "/gears", title: "Gears" },
 ];
