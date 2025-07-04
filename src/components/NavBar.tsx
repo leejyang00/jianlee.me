@@ -7,6 +7,7 @@ const navLinks: NavLink[] = [
   { to: "/blog", title: "Blog" },
   { to: "/books", title: "Books" },
   { to: "/gears", title: "Gears" },
+  { to: "/works", title: "Works" },
 ];
 
 type NavLink = {
@@ -77,7 +78,7 @@ function NavBar() {
 
   return (
     <nav className="w-100% flex justify-center bg-[#f4ece5]/80 dark:bg-[#202122]/80 dark:text-white fixed top-0 left-0 right-0 z-10 backdrop-blur-sm">
-      <div className="relative max-w-xl m-auto w-full sm:max-w-5xl flex flex-row justify-between items-center px-4">
+      <div className="relative max-w-xl m-auto w-full sm:max-w-5xl flex flex-row justify-between items-center px-4 py-2">
         <div className="font-semibold w-40 flex items-center gap-2">
           <Link to="/" className="text-lg flex flex-row items-center">
             <img

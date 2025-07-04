@@ -23,7 +23,7 @@ function RouteComponent() {
   }, []);
 
   return (
-    <div className="max-w-2xl m-auto px-4">
+    <div className="max-w-2xl m-auto px-8">
       <PageHeader title="Books" />
 
       <div className="py-4">
