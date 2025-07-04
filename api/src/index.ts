@@ -4,6 +4,7 @@ import { logger } from 'hono/logger';
 import { appRoute } from './routes/app';
 import { booksRoute } from './routes/books';
 import { gearsRoute } from './routes/gears';
+import { markdownRoute } from './routes/markdown';
 
 const app = new Hono()
 
@@ -20,7 +21,8 @@ const apiRoutes = app
   .basePath('/v1')
   .route('/', appRoute)
   .route('/books_v1', booksRoute)
-  .route('/gears', gearsRoute);
+  .route('/gears', gearsRoute)
+  .route('/markdown', markdownRoute);
 
 export default app;
 export type ApiRoutes = typeof apiRoutes;

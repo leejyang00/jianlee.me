@@ -39,3 +39,67 @@ export const gearsQueryOptions = queryOptions({
   queryFn: getGears,
   staleTime: Infinity,
 });
+
+// Markdown API functions
+async function getMarkdownFiles() {
+  const res = await api.markdown.$get();
+  console.log(res, 'res');
+  if (!res.ok) {
+    throw new Error("Failed to fetch markdown files");
+  }
+  const data = await res.json();
+  return data;
+}
+
+export const markdownFilesQueryOptions = queryOptions({
+  queryKey: ["get-markdown-files"],
+  queryFn: getMarkdownFiles,
+  staleTime: 5 * 60 * 1000, // 5 minutes
+});
+
+async function getMarkdownContent(filename: string) {
+  const res = await api.markdown[":filename"].$get({
+    param: { filename }
+  });
+  if (!res.ok) {
+    throw new Error("Failed to fetch markdown content");
+  }
+  const data = await res.json();
+  return data;
+}
+
+export const markdownContentQueryOptions = (filename: string) => queryOptions({
+  queryKey: ["get-markdown-content", filename],
+  queryFn: () => getMarkdownContent(filename),
+  staleTime: 10 * 60 * 1000, // 10 minutes
+  enabled: !!filename,
+});
+
+// Upload markdown file
+export async function uploadMarkdownFile(file: File) {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  const res = await api.markdown.$post({
+    form: formData
+  });
+  
+  if (!res.ok) {
+    throw new Error("Failed to upload markdown file");
+  }
+  
+  return res.json();
+}
+
+// Delete markdown file
+export async function deleteMarkdownFile(filename: string) {
+  const res = await api.markdown[":filename"].$delete({
+    param: { filename }
+  });
+  
+  if (!res.ok) {
+    throw new Error("Failed to delete markdown file");
+  }
+  
+  return res.json();
+}

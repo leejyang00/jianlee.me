@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { getSupabaseClient, Bindings } from "@/db";
+import { InsertGearBody } from "./type/gearsType";
 
 export const gearsRoute = new Hono<{ Bindings: Bindings }>()
   .get("/", async (c) => {
