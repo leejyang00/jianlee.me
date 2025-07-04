@@ -25,12 +25,12 @@ interface MarkdownFile {
   };
 }
 
-interface MarkdownContent {
-  filename: string;
-  content: string;
-  size: number;
-  lastModified: number;
-}
+// interface MarkdownContent {
+//   filename: string;
+//   content: string;
+//   size: number;
+//   lastModified: number;
+// }
 
 export const MarkdownBlog: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
@@ -143,7 +143,7 @@ export const MarkdownBlog: React.FC = () => {
         <div className="lg:col-span-2 ">
           <h2 className="text-xl font-semibold mb-4">Content</h2>
           {!selectedFile ? (
-            <div className="text-gray-800 text-center py-8">
+            <div className="text-gray-400 text-center py-8">
               Select a file to view its content
             </div>
           ) : contentLoading ? (
