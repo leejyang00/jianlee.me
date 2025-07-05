@@ -42,6 +42,7 @@ function RouteComponent() {
           description="With Zapier's automated workflows—called Zaps—you can send highlights and recordings from Grain straight to your business-critical apps."
           date="July 7, 2025"
           readTime="3 min read"
+          slug="hello-world"
         />
         <WorkCard
           imageSrc="/path/to/woocommerce.png"
@@ -51,6 +52,7 @@ function RouteComponent() {
           description="Though eCommerce apps like WooCommerce make it easy to open your own shop, it's still a lot of work to manage orders and keep business running smoothly."
           date="May 19, 2025"
           readTime="4 min read"
+          slug="woocommerce"
         />
         <WorkCard
           imageSrc="/path/to/browseai.png"
@@ -60,6 +62,7 @@ function RouteComponent() {
           description="Automate the flow of information from Browse AI directly into your favorite apps, turning a flood of scraped web data into manageable, actionable insights."
           date="June 10, 2025"
           readTime="5 min read"
+          slug="browseai"
         />
         <WorkCard
           imageSrc="/path/to/grain.png"
@@ -69,6 +72,7 @@ function RouteComponent() {
           description="With Zapier's automated workflows—called Zaps—you can send highlights and recordings from Grain straight to your business-critical apps."
           date="July 7, 2025"
           readTime="3 min read"
+          slug="grain"
         />
       </div>
     </div>

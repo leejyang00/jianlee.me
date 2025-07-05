@@ -20,6 +20,7 @@ import { Route as BooksIndexImport } from './routes/books/index'
 import { Route as BlogIndexImport } from './routes/blog/index'
 import { Route as WorksPacematesImport } from './routes/works/pacemates'
 import { Route as WorksGbrgroupcoImport } from './routes/works/gbrgroupco'
+import { Route as WorksSlugImport } from './routes/works/$slug'
 import { Route as BlogTestImport } from './routes/blog/test'
 
 // Create Virtual Routes
@@ -76,6 +77,12 @@ const WorksGbrgroupcoRoute = WorksGbrgroupcoImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const WorksSlugRoute = WorksSlugImport.update({
+  id: '/works/$slug',
+  path: '/works/$slug',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const BlogTestRoute = BlogTestImport.update({
   id: '/blog/test',
   path: '/blog/test',
@@ -105,6 +112,13 @@ declare module '@tanstack/react-router' {
       path: '/blog/test'
       fullPath: '/blog/test'
       preLoaderRoute: typeof BlogTestImport
+      parentRoute: typeof rootRoute
+    }
+    '/works/$slug': {
+      id: '/works/$slug'
+      path: '/works/$slug'
+      fullPath: '/works/$slug'
+      preLoaderRoute: typeof WorksSlugImport
       parentRoute: typeof rootRoute
     }
     '/works/gbrgroupco': {
@@ -158,6 +172,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/uses': typeof UsesLazyRoute
   '/blog/test': typeof BlogTestRoute
+  '/works/$slug': typeof WorksSlugRoute
   '/works/gbrgroupco': typeof WorksGbrgroupcoRoute
   '/works/pacemates': typeof WorksPacematesRoute
   '/blog': typeof BlogIndexRoute
@@ -170,6 +185,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/uses': typeof UsesLazyRoute
   '/blog/test': typeof BlogTestRoute
+  '/works/$slug': typeof WorksSlugRoute
   '/works/gbrgroupco': typeof WorksGbrgroupcoRoute
   '/works/pacemates': typeof WorksPacematesRoute
   '/blog': typeof BlogIndexRoute
@@ -183,6 +199,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/uses': typeof UsesLazyRoute
   '/blog/test': typeof BlogTestRoute
+  '/works/$slug': typeof WorksSlugRoute
   '/works/gbrgroupco': typeof WorksGbrgroupcoRoute
   '/works/pacemates': typeof WorksPacematesRoute
   '/blog/': typeof BlogIndexRoute
@@ -197,6 +214,7 @@ export interface FileRouteTypes {
     | '/'
     | '/uses'
     | '/blog/test'
+    | '/works/$slug'
     | '/works/gbrgroupco'
     | '/works/pacemates'
     | '/blog'
@@ -208,6 +226,7 @@ export interface FileRouteTypes {
     | '/'
     | '/uses'
     | '/blog/test'
+    | '/works/$slug'
     | '/works/gbrgroupco'
     | '/works/pacemates'
     | '/blog'
@@ -219,6 +238,7 @@ export interface FileRouteTypes {
     | '/'
     | '/uses'
     | '/blog/test'
+    | '/works/$slug'
     | '/works/gbrgroupco'
     | '/works/pacemates'
     | '/blog/'
@@ -232,6 +252,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   UsesLazyRoute: typeof UsesLazyRoute
   BlogTestRoute: typeof BlogTestRoute
+  WorksSlugRoute: typeof WorksSlugRoute
   WorksGbrgroupcoRoute: typeof WorksGbrgroupcoRoute
   WorksPacematesRoute: typeof WorksPacematesRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -244,6 +265,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   UsesLazyRoute: UsesLazyRoute,
   BlogTestRoute: BlogTestRoute,
+  WorksSlugRoute: WorksSlugRoute,
   WorksGbrgroupcoRoute: WorksGbrgroupcoRoute,
   WorksPacematesRoute: WorksPacematesRoute,
   BlogIndexRoute: BlogIndexRoute,
@@ -265,6 +287,7 @@ export const routeTree = rootRoute
         "/",
         "/uses",
         "/blog/test",
+        "/works/$slug",
         "/works/gbrgroupco",
         "/works/pacemates",
         "/blog/",
@@ -281,6 +304,9 @@ export const routeTree = rootRoute
     },
     "/blog/test": {
       "filePath": "blog/test.tsx"
+    },
+    "/works/$slug": {
+      "filePath": "works/$slug.tsx"
     },
     "/works/gbrgroupco": {
       "filePath": "works/gbrgroupco.tsx"
