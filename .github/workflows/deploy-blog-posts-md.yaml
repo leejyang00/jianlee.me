@@ -67,7 +67,7 @@ jobs:
           SUPABASE_KEY: ${{ steps.ssm-params.outputs.supabase_key }}
         run: |
           # Create a Node.js script to handle the upload
-          cat > upload-script.js << EOF
+          cat > upload-script.cjs << EOF
           const { createClient } = require('@supabase/supabase-js');
           const fs = require('fs');
           const path = require('path');
@@ -127,7 +127,7 @@ jobs:
           EOF
           
           # Run the upload script
-          node upload-script.js
+          node upload-script.cjs
 
       - name: Verify upload
         env:
