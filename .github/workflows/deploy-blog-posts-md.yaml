@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - 'src/lib/posts/**/*.md'
+    paths:
+      - 'src/lib/posts/**/*.md'
   workflow_dispatch:
 
 jobs:
@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2  # Need at least 2 commits to compare changes
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -27,6 +29,27 @@ jobs:
 
       - name: Install dependencies
         run: npm install @supabase/supabase-js
+
+      - name: Get changed files
+        id: changed-files
+        run: |
+          # Get list of changed markdown files in src/lib/posts
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            # If manually triggered, upload all files
+            echo "Manual trigger - uploading all files"
+            CHANGED_FILES=$(find src/lib/posts -name "*.md" -type f | tr '\n' ' ')
+          else
+            # Get changed files between current and previous commit
+            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep "^src/lib/posts/.*\.md$" | tr '\n' ' ')
+          fi
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No markdown files changed in src/lib/posts"
+            echo "changed_files=" >> $GITHUB_OUTPUT
+          else
+            echo "Changed files: $CHANGED_FILES"
+            echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
+          fi
 
       - name: Configure AWS Credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
@@ -61,10 +84,12 @@ jobs:
           
           echo "SSM parameters retrieved successfully"
 
-      - name: Upload markdown files to Supabase Storage
+      - name: Upload changed markdown files to Supabase Storage
+        if: steps.changed-files.outputs.changed_files != ''
         env:
           SUPABASE_URL: ${{ steps.ssm-params.outputs.supabase_url }}
           SUPABASE_KEY: ${{ steps.ssm-params.outputs.supabase_key }}
+          CHANGED_FILES: ${{ steps.changed-files.outputs.changed_files }}
         run: |
           # Create a Node.js script to handle the upload
           cat > upload-script.cjs << EOF
@@ -74,6 +99,7 @@ jobs:
           
           const supabaseUrl = process.env.SUPABASE_URL;
           const supabaseKey = process.env.SUPABASE_KEY;
+          const changedFiles = process.env.CHANGED_FILES ? process.env.CHANGED_FILES.split(' ').filter(f => f.trim()) : [];
           
           if (!supabaseUrl || !supabaseKey) {
             console.error('Missing Supabase credentials');
@@ -83,42 +109,47 @@ jobs:
           const supabase = createClient(supabaseUrl, supabaseKey);
           
           async function uploadMarkdownFiles() {
-            const postsDir = 'src/lib/posts';
-            
             try {
-              // Read all markdown files from the posts directory
-              const files = fs.readdirSync(postsDir).filter(file => file.endsWith('.md'));
+              if (changedFiles.length === 0) {
+                console.log('No files to upload');
+                return;
+              }
               
-              console.log(\`Found \${files.length} markdown files to upload\`);
+              console.log(\`Uploading \${changedFiles.length} changed markdown files\`);
               
-              for (const file of files) {
-                const filePath = path.join(postsDir, file);
+              for (const filePath of changedFiles) {
+                if (!fs.existsSync(filePath)) {
+                  console.log(\`File \${filePath} no longer exists, skipping\`);
+                  continue;
+                }
+                
+                const fileName = path.basename(filePath);
                 const fileContent = fs.readFileSync(filePath, 'utf8');
                 
-                console.log(\`Uploading \${file}...\`);
+                console.log(\`Uploading \${fileName}...\`);
                 
                 try {
                   // Upload file content to Supabase Storage
                   const { data, error } = await supabase.storage
                     .from('blog-posts')
-                    .upload(file, fileContent, {
+                    .upload(fileName, fileContent, {
                       contentType: 'text/markdown',
                       upsert: true
                     });
                   
                   if (error) {
-                    console.error(\`Error uploading \${file}:\`, error);
+                    console.error(\`Error uploading \${fileName}:\`, error);
                   } else {
-                    console.log(\`Successfully uploaded \${file}\`);
+                    console.log(\`Successfully uploaded \${fileName}\`);
                   }
                 } catch (uploadError) {
-                  console.error(\`Failed to upload \${file}:\`, uploadError);
+                  console.error(\`Failed to upload \${fileName}:\`, uploadError);
                 }
               }
               
               console.log('Upload process completed');
             } catch (error) {
-              console.error('Error reading posts directory:', error);
+              console.error('Error processing files:', error);
               process.exit(1);
             }
           }
@@ -129,7 +160,14 @@ jobs:
           # Run the upload script
           node upload-script.cjs
 
+      - name: Skip upload - no changes
+        if: steps.changed-files.outputs.changed_files == ''
+        run: |
+          echo "No markdown files changed in src/lib/posts"
+          echo "Skipping upload process"
+
       - name: Verify upload
+        if: steps.changed-files.outputs.changed_files != ''
         env:
           SUPABASE_URL: ${{ steps.ssm-params.outputs.supabase_url }}
           SUPABASE_KEY: ${{ steps.ssm-params.outputs.supabase_key }}

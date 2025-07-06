@@ -1,6 +1,6 @@
 ---
 title: "My DevOps Journey: From Developer to Infrastructure Engineer"
-date: "2024-01-20"
+date: "2024-02-20"
 description: "Reflecting on my transition from software development to DevOps engineering and the lessons learned along the way."
 tags: ["devops", "career", "infrastructure"]
 image: "/images/devops-journey.jpg"
