@@ -26,7 +26,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install -g @supabase/supabase-js
+        run: npm install @supabase/supabase-js
 
       - name: Configure AWS Credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
