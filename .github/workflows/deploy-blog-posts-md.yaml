@@ -37,35 +37,33 @@ jobs:
       - name: Run AWS CLI command
         run: aws sts get-caller-identity
 
-      # - name: Configure AWS credentials
-      #   uses: aws-actions/configure-aws-credentials@v4
-      #   with:
-      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     aws-region: ${{ secrets.AWS_REGION }}
+                  # # Get Supabase Anon Key from SSM
+                  # SUPABASE_ANON_KEY=$(aws ssm get-parameter --name "/blog/supabase/anon_key" --with-decryption --query "Parameter.Value" --output text)
+                  # echo "SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> $GITHUB_ENV
+                  # echo "supabase_anon_key=$SUPABASE_ANON_KEY" >> $GITHUB_OUTPUT
+                  
+                  # # Get Supabase Service Role Key from SSM
+                  # SUPABASE_SERVICE_ROLE_KEY=$(aws ssm get-parameter --name "/blog/supabase/service_role_key" --with-decryption --query "Parameter.Value" --output text)
+                  # echo "SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY" >> $GITHUB_ENV
+                  # echo "supabase_service_role_key=$SUPABASE_SERVICE_ROLE_KEY" >> $GITHUB_OUTPUT
 
-      # - name: Get SSM Parameters
-      #   id: ssm-params
-      #   run: |
-      #     # Fetch SSM parameters and set them as environment variables
-      #     echo "Fetching SSM parameters..."
+      - name: Get SSM Parameters
+        id: ssm-params
+        run: |
+          # Fetch SSM parameters and set them as environment variables
+          echo "Fetching SSM parameters..."
           
-      #     # Get Supabase URL from SSM
-      #     SUPABASE_URL=$(aws ssm get-parameter --name "/blog/supabase/url" --with-decryption --query "Parameter.Value" --output text)
-      #     echo "SUPABASE_URL=$SUPABASE_URL" >> $GITHUB_ENV
-      #     echo "supabase_url=$SUPABASE_URL" >> $GITHUB_OUTPUT
+          # Get Supabase URL from SSM
+          SUPABASE_URL=$(aws ssm get-parameter --name "/supabase/url" --with-decryption --query "Parameter.Value" --output text)
+          echo "SUPABASE_URL=$SUPABASE_URL" >> $GITHUB_ENV
+          echo "supabase_url=$SUPABASE_URL" >> $GITHUB_OUTPUT
           
-      #     # Get Supabase Anon Key from SSM
-      #     SUPABASE_ANON_KEY=$(aws ssm get-parameter --name "/blog/supabase/anon_key" --with-decryption --query "Parameter.Value" --output text)
-      #     echo "SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> $GITHUB_ENV
-      #     echo "supabase_anon_key=$SUPABASE_ANON_KEY" >> $GITHUB_OUTPUT
+
           
-      #     # Get Supabase Service Role Key from SSM
-      #     SUPABASE_SERVICE_ROLE_KEY=$(aws ssm get-parameter --name "/blog/supabase/service_role_key" --with-decryption --query "Parameter.Value" --output text)
-      #     echo "SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY" >> $GITHUB_ENV
-      #     echo "supabase_service_role_key=$SUPABASE_SERVICE_ROLE_KEY" >> $GITHUB_OUTPUT
-          
-      #     echo "SSM parameters retrieved successfully"
+          echo "SSM parameters retrieved successfully"
+
+
+      
 
       # - name: Upload markdown files to Supabase Storage
       #   env:
