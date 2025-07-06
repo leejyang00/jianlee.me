@@ -65,23 +65,23 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
           // Handle different image URL patterns
           let imageSrc = src;
 
-          // If it's a relative path starting with /images/, prepend the CloudFront URL
-          if (src?.startsWith("/images/")) {
-            imageSrc = `${ASSETS.IMAGES}${src.substring(7)}`; // Remove '/images/' prefix
-          }
-          // If it's already a full URL, use it as is
-          else if (src?.startsWith("http")) {
-            imageSrc = src;
-          }
-          // If it's a relative path without /images/, assume it's in the images folder
-          else if (src && !src.startsWith("http")) {
-            imageSrc = `${ASSETS.IMAGES}/${src}`;
-          }
+          // // If it's a relative path starting with /images/, prepend the CloudFront URL
+          // if (src?.startsWith("/images/")) {
+          //   imageSrc = `${ASSETS.IMAGES}${src.substring(7)}`; // Remove '/images/' prefix
+          // }
+          // // If it's already a full URL, use it as is
+          // else if (src?.startsWith("http")) {
+          //   imageSrc = src;
+          // }
+          // // If it's a relative path without /images/, assume it's in the images folder
+          // else if (src && !src.startsWith("http")) {
+          //   imageSrc = `${ASSETS.IMAGES}/${src}`;
+          // }
 
           return (
             <div className="my-6 flex justify-center">
               <img
-                src={imageSrc}
+                src={ASSETS.IMAGES + imageSrc}
                 alt={alt || "Blog image"}
                 className="max-w-full h-auto rounded-lg shadow-md"
                 loading="lazy"
