@@ -37,16 +37,6 @@ jobs:
       - name: Run AWS CLI command
         run: aws sts get-caller-identity
 
-                  # # Get Supabase Anon Key from SSM
-                  # SUPABASE_ANON_KEY=$(aws ssm get-parameter --name "/blog/supabase/anon_key" --with-decryption --query "Parameter.Value" --output text)
-                  # echo "SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> $GITHUB_ENV
-                  # echo "supabase_anon_key=$SUPABASE_ANON_KEY" >> $GITHUB_OUTPUT
-                  
-                  # # Get Supabase Service Role Key from SSM
-                  # SUPABASE_SERVICE_ROLE_KEY=$(aws ssm get-parameter --name "/blog/supabase/service_role_key" --with-decryption --query "Parameter.Value" --output text)
-                  # echo "SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY" >> $GITHUB_ENV
-                  # echo "supabase_service_role_key=$SUPABASE_SERVICE_ROLE_KEY" >> $GITHUB_OUTPUT
-
       - name: Get SSM Parameters
         id: ssm-params
         run: |
@@ -55,91 +45,96 @@ jobs:
           
           # Get Supabase URL from SSM
           SUPABASE_URL=$(aws ssm get-parameter --name "/supabase/url" --with-decryption --query "Parameter.Value" --output text)
-          echo "SUPABASE_URL=$SUPABASE_URL" >> $GITHUB_ENV
+          if [ $? -ne 0 ]; then
+            echo "Error: Failed to retrieve Supabase URL from SSM"
+            exit 1
+          fi
           echo "supabase_url=$SUPABASE_URL" >> $GITHUB_OUTPUT
-          
 
+          # Get Supabase Key from SSM
+          SUPABASE_KEY=$(aws ssm get-parameter --name "/supabase/key" --with-decryption --query "Parameter.Value" --output text)
+          if [ $? -ne 0 ]; then
+            echo "Error: Failed to retrieve Supabase Key from SSM"
+            exit 1
+          fi
+          echo "supabase_key=$SUPABASE_KEY" >> $GITHUB_OUTPUT
           
           echo "SSM parameters retrieved successfully"
 
-
-      
-
-      # - name: Upload markdown files to Supabase Storage
-      #   env:
-      #     SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-      #     SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-      #     SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-      #   run: |
-      #     # Create a Node.js script to handle the upload
-      #     cat > upload-script.js << 'EOF'
-      #     const { createClient } = require('@supabase/supabase-js');
-      #     const fs = require('fs');
-      #     const path = require('path');
+      - name: Upload markdown files to Supabase Storage
+        env:
+          SUPABASE_URL: ${{ steps.ssm-params.outputs.supabase_url }}
+          SUPABASE_KEY: ${{ steps.ssm-params.outputs.supabase_key }}
+        run: |
+          # Create a Node.js script to handle the upload
+          cat > upload-script.js << EOF
+          const { createClient } = require('@supabase/supabase-js');
+          const fs = require('fs');
+          const path = require('path');
           
-      #     const supabaseUrl = process.env.SUPABASE_URL;
-      #     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+          const supabaseUrl = process.env.SUPABASE_URL;
+          const supabaseKey = process.env.SUPABASE_KEY;
           
-      #     if (!supabaseUrl || !supabaseKey) {
-      #       console.error('Missing Supabase credentials');
-      #       process.exit(1);
-      #     }
+          if (!supabaseUrl || !supabaseKey) {
+            console.error('Missing Supabase credentials');
+            process.exit(1);
+          }
           
-      #     const supabase = createClient(supabaseUrl, supabaseKey);
+          const supabase = createClient(supabaseUrl, supabaseKey);
           
-      #     async function uploadMarkdownFiles() {
-      #       const postsDir = 'src/lib/posts';
+          async function uploadMarkdownFiles() {
+            const postsDir = 'src/lib/posts';
             
-      #       try {
-      #         // Read all markdown files from the posts directory
-      #         const files = fs.readdirSync(postsDir).filter(file => file.endsWith('.md'));
+            try {
+              // Read all markdown files from the posts directory
+              const files = fs.readdirSync(postsDir).filter(file => file.endsWith('.md'));
               
-      #         console.log(`Found ${files.length} markdown files to upload`);
+              console.log(\`Found \${files.length} markdown files to upload\`);
               
-      #         for (const file of files) {
-      #           const filePath = path.join(postsDir, file);
-      #           const fileContent = fs.readFileSync(filePath, 'utf8');
+              for (const file of files) {
+                const filePath = path.join(postsDir, file);
+                const fileContent = fs.readFileSync(filePath, 'utf8');
                 
-      #           console.log(`Uploading ${file}...`);
+                console.log(\`Uploading \${file}...\`);
                 
-      #           try {
-      #             // Upload file content to Supabase Storage
-      #             const { data, error } = await supabase.storage
-      #               .from('blog-posts')
-      #               .upload(file, fileContent, {
-      #                 contentType: 'text/markdown',
-      #                 upsert: true
-      #               });
+                try {
+                  // Upload file content to Supabase Storage
+                  const { data, error } = await supabase.storage
+                    .from('blog-posts')
+                    .upload(file, fileContent, {
+                      contentType: 'text/markdown',
+                      upsert: true
+                    });
                   
-      #             if (error) {
-      #               console.error(`Error uploading ${file}:`, error);
-      #             } else {
-      #               console.log(`Successfully uploaded ${file}`);
-      #             }
-      #           } catch (uploadError) {
-      #             console.error(`Failed to upload ${file}:`, uploadError);
-      #           }
-      #         }
+                  if (error) {
+                    console.error(\`Error uploading \${file}:\`, error);
+                  } else {
+                    console.log(\`Successfully uploaded \${file}\`);
+                  }
+                } catch (uploadError) {
+                  console.error(\`Failed to upload \${file}:\`, uploadError);
+                }
+              }
               
-      #         console.log('Upload process completed');
-      #       } catch (error) {
-      #         console.error('Error reading posts directory:', error);
-      #         process.exit(1);
-      #       }
-      #     }
+              console.log('Upload process completed');
+            } catch (error) {
+              console.error('Error reading posts directory:', error);
+              process.exit(1);
+            }
+          }
           
-      #     uploadMarkdownFiles();
-      #     EOF
+          uploadMarkdownFiles();
+          EOF
           
-      #     # Run the upload script
-      #     node upload-script.js
+          # Run the upload script
+          node upload-script.js
 
-      # - name: Verify upload
-      #   env:
-      #     SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-      #     SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-      #   run: |
-      #     echo "Verifying uploaded files..."
-      #     curl -X GET \
-      #       -H "apikey: $SUPABASE_ANON_KEY" \
-      #       "$SUPABASE_URL/storage/v1/object/list/blog-posts" | jq '.'
+      - name: Verify upload
+        env:
+          SUPABASE_URL: ${{ steps.ssm-params.outputs.supabase_url }}
+          SUPABASE_KEY: ${{ steps.ssm-params.outputs.supabase_key }}
+        run: |
+          echo "Verifying uploaded files..."
+          curl -X GET \
+            -H "apikey: $SUPABASE_KEY" \
+            "$SUPABASE_URL/storage/v1/object/list/blog-posts" | jq '.'
