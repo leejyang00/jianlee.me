@@ -1,0 +1,143 @@
+name: Deploy Blog Posts Markdown to Supabase Storage
+
+on:
+  push:
+    branches:
+      - main
+    # paths:
+    #   - 'src/lib/posts/**/*.md'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install -g @supabase/supabase-js
+
+      - name: Configure AWS Credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::319829039858:role/github-action-read-ssm-secrets
+          aws-region: ap-southeast-2  # or any region you use
+
+      - name: Run AWS CLI command
+        run: aws sts get-caller-identity
+
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v4
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: ${{ secrets.AWS_REGION }}
+
+      # - name: Get SSM Parameters
+      #   id: ssm-params
+      #   run: |
+      #     # Fetch SSM parameters and set them as environment variables
+      #     echo "Fetching SSM parameters..."
+          
+      #     # Get Supabase URL from SSM
+      #     SUPABASE_URL=$(aws ssm get-parameter --name "/blog/supabase/url" --with-decryption --query "Parameter.Value" --output text)
+      #     echo "SUPABASE_URL=$SUPABASE_URL" >> $GITHUB_ENV
+      #     echo "supabase_url=$SUPABASE_URL" >> $GITHUB_OUTPUT
+          
+      #     # Get Supabase Anon Key from SSM
+      #     SUPABASE_ANON_KEY=$(aws ssm get-parameter --name "/blog/supabase/anon_key" --with-decryption --query "Parameter.Value" --output text)
+      #     echo "SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> $GITHUB_ENV
+      #     echo "supabase_anon_key=$SUPABASE_ANON_KEY" >> $GITHUB_OUTPUT
+          
+      #     # Get Supabase Service Role Key from SSM
+      #     SUPABASE_SERVICE_ROLE_KEY=$(aws ssm get-parameter --name "/blog/supabase/service_role_key" --with-decryption --query "Parameter.Value" --output text)
+      #     echo "SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY" >> $GITHUB_ENV
+      #     echo "supabase_service_role_key=$SUPABASE_SERVICE_ROLE_KEY" >> $GITHUB_OUTPUT
+          
+      #     echo "SSM parameters retrieved successfully"
+
+      # - name: Upload markdown files to Supabase Storage
+      #   env:
+      #     SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      #     SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      #     SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      #   run: |
+      #     # Create a Node.js script to handle the upload
+      #     cat > upload-script.js << 'EOF'
+      #     const { createClient } = require('@supabase/supabase-js');
+      #     const fs = require('fs');
+      #     const path = require('path');
+          
+      #     const supabaseUrl = process.env.SUPABASE_URL;
+      #     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+          
+      #     if (!supabaseUrl || !supabaseKey) {
+      #       console.error('Missing Supabase credentials');
+      #       process.exit(1);
+      #     }
+          
+      #     const supabase = createClient(supabaseUrl, supabaseKey);
+          
+      #     async function uploadMarkdownFiles() {
+      #       const postsDir = 'src/lib/posts';
+            
+      #       try {
+      #         // Read all markdown files from the posts directory
+      #         const files = fs.readdirSync(postsDir).filter(file => file.endsWith('.md'));
+              
+      #         console.log(`Found ${files.length} markdown files to upload`);
+              
+      #         for (const file of files) {
+      #           const filePath = path.join(postsDir, file);
+      #           const fileContent = fs.readFileSync(filePath, 'utf8');
+                
+      #           console.log(`Uploading ${file}...`);
+                
+      #           try {
+      #             // Upload file content to Supabase Storage
+      #             const { data, error } = await supabase.storage
+      #               .from('blog-posts')
+      #               .upload(file, fileContent, {
+      #                 contentType: 'text/markdown',
+      #                 upsert: true
+      #               });
+                  
+      #             if (error) {
+      #               console.error(`Error uploading ${file}:`, error);
+      #             } else {
+      #               console.log(`Successfully uploaded ${file}`);
+      #             }
+      #           } catch (uploadError) {
+      #             console.error(`Failed to upload ${file}:`, uploadError);
+      #           }
+      #         }
+              
+      #         console.log('Upload process completed');
+      #       } catch (error) {
+      #         console.error('Error reading posts directory:', error);
+      #         process.exit(1);
+      #       }
+      #     }
+          
+      #     uploadMarkdownFiles();
+      #     EOF
+          
+      #     # Run the upload script
+      #     node upload-script.js
+
+      # - name: Verify upload
+      #   env:
+      #     SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      #     SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      #   run: |
+      #     echo "Verifying uploaded files..."
+      #     curl -X GET \
+      #       -H "apikey: $SUPABASE_ANON_KEY" \
+      #       "$SUPABASE_URL/storage/v1/object/list/blog-posts" | jq '.'

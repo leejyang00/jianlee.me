@@ -6,7 +6,7 @@ import {
   uploadMarkdownFile,
   deleteMarkdownFile,
 } from "../lib/api";
-import MarkdownRenderer from "./MarkdownRenderer";
+import MarkdownRenderer from "./Blog/MarkdownRenderer";
 
 interface MarkdownFile {
   name: string;

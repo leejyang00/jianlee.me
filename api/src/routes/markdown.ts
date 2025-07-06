@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { getSupabaseClient, Bindings } from "@/db";
+import matter from "gray-matter"; // Add this import
 
 export const markdownRoute = new Hono<{ Bindings: Bindings }>()
   .get("/", async (c) => {
@@ -58,11 +59,17 @@ export const markdownRoute = new Hono<{ Bindings: Bindings }>()
       }
 
       // Convert the blob to text
-      const content = await data.text();
+      const rawContent = await data.text();
+
+       // Parse frontmatter using gray-matter
+       const { data: frontmatter, content } = matter(rawContent);
+       console.log(frontmatter, "frontmatter");
+       console.log(content, "content");
 
       c.status(200);
       return c.json({
         filename,
+        frontmatter,
         content,
         size: data.size,
         // lastModified: data.lastModified

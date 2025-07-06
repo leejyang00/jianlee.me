@@ -5,9 +5,8 @@ description: "Reflecting on my transition from software development to DevOps en
 tags: ["devops", "career", "infrastructure"]
 image: "/images/devops-journey.jpg"
 slug: "devops-journey"
+read_time: "3"
 ---
-
-# My DevOps Journey: From Developer to Infrastructure Engineer
 
 ## The Beginning
 
