@@ -24,7 +24,7 @@ export default function WorkCard({
   return (
     <div>
       <Link to={`/projects/${slug}`}>
-        <div className="rounded-xl flex flex-col h-full hover:scale-105 transition-all duration-300 hover:text-black/60 dark:hover:text-white/60">
+        <div className="rounded-xl flex flex-col h-full transition-all hover:text-blue-800 dark:hover:text-blue-200">
           <img
             src={`${ASSETS.IMAGES}/${imageSrc}`}
             alt={imageAlt}
@@ -36,7 +36,7 @@ export default function WorkCard({
           >
             {category}
           </a> */}
-          <h2 className="text-xl font-bold mb-6 font-apple">{title}</h2>
+          <h2 className="text-xl font-semibold mb-3 md:mb-6 font-apple">{title}</h2>
           <p className="text-md mb-8 flex-grow">{description}</p>
           <div className="text-xs">
             {formatDate(date)} &nbsp;•&nbsp; {readTime} mins read
