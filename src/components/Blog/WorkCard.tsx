@@ -36,7 +36,7 @@ export default function WorkCard({
           >
             {category}
           </a> */}
-          <h2 className="text-xl font-bold mb-4">{title}</h2>
+          <h2 className="text-xl font-bold mb-6 font-apple">{title}</h2>
           <p className="text-md mb-8 flex-grow">{description}</p>
           <div className="text-xs">
             {formatDate(date)} &nbsp;•&nbsp; {readTime} mins read

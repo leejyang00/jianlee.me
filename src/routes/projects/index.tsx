@@ -23,17 +23,17 @@ function RouteComponent() {
 
   return (
     <div className="max-w-5xl m-auto px-8 font-apple">
-      <PageHeader title="My Projects" />
+      <PageHeader title="My Projects" subpath="/projects" slug="" />
 
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-4 lg:gap-6">
-        <h1 className="py-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold font-apple text-center lg:text-left w-full lg:w-auto">
+        <h1 className="py-4 text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold font-apple text-center sm:text-left w-full lg:w-auto">
           My Projects
         </h1>
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center lg:justify-end items-center w-full lg:w-auto">
+        {/* <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center lg:justify-end items-center w-full lg:w-auto">
           <div className="text-xs sm:text-sm py-2 sm:py-3 px-3 sm:px-4 border border-gray-300 dark:border-gray-700 w-full sm:w-auto min-w-[120px] text-center">
             Sort by
           </div>
-        </div>
+        </div> */}
       </div>
 
       {isLoading && <div>Loading...</div>}

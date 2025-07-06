@@ -141,7 +141,7 @@ export const markdownRoute = new Hono<{ Bindings: Bindings }>()
   // get markdown database
   .get("/database", async (c) => {
     const supabase = getSupabaseClient(c);
-    const { data, error } = await supabase.from('blog_posts').select('*');
+    const { data, error } = await supabase.from('blog_posts').select('*').order('date', { ascending: false });
     if (error) {
       return c.json({ error: error.message }, 500);
     }

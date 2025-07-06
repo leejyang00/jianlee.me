@@ -6,7 +6,7 @@ import { ASSETS } from '@/shared/Constants'
 import Tag from '@/shared/Tag'
 import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded'
 
-export const Route = createFileRoute('/projects/pacemates')({
+export const Route = createFileRoute('/projects/pacemates-runclub')({
   component: ScrollToTop(RouteComponent),
 })
 

@@ -24,7 +24,7 @@ function RouteComponent() {
 
   return (
     <div className="max-w-4xl m-auto px-8">
-      <PageHeader title="Books" />
+      <PageHeader title="Books" subpath="/books" slug="" />
 
       <div className="py-4">
         <h1 className="text-4xl font-bold font-apple mb-6">

@@ -25,7 +25,7 @@ function RouteComponent() {
   return (
     <div className="max-w-5xl m-auto px-8 font-apple">
       {/* Navigation Section */}
-      <PageHeader title="My Projects" />
+      <PageHeader title="My Projects" subpath="/projects" slug={markdownData?.frontmatter.title} />
 
       {isLoading && <div>Loading...</div>}
 

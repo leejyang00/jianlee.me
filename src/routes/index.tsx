@@ -42,7 +42,7 @@ function RouteComponent() {
       {/* Work Section */}
       <Introduction />
       <Bio />
-      <Highlight />
+      {/* <Highlight /> */}
       <Socials />
     </div>
   );

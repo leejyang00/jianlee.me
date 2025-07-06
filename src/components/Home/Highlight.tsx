@@ -10,7 +10,7 @@ const Highlight = () => {
 
       <div className="space-y-8 py-4">
         <div className="relative group cursor-pointer">
-          <Link to="/works/gbrgroupco" className="block">
+          <Link to="/projects/gbrgroupco" className="block">
             <div className="aspect-[3/2] md:aspect-[16/9] overflow-hidden rounded-xl">
               <img
                 src={`${ASSETS.IMAGES}/gbrgroup.png`}
@@ -35,7 +35,7 @@ const Highlight = () => {
                   Jan 15, 2024
                 </span>
                 <Link
-                  to="/works/gbrgroupco"
+                  to="/projects/gbrgroupco"
                   className="text-xs font-medium text-pink hover:text-pink/80 transition-colors font-apple"
                 >
                   Read Story →
@@ -45,41 +45,6 @@ const Highlight = () => {
           </Link>
         </div>
       </div>
-
-      {/* Grid of Works */}
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-6 py-4">
-        <div className="flex flex-col gap-2 items-center justify-center">
-          <img
-            src={`${ASSETS.IMAGES}/gbrgroup.png`}
-            alt="Work 1"
-            className="rounded-lg w-full md:h-44 h-52 object-cover"
-          />
-          <div className="mt-2 gap-1 flex flex-col items-center justify-center">
-            <h3 className="text-lg font-medium font-sans">GBR Group Co</h3>
-            <p className="text-xs/relaxed font-normal font-apple text-center mx-2">
-              A corporate website designed and built to launch, showcasing
-              the brand's new values and offerings, {" "}<Link to="/works/gbrgroupco">{" "}<span className="underline font-semibold">read more</span></Link>
-            </p>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2 items-center justify-center">
-          <img
-            src={`${ASSETS.IMAGES}/pacemates.jpg`}
-            alt="Work 1"
-            className="rounded-lg w-full md:h-44 h-52 object-cover"
-          />
-          <div className="mt-2 gap-1 flex flex-col items-center justify-center">
-            <h3 className="text-lg font-medium font-apple">
-              Pacemates Run Club
-            </h3>
-            <p className="text-xs/relaxed font-normal text-center font-apple mx-2">
-              Founded in the heart of Brisbane, dedicated to inspiring and
-              empowering runners with every stride, <Link to="/works/pacemates">{" "}<span className="underline font-semibold">read more</span></Link>
-            </p>
-          </div>
-        </div>
-      </div> */}
     </div >
   );
 };
