@@ -24,20 +24,18 @@ export const markdownRoute = new Hono<{ Bindings: Bindings }>()
         return c.json({ error: error.message }, 500);
       }
 
-      console.log(files, 'files in storage');
-
       // Filter for .md files only
-      // const markdownFiles = files?.filter(file => file.name.endsWith('.md')) || [];
+      const markdownFiles = files?.filter(file => file.name.endsWith('.md')) || [];
 
-      // console.log(files, 'markdownFiles');
+      // console.log(markdownFiles, 'markdownFiles');
 
       c.status(200);
-      return c.json(files);
+      return c.json(markdownFiles);
     } catch (error) {
       return c.json({ error: 'Failed to fetch markdown files' }, 500);
     }
   })
-  .get("/:filename", async (c) => {
+  .get("/content/:filename", async (c) => {
     const supabase = getSupabaseClient(c);
     const filename = c.req.param("filename");
 
@@ -73,7 +71,7 @@ export const markdownRoute = new Hono<{ Bindings: Bindings }>()
       return c.json({ error: 'Failed to fetch file content' }, 500);
     }
   })
-  .post("/", async (c) => {
+  .post("/content", async (c) => {
     const supabase = getSupabaseClient(c);
     
     try {
@@ -109,7 +107,7 @@ export const markdownRoute = new Hono<{ Bindings: Bindings }>()
       return c.json({ error: 'Failed to upload file' }, 500);
     }
   })
-  .delete("/:filename", async (c) => {
+  .delete("/content/:filename", async (c) => {
     const supabase = getSupabaseClient(c);
     const filename = c.req.param("filename");
 
@@ -131,4 +129,14 @@ export const markdownRoute = new Hono<{ Bindings: Bindings }>()
     } catch (error) {
       return c.json({ error: 'Failed to delete file' }, 500);
     }
-  }); 
+  })
+  // get markdown database
+  .get("/database", async (c) => {
+    const supabase = getSupabaseClient(c);
+    const { data, error } = await supabase.from('blog_posts').select('*');
+    if (error) {
+      return c.json({ error: error.message }, 500);
+    }
+    c.status(200);
+    return c.json(data);
+  });

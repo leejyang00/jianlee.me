@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { ASSETS } from "@/shared/Constants";
+import PageHeader from "@/shared/PageHeader";
 
 export const Route = createFileRoute("/works/$slug")({
   component: RouteComponent,
@@ -10,7 +11,7 @@ export const Route = createFileRoute("/works/$slug")({
 
 function RouteComponent() {
   const { slug } = Route.useParams();
-  console.log(slug, "slug");
+
   // Fetch the markdown content for this slug
   const {
     data: markdownData,
@@ -26,22 +27,7 @@ function RouteComponent() {
   return (
     <div className="max-w-5xl m-auto px-8 font-apple">
       {/* Navigation Section */}
-      <div className="flex flex-row items-center justify-start py-6 gap-1 text-sm">
-        <Link
-          to="/"
-          className="text-mint dark:text-pink font-apple font-bold underline underline-offset-2"
-        >
-          Home
-        </Link>
-        <NavigateNextIcon sx={{ fontSize: 20 }} />
-        {/* <h2 className="font-semibold text-lg">Automation Inspiration</h2> */}
-        <Link
-          to="/works"
-          className="text-mint dark:text-pink font-apple font-bold underline underline-offset-2"
-        >
-          Automation Inspiration
-        </Link>
-      </div>
+      <PageHeader title="Automation Inspiration" />
 
       {isLoading && <div>Loading...</div>}
 

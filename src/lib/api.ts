@@ -1,6 +1,7 @@
 import { hc } from "hono/client";
 import { type ApiRoutes } from "@api/index";
 import { queryOptions } from "@tanstack/react-query";
+import { BlogPost } from "./types/markdown";
 
 const BASE_URL = process.env.NODE_ENV === 'development' // NODE_ENV is set by bun
   ? 'http://localhost:8787' // backend api url for development
@@ -58,7 +59,7 @@ export const markdownFilesQueryOptions = queryOptions({
 });
 
 async function getMarkdownContent(filename: string) {
-  const res = await api.markdown[":filename"].$get({
+  const res = await api.markdown.content[":filename"].$get({
     param: { filename }
   });
   if (!res.ok) {
@@ -80,7 +81,7 @@ export async function uploadMarkdownFile(file: File) {
   const formData = new FormData();
   formData.append('file', file);
 
-  const res = await api.markdown.$post({
+  const res = await api.markdown.content.$post({
     form: formData
   });
   
@@ -93,7 +94,7 @@ export async function uploadMarkdownFile(file: File) {
 
 // Delete markdown file
 export async function deleteMarkdownFile(filename: string) {
-  const res = await api.markdown[":filename"].$delete({
+  const res = await api.markdown.content[":filename"].$delete({
     param: { filename }
   });
   
@@ -103,3 +104,18 @@ export async function deleteMarkdownFile(filename: string) {
   
   return res.json();
 }
+
+async function getMarkdownDatabase() {
+  const res = await api.markdown.database.$get();
+  if (!res.ok) {
+    throw new Error("Failed to fetch markdown database");
+  }
+  const data = await res.json();
+  return data;
+}
+
+export const getMarkdownDatabaseQuery = queryOptions({
+  queryKey: ["get-markdown-database"],
+  queryFn: (): Promise<BlogPost[]> => getMarkdownDatabase(),
+  staleTime: 10 * 60 * 1000, // 10 minutes
+});
