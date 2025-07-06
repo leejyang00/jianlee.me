@@ -9,8 +9,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  upload-blog-posts-md:
+    name: Upload Blog Posts Markdown to Supabase Storage
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       - name: Checkout repository
