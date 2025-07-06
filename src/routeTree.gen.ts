@@ -14,13 +14,13 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
-import { Route as WorksIndexImport } from './routes/works/index'
+import { Route as ProjectsIndexImport } from './routes/projects/index'
 import { Route as GearsIndexImport } from './routes/gears/index'
 import { Route as BooksIndexImport } from './routes/books/index'
 import { Route as BlogIndexImport } from './routes/blog/index'
-import { Route as WorksPacematesImport } from './routes/works/pacemates'
-import { Route as WorksGbrgroupcoImport } from './routes/works/gbrgroupco'
-import { Route as WorksSlugImport } from './routes/works/$slug'
+import { Route as ProjectsPacematesImport } from './routes/projects/pacemates'
+import { Route as ProjectsGbrgroupcoImport } from './routes/projects/gbrgroupco'
+import { Route as ProjectsSlugImport } from './routes/projects/$slug'
 import { Route as BlogTestImport } from './routes/blog/test'
 
 // Create Virtual Routes
@@ -41,9 +41,9 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const WorksIndexRoute = WorksIndexImport.update({
-  id: '/works/',
-  path: '/works/',
+const ProjectsIndexRoute = ProjectsIndexImport.update({
+  id: '/projects/',
+  path: '/projects/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -65,21 +65,21 @@ const BlogIndexRoute = BlogIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const WorksPacematesRoute = WorksPacematesImport.update({
-  id: '/works/pacemates',
-  path: '/works/pacemates',
+const ProjectsPacematesRoute = ProjectsPacematesImport.update({
+  id: '/projects/pacemates',
+  path: '/projects/pacemates',
   getParentRoute: () => rootRoute,
 } as any)
 
-const WorksGbrgroupcoRoute = WorksGbrgroupcoImport.update({
-  id: '/works/gbrgroupco',
-  path: '/works/gbrgroupco',
+const ProjectsGbrgroupcoRoute = ProjectsGbrgroupcoImport.update({
+  id: '/projects/gbrgroupco',
+  path: '/projects/gbrgroupco',
   getParentRoute: () => rootRoute,
 } as any)
 
-const WorksSlugRoute = WorksSlugImport.update({
-  id: '/works/$slug',
-  path: '/works/$slug',
+const ProjectsSlugRoute = ProjectsSlugImport.update({
+  id: '/projects/$slug',
+  path: '/projects/$slug',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -114,25 +114,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogTestImport
       parentRoute: typeof rootRoute
     }
-    '/works/$slug': {
-      id: '/works/$slug'
-      path: '/works/$slug'
-      fullPath: '/works/$slug'
-      preLoaderRoute: typeof WorksSlugImport
+    '/projects/$slug': {
+      id: '/projects/$slug'
+      path: '/projects/$slug'
+      fullPath: '/projects/$slug'
+      preLoaderRoute: typeof ProjectsSlugImport
       parentRoute: typeof rootRoute
     }
-    '/works/gbrgroupco': {
-      id: '/works/gbrgroupco'
-      path: '/works/gbrgroupco'
-      fullPath: '/works/gbrgroupco'
-      preLoaderRoute: typeof WorksGbrgroupcoImport
+    '/projects/gbrgroupco': {
+      id: '/projects/gbrgroupco'
+      path: '/projects/gbrgroupco'
+      fullPath: '/projects/gbrgroupco'
+      preLoaderRoute: typeof ProjectsGbrgroupcoImport
       parentRoute: typeof rootRoute
     }
-    '/works/pacemates': {
-      id: '/works/pacemates'
-      path: '/works/pacemates'
-      fullPath: '/works/pacemates'
-      preLoaderRoute: typeof WorksPacematesImport
+    '/projects/pacemates': {
+      id: '/projects/pacemates'
+      path: '/projects/pacemates'
+      fullPath: '/projects/pacemates'
+      preLoaderRoute: typeof ProjectsPacematesImport
       parentRoute: typeof rootRoute
     }
     '/blog/': {
@@ -156,11 +156,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GearsIndexImport
       parentRoute: typeof rootRoute
     }
-    '/works/': {
-      id: '/works/'
-      path: '/works'
-      fullPath: '/works'
-      preLoaderRoute: typeof WorksIndexImport
+    '/projects/': {
+      id: '/projects/'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -172,26 +172,26 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/uses': typeof UsesLazyRoute
   '/blog/test': typeof BlogTestRoute
-  '/works/$slug': typeof WorksSlugRoute
-  '/works/gbrgroupco': typeof WorksGbrgroupcoRoute
-  '/works/pacemates': typeof WorksPacematesRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/projects/gbrgroupco': typeof ProjectsGbrgroupcoRoute
+  '/projects/pacemates': typeof ProjectsPacematesRoute
   '/blog': typeof BlogIndexRoute
   '/books': typeof BooksIndexRoute
   '/gears': typeof GearsIndexRoute
-  '/works': typeof WorksIndexRoute
+  '/projects': typeof ProjectsIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/uses': typeof UsesLazyRoute
   '/blog/test': typeof BlogTestRoute
-  '/works/$slug': typeof WorksSlugRoute
-  '/works/gbrgroupco': typeof WorksGbrgroupcoRoute
-  '/works/pacemates': typeof WorksPacematesRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/projects/gbrgroupco': typeof ProjectsGbrgroupcoRoute
+  '/projects/pacemates': typeof ProjectsPacematesRoute
   '/blog': typeof BlogIndexRoute
   '/books': typeof BooksIndexRoute
   '/gears': typeof GearsIndexRoute
-  '/works': typeof WorksIndexRoute
+  '/projects': typeof ProjectsIndexRoute
 }
 
 export interface FileRoutesById {
@@ -199,13 +199,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/uses': typeof UsesLazyRoute
   '/blog/test': typeof BlogTestRoute
-  '/works/$slug': typeof WorksSlugRoute
-  '/works/gbrgroupco': typeof WorksGbrgroupcoRoute
-  '/works/pacemates': typeof WorksPacematesRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/projects/gbrgroupco': typeof ProjectsGbrgroupcoRoute
+  '/projects/pacemates': typeof ProjectsPacematesRoute
   '/blog/': typeof BlogIndexRoute
   '/books/': typeof BooksIndexRoute
   '/gears/': typeof GearsIndexRoute
-  '/works/': typeof WorksIndexRoute
+  '/projects/': typeof ProjectsIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -214,37 +214,37 @@ export interface FileRouteTypes {
     | '/'
     | '/uses'
     | '/blog/test'
-    | '/works/$slug'
-    | '/works/gbrgroupco'
-    | '/works/pacemates'
+    | '/projects/$slug'
+    | '/projects/gbrgroupco'
+    | '/projects/pacemates'
     | '/blog'
     | '/books'
     | '/gears'
-    | '/works'
+    | '/projects'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/uses'
     | '/blog/test'
-    | '/works/$slug'
-    | '/works/gbrgroupco'
-    | '/works/pacemates'
+    | '/projects/$slug'
+    | '/projects/gbrgroupco'
+    | '/projects/pacemates'
     | '/blog'
     | '/books'
     | '/gears'
-    | '/works'
+    | '/projects'
   id:
     | '__root__'
     | '/'
     | '/uses'
     | '/blog/test'
-    | '/works/$slug'
-    | '/works/gbrgroupco'
-    | '/works/pacemates'
+    | '/projects/$slug'
+    | '/projects/gbrgroupco'
+    | '/projects/pacemates'
     | '/blog/'
     | '/books/'
     | '/gears/'
-    | '/works/'
+    | '/projects/'
   fileRoutesById: FileRoutesById
 }
 
@@ -252,26 +252,26 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   UsesLazyRoute: typeof UsesLazyRoute
   BlogTestRoute: typeof BlogTestRoute
-  WorksSlugRoute: typeof WorksSlugRoute
-  WorksGbrgroupcoRoute: typeof WorksGbrgroupcoRoute
-  WorksPacematesRoute: typeof WorksPacematesRoute
+  ProjectsSlugRoute: typeof ProjectsSlugRoute
+  ProjectsGbrgroupcoRoute: typeof ProjectsGbrgroupcoRoute
+  ProjectsPacematesRoute: typeof ProjectsPacematesRoute
   BlogIndexRoute: typeof BlogIndexRoute
   BooksIndexRoute: typeof BooksIndexRoute
   GearsIndexRoute: typeof GearsIndexRoute
-  WorksIndexRoute: typeof WorksIndexRoute
+  ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   UsesLazyRoute: UsesLazyRoute,
   BlogTestRoute: BlogTestRoute,
-  WorksSlugRoute: WorksSlugRoute,
-  WorksGbrgroupcoRoute: WorksGbrgroupcoRoute,
-  WorksPacematesRoute: WorksPacematesRoute,
+  ProjectsSlugRoute: ProjectsSlugRoute,
+  ProjectsGbrgroupcoRoute: ProjectsGbrgroupcoRoute,
+  ProjectsPacematesRoute: ProjectsPacematesRoute,
   BlogIndexRoute: BlogIndexRoute,
   BooksIndexRoute: BooksIndexRoute,
   GearsIndexRoute: GearsIndexRoute,
-  WorksIndexRoute: WorksIndexRoute,
+  ProjectsIndexRoute: ProjectsIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -287,13 +287,13 @@ export const routeTree = rootRoute
         "/",
         "/uses",
         "/blog/test",
-        "/works/$slug",
-        "/works/gbrgroupco",
-        "/works/pacemates",
+        "/projects/$slug",
+        "/projects/gbrgroupco",
+        "/projects/pacemates",
         "/blog/",
         "/books/",
         "/gears/",
-        "/works/"
+        "/projects/"
       ]
     },
     "/": {
@@ -305,14 +305,14 @@ export const routeTree = rootRoute
     "/blog/test": {
       "filePath": "blog/test.tsx"
     },
-    "/works/$slug": {
-      "filePath": "works/$slug.tsx"
+    "/projects/$slug": {
+      "filePath": "projects/$slug.tsx"
     },
-    "/works/gbrgroupco": {
-      "filePath": "works/gbrgroupco.tsx"
+    "/projects/gbrgroupco": {
+      "filePath": "projects/gbrgroupco.tsx"
     },
-    "/works/pacemates": {
-      "filePath": "works/pacemates.tsx"
+    "/projects/pacemates": {
+      "filePath": "projects/pacemates.tsx"
     },
     "/blog/": {
       "filePath": "blog/index.tsx"
@@ -323,8 +323,8 @@ export const routeTree = rootRoute
     "/gears/": {
       "filePath": "gears/index.tsx"
     },
-    "/works/": {
-      "filePath": "works/index.tsx"
+    "/projects/": {
+      "filePath": "projects/index.tsx"
     }
   }
 }

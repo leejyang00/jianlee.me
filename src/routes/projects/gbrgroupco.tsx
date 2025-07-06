@@ -1,19 +1,19 @@
-import Article from "@/components/Layout/Article";
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect } from "react";
-import ScrollToTop from "@/shared/ScrollToTop";
-import Tag from "@/shared/Tag";
-import LaunchRoundedIcon from "@mui/icons-material/LaunchRounded";
-import { ASSETS } from "@/shared/Constants";
+import Article from '@/components/Layout/Article'
+import { createFileRoute } from '@tanstack/react-router'
+import { useEffect } from 'react'
+import ScrollToTop from '@/shared/ScrollToTop'
+import Tag from '@/shared/Tag'
+import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded'
+import { ASSETS } from '@/shared/Constants'
 
-export const Route = createFileRoute("/works/gbrgroupco")({
+export const Route = createFileRoute('/projects/gbrgroupco')({
   component: ScrollToTop(RouteComponent),
-});
+})
 
 function RouteComponent() {
   useEffect(() => {
-    document.title = "GBR Group Co | Jian";
-  }, []);
+    document.title = 'GBR Group Co | Jian'
+  }, [])
 
   return (
     <div>
@@ -81,5 +81,5 @@ function RouteComponent() {
         </div>
       </Article>
     </div>
-  );
+  )
 }

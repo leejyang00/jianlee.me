@@ -16,7 +16,7 @@ My journey into DevOps started as a traditional software developer. I was comfor
 
 The real turning point came when I joined a startup that was experiencing rapid growth. Our manual deployment process was becoming a bottleneck, and we were spending more time fixing deployment issues than building new features.
 
-### Key Challenges I Faced:
+Key Challenges I Faced:
 
 - **Manual deployments** taking hours instead of minutes
 - **Inconsistent environments** between development and production

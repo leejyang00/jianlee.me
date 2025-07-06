@@ -23,7 +23,7 @@ export default function WorkCard({
 }: WorkCardProps) {
   return (
     <div>
-      <Link to={`/works/${slug}`}>
+      <Link to={`/projects/${slug}`}>
         <div className="rounded-xl flex flex-col h-full hover:scale-105 transition-all duration-300 hover:text-black/60 dark:hover:text-white/60">
           <img
             src={`${ASSETS.IMAGES}/${imageSrc}`}

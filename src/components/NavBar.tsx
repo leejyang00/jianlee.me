@@ -7,7 +7,7 @@ const navLinks: NavLink[] = [
   { to: "/blog", title: "Blog" },
   { to: "/books", title: "Books" },
   { to: "/gears", title: "Gears" },
-  { to: "/works", title: "Works" },
+  { to: "/projects", title: "Projects" },
 ];
 
 type NavLink = {

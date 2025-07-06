@@ -26,7 +26,7 @@ Kinn, the founder, approached me with a clear vision: create a static website th
 **Deployment:** Cloudflare Pages  
 **Performance:** Optimized for global accessibility across ASEAN markets
 
-### Why This Stack?
+#### Why This Stack?
 
 - **Vite + React + TypeScript**: For fast development, type safety, and maintainable code
 - **Tailwind CSS**: Rapid styling with consistent design system
@@ -35,16 +35,16 @@ Kinn, the founder, approached me with a clear vision: create a static website th
 
 ## Key Features & Challenges
 
-### 1. **Responsive Design**
+#### 1. **Responsive Design**
 The website needed to work seamlessly across devices used by business professionals throughout ASEAN - from desktop workstations to mobile devices used during business travel.
 
-### 2. **Performance Optimization**
+#### 2. **Performance Optimization**
 With users potentially accessing the site from various countries across Southeast Asia, performance was crucial. Cloudflare's global CDN ensures fast loading times regardless of location.
 
-### 3. **Professional Branding**
+#### 3. **Professional Branding**
 Creating a design that conveyed trust, stability, and corporate sophistication while maintaining modern aesthetics was essential for establishing credibility in the business community.
 
-### 4. **Content Management**
+#### 4. **Content Management**
 Structuring the content to effectively communicate GBR Group Co's complex business operations, partnerships, and market presence across multiple ASEAN countries.
 
 ## Development Process
@@ -58,13 +58,13 @@ The project followed an iterative approach:
 
 ## Lessons Learned
 
-### Client Communication
+#### Client Communication
 Working with a real client taught me the importance of clear communication, setting expectations, and delivering on promises. Regular updates and milestone check-ins were crucial for project success.
 
-### Technical Decision Making
+#### Technical Decision Making
 Choosing the right technology stack for a corporate website requires balancing performance, maintainability, and business requirements. The combination of modern tools with proven reliability was key.
 
-### Business Understanding
+#### Business Understanding
 Understanding the client's business model, target audience, and market positioning was essential for creating an effective website that serves its intended purpose.
 
 ## Results & Impact

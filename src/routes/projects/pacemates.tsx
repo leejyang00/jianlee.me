@@ -1,19 +1,19 @@
-import Article from "@/components/Layout/Article";
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect } from "react";
-import ScrollToTop from "@/shared/ScrollToTop";
-import { ASSETS } from "@/shared/Constants";
-import Tag from "@/shared/Tag";
-import LaunchRoundedIcon from "@mui/icons-material/LaunchRounded";
+import Article from '@/components/Layout/Article'
+import { createFileRoute } from '@tanstack/react-router'
+import { useEffect } from 'react'
+import ScrollToTop from '@/shared/ScrollToTop'
+import { ASSETS } from '@/shared/Constants'
+import Tag from '@/shared/Tag'
+import LaunchRoundedIcon from '@mui/icons-material/LaunchRounded'
 
-export const Route = createFileRoute("/works/pacemates")({
+export const Route = createFileRoute('/projects/pacemates')({
   component: ScrollToTop(RouteComponent),
-});
+})
 
 function RouteComponent() {
   useEffect(() => {
-    document.title = "Pacemates Run Club | Jian";
-  }, []);
+    document.title = 'Pacemates Run Club | Jian'
+  }, [])
 
   return (
     <div>
@@ -75,11 +75,11 @@ function RouteComponent() {
           <div className="font-bold text-lg mb-2 uppercase">why</div>
           <div className="indent-4">
             Why a run club? Because I’ve been running alone and I want to build
-            a community. You know that saying,{" "}
+            a community. You know that saying,{' '}
             <span className="font-bold italic">
               “If you wanna go fast, go alone. If you wanna go far, go
               TOGETHER.”
-            </span>{" "}
+            </span>{' '}
             Plus, it’s hard these days finding the kind of people that fits into
             your social group. I wanted to meet new people in the community area
             that has similar interest. So instead of searching for them, I’ll
@@ -162,7 +162,7 @@ function RouteComponent() {
           </div>
           <br />
           <div id="closing" className="font-bold text-lg mb-2 uppercase">
-            closing{" "}
+            closing{' '}
             {/* <span className="opacity-0 group-hover:opacity-100 transition-opacity text-pink text-sm">
               #
             </span> */}
@@ -183,5 +183,5 @@ function RouteComponent() {
         </div>
       </Article>
     </div>
-  );
+  )
 }
