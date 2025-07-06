@@ -9,6 +9,7 @@
     "@types/node": "^22.13.10",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.40.0",
+    "gray-matter": "^4.0.3",
     "hono": "^4.7.4",
     "postgres": "^3.4.5"
   },
