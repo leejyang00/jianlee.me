@@ -63,8 +63,6 @@ export const markdownRoute = new Hono<{ Bindings: Bindings }>()
 
        // Parse frontmatter using gray-matter
        const { data: frontmatter, content } = matter(rawContent);
-       console.log(frontmatter, "frontmatter");
-       console.log(content, "content");
 
       c.status(200);
       return c.json({
@@ -93,12 +91,15 @@ export const markdownRoute = new Hono<{ Bindings: Bindings }>()
         return c.json({ error: "Only .md files are allowed" }, 400);
       }
 
+      console.log(file, "file");
+
       // Upload the file to Supabase storage
       const { data, error } = await supabase.storage
         .from('blog-posts')
         .upload(file.name, file, {
           cacheControl: '3600',
-          upsert: false
+          upsert: false,
+          contentType: 'text/markdown'
         });
 
       if (error) {

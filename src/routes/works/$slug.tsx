@@ -22,12 +22,10 @@ function RouteComponent() {
 
   if (error) return <div>Error: {error.message}</div>;
 
-  console.log(markdownData, "markdownData");
-
   // const { frontmatter, content } = markdownData;
 
-  // console.log(markdownData, "markdownData");
-  // console.log(markdownData?.content, "markdownData?.content");
+  console.log(markdownData?.content, "markdownData?.content");
+  console.log(markdownData?.frontmatter, "markdownData?.frontmatter");
 
   return (
     <div className="max-w-5xl m-auto px-8 font-apple">

@@ -166,13 +166,13 @@ jobs:
           echo "No markdown files changed in src/lib/posts"
           echo "Skipping upload process"
 
-      - name: Verify upload
-        if: steps.changed-files.outputs.changed_files != ''
-        env:
-          SUPABASE_URL: ${{ steps.ssm-params.outputs.supabase_url }}
-          SUPABASE_KEY: ${{ steps.ssm-params.outputs.supabase_key }}
-        run: |
-          echo "Verifying uploaded files..."
-          curl -X GET \
-            -H "apikey: $SUPABASE_KEY" \
-            "$SUPABASE_URL/storage/v1/object/list/blog-posts" | jq '.'
+      # - name: Verify upload
+      #   if: steps.changed-files.outputs.changed_files != ''
+      #   env:
+      #     SUPABASE_URL: ${{ steps.ssm-params.outputs.supabase_url }}
+      #     SUPABASE_KEY: ${{ steps.ssm-params.outputs.supabase_key }}
+      #   run: |
+      #     echo "Verifying uploaded files..."
+      #     curl -X GET \
+      #       -H "apikey: $SUPABASE_KEY" \
+      #       "$SUPABASE_URL/storage/v1/object/list/blog-posts" | jq '.'
