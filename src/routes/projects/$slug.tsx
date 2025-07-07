@@ -43,8 +43,8 @@ function RouteComponent() {
           </div>
           <div className="my-6 sm:my-8 lg:my-10">
             <img
-              src={`${ASSETS.IMAGES}/gbrgroup.png`}
-              alt="GBR Group Co"
+              src={`${ASSETS.IMAGES}/${markdownData.frontmatter.image}`}
+              alt={markdownData.frontmatter.title}
               className="rounded-sm w-full h-auto max-w-full object-cover"
             />
           </div>
