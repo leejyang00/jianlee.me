@@ -22,6 +22,8 @@ function RouteComponent() {
 
   if (error) return <div>Error: {error.message}</div>
 
+  console.log(markdownData?.frontmatter.image)
+
   return (
     <div className="max-w-5xl m-auto px-8 font-apple">
       {/* Navigation Section */}
@@ -29,7 +31,7 @@ function RouteComponent() {
 
       {isLoading && <div>Loading...</div>}
 
-      {markdownData && (
+      {markdownData?.frontmatter && markdownData?.content && (
         <div className="max-w-2xl m-auto pb-8">
           <div className="space-y-3 sm:space-y-4 lg:space-y-6 text-center py-4">
             {/* <div className="text-xs sm:text-sm lg:text-base text-gray-600 dark:text-gray-400">3 min read</div> */}

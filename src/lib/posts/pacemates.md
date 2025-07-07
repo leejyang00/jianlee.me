@@ -3,7 +3,7 @@ title: "Pacemates Run Club: The Untold Story"
 date: "2024-07-19"
 description: "The real journey behind building a weekly running community, from initial excitement to the challenges of sustaining engagement and the lessons learned when dreams meet reality."
 tags: ["running", "community", "entrepreneurship", "fitness"]
-image: "/pacemates.jpg"
+image: "pacemates.jpg"
 slug: "pacemates"
 read_time: "5"
 ---
