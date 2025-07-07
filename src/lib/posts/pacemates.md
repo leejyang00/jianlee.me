@@ -8,8 +8,6 @@ slug: "pacemates"
 read_time: "5"
 ---
 
-# Pacemates Run Club
-
 From an ideation to reality. This was one of my favourite projects that I've done, so much so that it was out of my comfort zone.
 
 **Instagram:** [@pacematesrunclub](https://www.instagram.com/pacematesrunclub/)  
