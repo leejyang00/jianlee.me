@@ -1,33 +1,37 @@
-import { markdownContentQueryOptions } from '@/lib/api'
-import { useQuery } from '@tanstack/react-query'
-import { createFileRoute } from '@tanstack/react-router'
-import { ASSETS } from '@/shared/Constants'
-import PageHeader from '@/shared/PageHeader'
-import MarkdownRenderer from '@/components/Blog/MarkdownRenderer'
-import { formatDate } from '@/lib/formatDate'
+import { markdownContentQueryOptions } from "@/lib/api";
+import { useQuery } from "@tanstack/react-query";
+import { createFileRoute } from "@tanstack/react-router";
+import { ASSETS } from "@/shared/Constants";
+import PageHeader from "@/shared/PageHeader";
+import MarkdownRenderer from "@/components/Blog/MarkdownRenderer";
+import { formatDate } from "@/lib/formatDate";
 
-export const Route = createFileRoute('/projects/$slug')({
+export const Route = createFileRoute("/projects/$slug")({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
-  const { slug } = Route.useParams()
+  const { slug } = Route.useParams();
 
   // Fetch the markdown content for this slug
   const {
     data: markdownData,
     isLoading,
     error,
-  } = useQuery(markdownContentQueryOptions(`${slug}.md`))
+  } = useQuery(markdownContentQueryOptions(`${slug}.md`));
 
-  if (error) return <div>Error: {error.message}</div>
+  if (error) return <div>Error: {error.message}</div>;
 
-  console.log(markdownData?.frontmatter.image)
+  console.log(markdownData?.frontmatter.image);
 
   return (
     <div className="max-w-5xl m-auto px-8 font-apple">
       {/* Navigation Section */}
-      <PageHeader title="My Projects" subpath="/projects" slug={markdownData?.frontmatter.title} />
+      <PageHeader
+        title="My Projects"
+        subpath="/projects"
+        slug={markdownData?.frontmatter.title}
+      />
 
       {isLoading && <div>Loading...</div>}
 
@@ -39,7 +43,7 @@ function RouteComponent() {
               {markdownData.frontmatter.title}
             </h1>
             <div className="text-xs sm:text-sm lg:text-base text-gray-600 dark:text-gray-400">
-              {formatDate(markdownData.frontmatter.date)} &nbsp;•&nbsp;{' '}
+              {formatDate(markdownData.frontmatter.date)} &nbsp;•&nbsp;{" "}
               {markdownData.frontmatter.read_time} mins read
             </div>
           </div>
@@ -47,7 +51,7 @@ function RouteComponent() {
             <img
               src={`${ASSETS.IMAGES}/${markdownData.frontmatter.image}`}
               alt={markdownData.frontmatter.title}
-              className="rounded-sm w-full h-auto max-w-full object-cover"
+              className="rounded-sm w-full aspect-video object-cover"
             />
           </div>
           {/* content */}
@@ -58,5 +62,5 @@ function RouteComponent() {
         </div>
       )}
     </div>
-  )
+  );
 }

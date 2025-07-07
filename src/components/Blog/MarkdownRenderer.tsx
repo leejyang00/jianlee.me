@@ -2,11 +2,10 @@ import { ASSETS } from "@/shared/Constants";
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import CheckIcon from '@mui/icons-material/CheckBoxRounded';
-import ContentCopyIcon from '@mui/icons-material/ContentCopyRounded';
-
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import CheckIcon from "@mui/icons-material/CheckBoxRounded";
+import ContentCopyIcon from "@mui/icons-material/ContentCopyRounded";
 
 interface MarkdownRendererProps {
   content: string;
@@ -15,14 +14,13 @@ interface MarkdownRendererProps {
 const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
-
   const copyToClipboard = async (text: string, language: string) => {
     try {
       await navigator.clipboard.writeText(text);
       setCopiedCode(language);
       setTimeout(() => setCopiedCode(null), 2000);
     } catch (err) {
-      console.error('Failed to copy text: ', err);
+      console.error("Failed to copy text: ", err);
     }
   };
 
@@ -82,58 +80,58 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
             {children}
           </blockquote>
         ),
-          // Enhanced code blocks with copy functionality
-          code: ({ children, className }) => {
-            const match = /language-(\w+)/.exec(className || '');
-            const language = match ? match[1] : '';
-            
-            if (language) {
-              const codeString = String(children).replace(/\n$/, '');
-              const isCopied = copiedCode === language;
-              
-              return (
-                <div className="relative group">
-                  <div className="absolute top-4 right-4 z-10">
-                    <button
-                      onClick={() => copyToClipboard(codeString, language)}
-                      className="p-2 rounded-md bg-gray-800/80 hover:bg-gray-700/80 transition-colors duration-200 text-white"
-                      title="Copy code"
-                    >
-                      {isCopied ? (
-                        <CheckIcon className="w-4 h-4 text-green-300" />
-                      ) : (
-                        <ContentCopyIcon className="w-4 h-4" />
-                      )}
-                    </button>
-                  </div>
-                  <SyntaxHighlighter
-                    style={oneDark}
-                    language={language}
-                    PreTag="div"
-                    className="rounded-xl !mt-0"
-                    customStyle={{
-                      margin: 0,
-                      borderRadius: '0.75rem',
-                      fontSize: '0.875rem',
-                    }}
-                    showLineNumbers={true}
-                    lineNumberStyle={{
-                      color: '#6b7280',
-                      fontSize: '0.75rem',
-                    }}
-                  >
-                    {codeString}
-                  </SyntaxHighlighter>
-                </div>
-              );
-            }
-            
+        // Enhanced code blocks with copy functionality
+        code: ({ children, className }) => {
+          const match = /language-(\w+)/.exec(className || "");
+          const language = match ? match[1] : "";
+
+          if (language) {
+            const codeString = String(children).replace(/\n$/, "");
+            const isCopied = copiedCode === language;
+
             return (
-              <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md text-sm font-mono text-pink border border-gray-200 dark:border-gray-700">
-                {children}
-              </code>
+              <div className="relative group">
+                <div className="absolute top-4 right-4 z-10">
+                  <button
+                    onClick={() => copyToClipboard(codeString, language)}
+                    className="p-2 rounded-md bg-gray-800/80 hover:bg-gray-700/80 transition-colors duration-200 text-white"
+                    title="Copy code"
+                  >
+                    {isCopied ? (
+                      <CheckIcon className="w-4 h-4 text-green-300" />
+                    ) : (
+                      <ContentCopyIcon className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
+                <SyntaxHighlighter
+                  style={oneDark}
+                  language={language}
+                  PreTag="div"
+                  className="rounded-xl !mt-0"
+                  customStyle={{
+                    margin: 0,
+                    borderRadius: "0.75rem",
+                    fontSize: "0.875rem",
+                  }}
+                  showLineNumbers={true}
+                  lineNumberStyle={{
+                    color: "#6b7280",
+                    fontSize: "0.75rem",
+                  }}
+                >
+                  {codeString}
+                </SyntaxHighlighter>
+              </div>
             );
-          },
+          }
+
+          return (
+            <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-md text-sm font-mono text-pink border border-gray-200 dark:border-gray-700">
+              {children}
+            </code>
+          );
+        },
         pre: ({ children }) => (
           <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto my-4">
             {children}
@@ -144,7 +142,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
           let imageSrc = src;
 
           return (
-            <div className="my-6 flex justify-center">
+            <span className="my-6 flex justify-center">
               <img
                 src={ASSETS.IMAGES + imageSrc}
                 alt={alt || "Blog image"}
@@ -158,7 +156,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                 }}
                 {...props}
               />
-            </div>
+            </span>
           );
         },
       }}
