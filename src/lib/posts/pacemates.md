@@ -1,9 +1,9 @@
 ---
-title: "Pacemates Run Club"
+title: "Pacemates Run Club: The Untold Story"
 date: "2023-10-01"
-description: "From ideation to reality - my journey of creating and running a local running community in Brisbane."
+description: "The real journey behind building a weekly running community, from initial excitement to the challenges of sustaining engagement and the lessons learned when dreams meet reality."
 tags: ["running", "community", "entrepreneurship", "fitness"]
-image: "/images/pacemates.jpg"
+image: "/pacemates.jpg"
 slug: "pacemates-runclub"
 read_time: "5"
 ---
@@ -39,7 +39,7 @@ All these questions, I had to answer...
 
 so, every Tuesdays @ 7pm, Southbank Brisbane. 5km easy pace run. "easy"…
 
-![Pacemates Run Club](/images/pacemates/last-dance.jpg)
+![Pacemates Run Club](/pacemates/last-dance.jpg)
 
 We started off from 3 to 5 runners per week, and once word got out, we were peaking around 15 runners in a week. I know, 172 IG followers, 3000+ views on reels, 30+ members in our Strava club, I thought we would have at least 20+ runners per week am I right? Unfortunately that reality didn't came. But I'm always grateful for the ones that made time coming out on a weekday night running with a guy that's chasing his dreams. I brought in a few friends to help out with the club.
 
