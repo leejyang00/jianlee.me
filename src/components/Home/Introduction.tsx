@@ -15,7 +15,7 @@ const Introduction = () => {
         Terraform, and GitHub Actions. Beyond tech, he’s a three-time marathoner
         (Sydney, Brisbane, Sunshine Coast) and founder of{" "}
         <Link
-          to="/works/pacemates"
+          to="/projects/pacemates-runclub"
           className="text-pink hover:underline font-semibold"
         >
           Pacemates Run Club
@@ -35,7 +35,7 @@ const Introduction = () => {
         <br />
         ⬇️ Grab my latest resume{" "}
         <a
-          href={`${ASSETS.DOCUMENTS}/resume.pdf`}
+          href={`${ASSETS.DOCUMENTS}/JianLee-Resume-Nov2025.pdf`}
           download="JianYangLee-Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
