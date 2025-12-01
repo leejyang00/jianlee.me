@@ -15,7 +15,8 @@ const Introduction = () => {
         Terraform, and GitHub Actions. Beyond tech, he’s a three-time marathoner
         (Sydney, Brisbane, Sunshine Coast) and founder of{" "}
         <Link
-          to="/projects/pacemates-runclub"
+          to="/projects/$slug" 
+          params={{ slug: "pacemates" }}
           className="text-pink hover:underline font-semibold"
         >
           Pacemates Run Club
