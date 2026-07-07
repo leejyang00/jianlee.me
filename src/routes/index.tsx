@@ -4,7 +4,6 @@ import Introduction from "@/components/Home/Introduction";
 import Bio from "@/components/Home/Bio";
 import Socials from "@/components/Home/Socials";
 import ScrollToTop from "@/shared/ScrollToTop";
-import Highlight from "@/components/Home/Highlight";
 import { ASSETS } from "@/shared/Constants";
 
 export const Route = createFileRoute("/")({

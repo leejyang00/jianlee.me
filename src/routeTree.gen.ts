@@ -8,11 +8,10 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from '@tanstack/react-router'
-
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as UsesImport } from './routes/uses'
 import { Route as IndexImport } from './routes/index'
 import { Route as ResumeIndexImport } from './routes/resume/index'
 import { Route as ProjectsIndexImport } from './routes/projects/index'
@@ -22,17 +21,13 @@ import { Route as ProjectsPacematesRunclubImport } from './routes/projects/pacem
 import { Route as ProjectsGbrgroupcoImport } from './routes/projects/gbrgroupco'
 import { Route as ProjectsSlugImport } from './routes/projects/$slug'
 
-// Create Virtual Routes
-
-const UsesLazyImport = createFileRoute('/uses')()
-
 // Create/Update Routes
 
-const UsesLazyRoute = UsesLazyImport.update({
+const UsesRoute = UsesImport.update({
   id: '/uses',
   path: '/uses',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/uses.lazy').then((d) => d.Route))
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -97,7 +92,7 @@ declare module '@tanstack/react-router' {
       id: '/uses'
       path: '/uses'
       fullPath: '/uses'
-      preLoaderRoute: typeof UsesLazyImport
+      preLoaderRoute: typeof UsesImport
       parentRoute: typeof rootRoute
     }
     '/projects/$slug': {
@@ -156,7 +151,7 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/uses': typeof UsesLazyRoute
+  '/uses': typeof UsesRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/gbrgroupco': typeof ProjectsGbrgroupcoRoute
   '/projects/pacemates-runclub': typeof ProjectsPacematesRunclubRoute
@@ -168,7 +163,7 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/uses': typeof UsesLazyRoute
+  '/uses': typeof UsesRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/gbrgroupco': typeof ProjectsGbrgroupcoRoute
   '/projects/pacemates-runclub': typeof ProjectsPacematesRunclubRoute
@@ -181,7 +176,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/uses': typeof UsesLazyRoute
+  '/uses': typeof UsesRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/gbrgroupco': typeof ProjectsGbrgroupcoRoute
   '/projects/pacemates-runclub': typeof ProjectsPacematesRunclubRoute
@@ -230,7 +225,7 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  UsesLazyRoute: typeof UsesLazyRoute
+  UsesRoute: typeof UsesRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   ProjectsGbrgroupcoRoute: typeof ProjectsGbrgroupcoRoute
   ProjectsPacematesRunclubRoute: typeof ProjectsPacematesRunclubRoute
@@ -242,7 +237,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  UsesLazyRoute: UsesLazyRoute,
+  UsesRoute: UsesRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   ProjectsGbrgroupcoRoute: ProjectsGbrgroupcoRoute,
   ProjectsPacematesRunclubRoute: ProjectsPacematesRunclubRoute,
@@ -277,7 +272,7 @@ export const routeTree = rootRoute
       "filePath": "index.tsx"
     },
     "/uses": {
-      "filePath": "uses.lazy.tsx"
+      "filePath": "uses.tsx"
     },
     "/projects/$slug": {
       "filePath": "projects/$slug.tsx"
