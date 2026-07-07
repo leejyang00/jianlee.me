@@ -35,19 +35,6 @@ const Introduction = () => {
           @jian.shorts
         </a>{" "}
         on Instagram/TikTok.
-        <br />
-        <br />
-        ⬇️ Grab my latest resume{" "}
-        <a
-          href="/documents/JianYangLee-Resume-June2026.pdf"
-          download="JianYangLee-Resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-pink hover:underline font-semibold"
-        >
-          here
-        </a>
-        .
       </div>
       <div className="flex justify-center gap-4 mt-4">
         <ButtonArrow to="/resume" text="View My Resume" />

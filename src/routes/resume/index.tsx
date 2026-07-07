@@ -5,12 +5,11 @@ import PageHeader from "@/shared/PageHeader";
 import Tag from "@/shared/Tag";
 import FileDownloadRoundedIcon from "@mui/icons-material/FileDownloadRounded";
 import LaunchRoundedIcon from "@mui/icons-material/LaunchRounded";
+import { ASSETS } from "@/shared/constants";
 
 export const Route = createFileRoute("/resume/")({
   component: ScrollToTop(RouteComponent),
 });
-
-const RESUME_PDF = "/documents/JianYangLee-Resume-June2026.pdf";
 
 type Experience = {
   role: string;
@@ -215,8 +214,8 @@ function RouteComponent() {
           </p>
         </div>
         <a
-          href={RESUME_PDF}
-          download="JianYangLee-Resume.pdf"
+          href={`${ASSETS.DOCUMENTS}/JianLee-Resume-June2026-v4.pdf`}
+          download="JianYangLee-Resume-June2026-v4.pdf"
           target="_blank"
           rel="noopener noreferrer"
         >
