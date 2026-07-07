@@ -14,6 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as ResumeIndexImport } from './routes/resume/index'
 import { Route as ProjectsIndexImport } from './routes/projects/index'
 import { Route as GearsIndexImport } from './routes/gears/index'
 import { Route as BooksIndexImport } from './routes/books/index'
@@ -36,6 +37,12 @@ const UsesLazyRoute = UsesLazyImport.update({
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ResumeIndexRoute = ResumeIndexImport.update({
+  id: '/resume/',
+  path: '/resume/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -135,6 +142,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsIndexImport
       parentRoute: typeof rootRoute
     }
+    '/resume/': {
+      id: '/resume/'
+      path: '/resume'
+      fullPath: '/resume'
+      preLoaderRoute: typeof ResumeIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -149,6 +163,7 @@ export interface FileRoutesByFullPath {
   '/books': typeof BooksIndexRoute
   '/gears': typeof GearsIndexRoute
   '/projects': typeof ProjectsIndexRoute
+  '/resume': typeof ResumeIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -160,6 +175,7 @@ export interface FileRoutesByTo {
   '/books': typeof BooksIndexRoute
   '/gears': typeof GearsIndexRoute
   '/projects': typeof ProjectsIndexRoute
+  '/resume': typeof ResumeIndexRoute
 }
 
 export interface FileRoutesById {
@@ -172,6 +188,7 @@ export interface FileRoutesById {
   '/books/': typeof BooksIndexRoute
   '/gears/': typeof GearsIndexRoute
   '/projects/': typeof ProjectsIndexRoute
+  '/resume/': typeof ResumeIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -185,6 +202,7 @@ export interface FileRouteTypes {
     | '/books'
     | '/gears'
     | '/projects'
+    | '/resume'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -195,6 +213,7 @@ export interface FileRouteTypes {
     | '/books'
     | '/gears'
     | '/projects'
+    | '/resume'
   id:
     | '__root__'
     | '/'
@@ -205,6 +224,7 @@ export interface FileRouteTypes {
     | '/books/'
     | '/gears/'
     | '/projects/'
+    | '/resume/'
   fileRoutesById: FileRoutesById
 }
 
@@ -217,6 +237,7 @@ export interface RootRouteChildren {
   BooksIndexRoute: typeof BooksIndexRoute
   GearsIndexRoute: typeof GearsIndexRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
+  ResumeIndexRoute: typeof ResumeIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -228,6 +249,7 @@ const rootRouteChildren: RootRouteChildren = {
   BooksIndexRoute: BooksIndexRoute,
   GearsIndexRoute: GearsIndexRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
+  ResumeIndexRoute: ResumeIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -247,7 +269,8 @@ export const routeTree = rootRoute
         "/projects/pacemates-runclub",
         "/books/",
         "/gears/",
-        "/projects/"
+        "/projects/",
+        "/resume/"
       ]
     },
     "/": {
@@ -273,6 +296,9 @@ export const routeTree = rootRoute
     },
     "/projects/": {
       "filePath": "projects/index.tsx"
+    },
+    "/resume/": {
+      "filePath": "resume/index.tsx"
     }
   }
 }

@@ -13,14 +13,15 @@ export const Route = createFileRoute("/")({
 
 function RouteComponent() {
   useEffect(() => {
-    document.title = "Jian Yang Lee | Home Page";
+    document.title = "Jian Yang Lee | DevOps Engineer";
   }, []);
 
   return (
     <div className="max-w-xl m-auto px-8">
       {/* Hello Section */}
       <div className="text-center text-sm bg-[#f5f0e8] dark:bg-[#313134] rounded-lg p-2 my-6 font-apple font-normal">
-        Hello, I'm a DevOps Engineer based in Australia!
+        Hello, I'm an AWS-certified DevOps Engineer based in Australia — open
+        to opportunities in Singapore! 🇸🇬
       </div>
 
       <div className="flex flex-col sm:flex-row justify-center items-center sm:justify-between sm:items-start">

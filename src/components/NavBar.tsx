@@ -5,6 +5,7 @@ import { ASSETS } from "@/shared/Constants";
 
 const navLinks: NavLink[] = [
   // { to: "/blog", title: "Blog" },
+  { to: "/resume", title: "Resume" },
   { to: "/projects", title: "Projects" },
   { to: "/books", title: "Books" },
   { to: "/gears", title: "Gears" },
