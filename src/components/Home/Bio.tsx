@@ -7,8 +7,18 @@ const Bio = () => {
       </h2>
       <div className="flex flex-col gap-2 text-sm font-normal text-justify">
         <div className="flex flex-row gap-4">
+          <span className="font-bold">2026</span>{" "}
+          <div className="font-apple">
+            Seeking new opportunities in Singapore 🇸🇬 — writing the next
+            chapter
+          </div>
+        </div>
+        <div className="flex flex-row gap-4">
           <span className="font-bold">2025</span>{" "}
-          <div className="font-apple">(? still writing my own story)</div>
+          <div className="font-apple">
+            Became an EAIT Industry Mentor at the University of Queensland,
+            mentoring junior engineers into DevOps careers
+          </div>
         </div>
         <div className="flex flex-row gap-4">
           <span className="font-bold">2024</span>{" "}
@@ -22,6 +32,22 @@ const Bio = () => {
             >
               Flight Centre Travel Group
             </a>{" "}
+            and earned my AWS Solutions Architect – Associate certification
+          </div>
+        </div>
+        <div className="flex flex-row gap-4">
+          <span className="font-bold">2023</span>{" "}
+          <div className="font-apple">
+            Founded{" "}
+            <a
+              href="https://www.instagram.com/pacematesrunclub/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink hover:underline font-semibold"
+            >
+              Pacemates Run Club
+            </a>
+            , a Brisbane running community of 50+ members
           </div>
         </div>
         <div className="flex flex-row gap-4">
