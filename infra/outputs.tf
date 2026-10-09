@@ -18,6 +18,11 @@ output "deploy_role_arn" {
   value       = aws_iam_role.deploy.arn
 }
 
+output "plan_role_arn" {
+  description = "Set as the AWS_PLAN_ROLE_ARN repo variable for infra-plan.yaml."
+  value       = aws_iam_role.plan.arn
+}
+
 output "acm_validation_records" {
   description = "Add these as DNS-only CNAMEs in Cloudflare so ACM can issue the certificate."
   value = {

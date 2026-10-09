@@ -14,6 +14,7 @@ OIDC role for deploys. Account `319829039858`, region `ap-southeast-2`
 | `cloudfront.tf` | Distribution, OAC, cache policies (`/_astro/*` 1 year, HTML 5 min), 403/404 → `/404.html` |
 | `functions/viewer-request.js` | `/path` and `/path/` → `/path/index.html`; `www` → 301 to apex |
 | `iam.tf` | `github-deploy-jianlee-me`: `v2`/`main` only; S3 list/put/delete on the site bucket + invalidation |
+| `iam-plan.tf` | `github-plan-jianlee-me`: PRs only; read-only access so `infra-plan.yaml` can run `plan` |
 | `variables.tf` | `live` is the cutover switch |
 
 All commands below use `AWS_PROFILE=jianlee-me` (run `aws sso login --profile jianlee-me` first).
@@ -40,8 +41,15 @@ terraform output acm_validation_records
    terraform apply
    ```
 5. In Cloudflare DNS add `v2` → CNAME → `terraform output -raw distribution_domain`, **DNS only**.
-6. Copy `site_bucket`, `distribution_id` and `deploy_role_arn` into GitHub repo variables
-   for the Phase 4 deploy workflow.
+6. Set the GitHub repo variables the workflows read. Until they exist, `deploy-v2.yaml`
+   skips and `infra-plan.yaml` only runs fmt/validate:
+   ```sh
+   gh variable set AWS_REGION --body ap-southeast-2
+   gh variable set SITE_BUCKET --body "$(terraform output -raw site_bucket)"
+   gh variable set CLOUDFRONT_DISTRIBUTION_ID --body "$(terraform output -raw distribution_id)"
+   gh variable set AWS_DEPLOY_ROLE_ARN --body "$(terraform output -raw deploy_role_arn)"
+   gh variable set AWS_PLAN_ROLE_ARN --body "$(terraform output -raw plan_role_arn)"
+   ```
 
 Leave the validation CNAMEs in place forever; ACM needs them to auto-renew.
 
