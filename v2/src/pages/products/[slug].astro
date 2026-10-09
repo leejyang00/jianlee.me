@@ -56,13 +56,15 @@ const { Content } = await render(product);
     <div class="mt-6 flex flex-wrap gap-3">
       <a
         href={url}
+        target="_blank"
+        rel="noopener"
         class="inline-flex items-center gap-2 rounded-lg bg-fg px-3.5 py-2 text-sm font-medium text-bg hover:opacity-90"
       >
         Visit {new URL(url).hostname} <Icon name="arrow" class="size-4" />
       </a>
       {
         socials?.map((social) => (
-          <a href={social.url} rel="noopener" class="inline-flex items-center rounded-lg border border-border px-3.5 py-2 text-sm hover:border-accent-soft">
+          <a href={social.url} target="_blank" rel="noopener" class="inline-flex items-center rounded-lg border border-border px-3.5 py-2 text-sm hover:border-accent-soft">
             {social.label}
           </a>
         ))
