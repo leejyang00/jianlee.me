@@ -1,28 +1,15 @@
-# Portfolio Website - jianlee.me
+# jianlee.me
 
-My personal portfolio website built with React and Vite, showcasing my projects and skills.
+Personal site. An Astro static site in `site/`, hosted on S3 + CloudFront (`infra/`), deployed by GitHub Actions on merge.
 
-## 🚀 Live Demo
-Visit the live site: [jianlee.me](https://jianlee.me)
+- Site and content: `site/` (content lives in `site/src/content/`)
+- Infrastructure: `infra/` (Terraform, see `infra/README.md`)
+- Tooling: `scripts/` (run with Bun from the repo root)
+- How to manage the site: `CLAUDE.md`
 
-## 🛠️ Built With
-- [React](https://reactjs.org/) - UI Library
-- [Vite](https://vitejs.dev/) - Build Tool
-- [Bun](https://bun.sh/) - JavaScript Runtime & Package Manager
-- [Cloudflare Pages](https://pages.cloudflare.com/) - Hosting & Deployment
+```sh
+cd site && bun install && bun run dev    # local dev
+cd site && bun run check                 # astro check + build; run before every commit
+```
 
-## 🏗️ Getting Started
-
-### Prerequisites
-- [Bun](https://bun.sh/) installed on your machine
-
-
-## 🔄 Development Workflow
-- `bun run dev` - Start development server
-- `bun run build` - Build for production
-- `bun run preview` - Preview production build locally
-
-## 📧 Contact
-Jian Yang Lee - [jianyang.lee75@gmail.com](mailto:jianyang.lee75@gmail.com)
-
-Project Link: [https://github.com/leejyang00/jianlee.me](https://github.com/leejyang00/jianlee.me)
+The v1 React site lives on the `v1` branch (tags `v1.0`, `v1.1`) and is served at `v1.jianlee.me`.
