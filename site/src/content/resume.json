@@ -1,13 +1,20 @@
 {
-  "headline": "DevOps Engineer",
-  "location": "Brisbane, Australia",
-  "profile": "AWS-certified engineer with experience across full-stack development and cloud infrastructure, currently specialising in production-grade Kubernetes orchestration (10+ clusters across 20+ AWS accounts), Infrastructure as Code (Terraform), and high-availability cloud networking. Enhances Developer Experience (DevEx) through automated CI/CD pipelines, proactive observability (New Relic, Google SecOps), and AI-augmented development workflows using Claude Code.",
+  "headline": "DevOps Engineer II",
+  "location": "Singapore",
+  "profile": "AWS-certified DevOps engineer on Vistra's Digital team in Singapore, with a background in full-stack development. Previously ran production-grade Kubernetes at Flight Centre (10+ EKS clusters across 20+ AWS accounts). Works across Infrastructure as Code (Terraform), high-availability cloud networking, CI/CD and observability, and builds AI-augmented development workflows with Claude Code. Outside work, builds and ships products: Burno and Aemantic.",
   "experience": [
+    {
+      "role": "DevOps Engineer II, Digital Team",
+      "company": "Vistra",
+      "location": "Singapore",
+      "period": "Aug 2026 — Present",
+      "bullets": []
+    },
     {
       "role": "DevOps Engineer, Platform Team",
       "company": "Flight Centre Travel Group",
       "location": "Brisbane, Australia",
-      "period": "May 2024 — Present",
+      "period": "May 2024 — July 2026",
       "bullets": [
         "Architected and maintained a high-availability AWS ecosystem (EKS, ECS, ALB, SG, S3, IAM, R53) across the Leisure pillar's core services",
         "Orchestrated 10+ EKS clusters (30+ nodes) across multi-region environments, consistently maintaining 99.9% uptime",
@@ -79,6 +86,15 @@
     }
   ],
   "projects": [
+    {
+      "title": "Burno — 52-card workout app",
+      "org": "Personal Project",
+      "bullets": [
+        "Built and launched burno.app: shuffle a virtual deck, flip a card, do the reps. A no-equipment, full-body workout, solo or with friends",
+        "Live with real users, with an in-app feedback form and Ko-fi donations"
+      ],
+      "stack": "Vite + React, TypeScript, TailwindCSS, GitHub Pages, Google Apps Script"
+    },
     {
       "title": "AI Financial Analysis Bot — Aemantic",
       "org": "Personal Project",
