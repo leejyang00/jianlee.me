@@ -1,0 +1,24 @@
+---
+import { getSite } from "../lib/content";
+import Icon from "./Icon.astro";
+
+const { socials } = await getSite();
+---
+
+<ul class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+  {
+    socials.map((social) => (
+      <li>
+        <a
+          href={social.url}
+          rel="me noopener"
+          class="flex items-center gap-3 rounded-xl border border-border px-3 py-2.5 text-sm transition-colors hover:border-accent-soft hover:text-accent"
+        >
+          <Icon name={social.platform} class="size-4 shrink-0" />
+          <span class="font-medium">{social.label}</span>
+          <span class="ml-auto truncate text-muted">{social.handle}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

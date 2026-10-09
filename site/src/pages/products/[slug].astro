@@ -1,0 +1,70 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import Icon from "../../components/Icon.astro";
+import StatusPill from "../../components/StatusPill.astro";
+import Base from "../../layouts/Base.astro";
+import { getProducts, hasDetailPage } from "../../lib/content";
+
+export async function getStaticPaths() {
+  const products = await getProducts();
+  return products.filter(hasDetailPage).map((product) => ({
+    params: { slug: product.data.slug },
+    props: { product },
+  }));
+}
+
+interface Props {
+  product: CollectionEntry<"products">;
+}
+
+const { product } = Astro.props;
+const { name, url, tagline, status, logo, socials } = product.data;
+const { Content } = await render(product);
+---
+
+<Base title={name} description={tagline}>
+  <header class="pt-6 pb-8">
+    <a href="/" class="text-sm text-muted hover:text-fg">← Home</a>
+    <div class="mt-6 flex items-center gap-4">
+      {
+        logo ? (
+          <img src={logo} alt="" width="56" height="56" class="size-14 rounded-2xl object-cover" />
+        ) : (
+          <span
+            class="grid size-14 place-items-center rounded-2xl bg-accent-soft/15 text-2xl font-semibold text-accent"
+            aria-hidden="true"
+          >
+            {name.charAt(0)}
+          </span>
+        )
+      }
+      <div>
+        <div class="flex flex-wrap items-center gap-2">
+          <h1 class="text-3xl font-bold tracking-tight">{name}</h1>
+          <StatusPill status={status} />
+        </div>
+        <p class="mt-1 text-muted">{tagline}</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="prose">
+    <Content />
+  </div>
+
+  <div class="mt-8 flex flex-wrap gap-3">
+    <a
+      href={url}
+      class="inline-flex items-center gap-2 rounded-lg bg-fg px-3.5 py-2 text-sm font-medium text-bg hover:opacity-90"
+    >
+      Visit {new URL(url).hostname} <Icon name="arrow" class="size-4" />
+    </a>
+    {
+      socials?.map((social) => (
+        <a href={social.url} rel="noopener" class="inline-flex items-center rounded-lg border border-border px-3.5 py-2 text-sm hover:border-accent-soft">
+          {social.label}
+        </a>
+      ))
+    }
+  </div>
+</Base>

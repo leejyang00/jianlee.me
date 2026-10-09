@@ -1,0 +1,22 @@
+---
+import Icon from "../../components/Icon.astro";
+import NowEntry from "../../components/NowEntry.astro";
+import Base from "../../layouts/Base.astro";
+import { getNow } from "../../lib/content";
+
+const entries = await getNow();
+---
+
+<Base title="Now" description="A short build log: what I'm working on, newest first.">
+  <header class="pt-6 pb-10">
+    <div class="flex items-center justify-between">
+      <h1 class="text-3xl font-bold tracking-tight">Now</h1>
+      <a href="/now/rss.xml" class="flex items-center gap-1.5 text-sm text-muted hover:text-accent">
+        <Icon name="rss" class="size-3.5" /> RSS
+      </a>
+    </div>
+    <p class="mt-2 text-muted">A short build log: what I'm working on, newest first.</p>
+  </header>
+
+  {entries.map((entry) => <NowEntry entry={entry} />)}
+</Base>

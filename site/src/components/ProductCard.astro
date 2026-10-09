@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { hasDetailPage } from "../lib/content";
+import Icon from "./Icon.astro";
+import StatusPill from "./StatusPill.astro";
+
+interface Props {
+  product: CollectionEntry<"products">;
+}
+
+const { product } = Astro.props;
+const { name, url, tagline, status, logo, slug } = product.data;
+// Cards link to the detail page when there is one, otherwise straight to the product.
+const detail = hasDetailPage(product);
+const href = detail ? `/products/${slug}/` : url;
+---
+
+<article
+  class="group relative flex items-center gap-4 rounded-2xl border border-border bg-surface p-4 transition-colors hover:border-accent-soft"
+>
+  {
+    logo ? (
+      <img src={logo} alt="" width="48" height="48" loading="lazy" class="size-12 shrink-0 rounded-xl object-cover" />
+    ) : (
+      <span
+        class="grid size-12 shrink-0 place-items-center rounded-xl bg-accent-soft/15 text-lg font-semibold text-accent"
+        aria-hidden="true"
+      >
+        {name.charAt(0)}
+      </span>
+    )
+  }
+  <div class="min-w-0 flex-1">
+    <div class="flex flex-wrap items-center gap-2">
+      <h3 class="font-semibold">
+        <a href={href} class="after:absolute after:inset-0 after:rounded-2xl">{name}</a>
+      </h3>
+      <StatusPill status={status} />
+    </div>
+    <p class="mt-0.5 text-sm text-muted">{tagline}</p>
+  </div>
+  <Icon
+    name="arrow"
+    class="size-4 shrink-0 text-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+  />
+</article>

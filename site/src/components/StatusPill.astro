@@ -1,0 +1,17 @@
+---
+interface Props {
+  status: "live" | "building" | "paused";
+}
+
+const { status } = Astro.props;
+const styles = {
+  live: "bg-emerald-600/12 text-emerald-800 dark:bg-emerald-400/15 dark:text-emerald-300",
+  building: "bg-amber-500/15 text-amber-900 dark:bg-amber-400/15 dark:text-amber-200",
+  paused: "bg-stone-500/15 text-stone-700 dark:bg-stone-400/15 dark:text-stone-300",
+};
+---
+
+<span class={`inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium capitalize ${styles[status]}`}>
+  <span class="size-1.5 rounded-full bg-current" aria-hidden="true"></span>
+  {status}
+</span>
