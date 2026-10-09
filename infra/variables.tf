@@ -13,7 +13,7 @@ variable "domain" {
 variable "live" {
   description = "Cutover switch. false: CloudFront serves v2.<domain> only. true: also <domain> and www.<domain>."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "github_repo" {
