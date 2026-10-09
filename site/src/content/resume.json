@@ -1,0 +1,210 @@
+{
+  "headline": "DevOps Engineer",
+  "location": "Brisbane, Australia",
+  "profile": "AWS-certified engineer with experience across full-stack development and cloud infrastructure, currently specialising in production-grade Kubernetes orchestration (10+ clusters across 20+ AWS accounts), Infrastructure as Code (Terraform), and high-availability cloud networking. Enhances Developer Experience (DevEx) through automated CI/CD pipelines, proactive observability (New Relic, Google SecOps), and AI-augmented development workflows using Claude Code.",
+  "experience": [
+    {
+      "role": "DevOps Engineer, Platform Team",
+      "company": "Flight Centre Travel Group",
+      "location": "Brisbane, Australia",
+      "period": "May 2024 — Present",
+      "bullets": [
+        "Architected and maintained a high-availability AWS ecosystem (EKS, ECS, ALB, SG, S3, IAM, R53) across the Leisure pillar's core services",
+        "Orchestrated 10+ EKS clusters (30+ nodes) across multi-region environments, consistently maintaining 99.9% uptime",
+        "Established Infrastructure-as-Code standards using Terraform for corporate tools including New Relic, Octopus Deploy, GitHub Org, etc",
+        "Led ongoing migration of EKS clusters to EKS Auto Mode, streamlining node management and reducing infrastructure maintenance",
+        "Led the migration of AWS SSO from Okta to AWS IAM Identity Center across 20+ AWS accounts, redesigning permission sets and access policies to delegate elevated access management to engineering teams",
+        "Led the global log migration (WAF, CloudFront, EKS) from FireEye to Google SecOps (SIEM), and implemented AWS GuardDuty Malware Protection, strengthening the security posture for consultant-facing apps",
+        "Spearheaded migration of 20+ teams from legacy Rundeck to an Octopus Deploy + Helm ecosystem, reducing deployment errors by 30%",
+        "Engineered cross-account and cross-region network topologies, utilising VPC Peering and Endpoints (PrivateLink)",
+        "Implemented New Relic Deployment Markers across 20+ applications, reducing MTTR by 15%"
+      ]
+    },
+    {
+      "role": "Full Stack Engineer, Payments Team",
+      "company": "Flight Centre Travel Group",
+      "location": "Brisbane, Australia",
+      "period": "May 2023 — May 2024",
+      "bullets": [
+        "Developed new features for the Payments Platform and Gift Card Portal, across both frontend & backend — utilising React, TypeScript, SQL, AWS SDK",
+        "Integrated with third-party platforms such as Adyen and Salesforce, implementing dynamic dashboards providing Flight Centre consultants with intuitive and actionable insights",
+        "Deployed and managed cloud infrastructure as code using AWS CDK — utilising SQS, SNS, Lambda, API Gateway, Route 53, and CloudFront",
+        "Leveraged CloudWatch Logs and Splunk for comprehensive debugging, log analysis and testing of applications"
+      ]
+    },
+    {
+      "role": "Jnr Software Engineer (Employee #20)",
+      "company": "ProcurePro",
+      "location": "Brisbane, Australia",
+      "period": "Sept 2022 — May 2023",
+      "blurb": "Contech SaaS streamlining subcontractor procurement across Australia, UK, and UAE",
+      "bullets": [
+        "Developed Account Profile management page with shareable components — utilising Aurelia TS and PHP framework",
+        "Scoped out features on the product roadmap using Epics and User Stories",
+        "Wrote effective unit and integration tests using Jest, Cypress and Playwright",
+        "Performed QA testing and produced status reports before deploying to Production, with submissions of release notes"
+      ]
+    },
+    {
+      "role": "Software Engineer (Contract)",
+      "company": "Algomint",
+      "location": "Brisbane, Australia",
+      "period": "May 2022 — Aug 2022",
+      "blurb": "DeFi cross-chain bridge enabling BTC, ETH, and stablecoin interoperability on the Algorand blockchain",
+      "bullets": [
+        "Launched a V1 cross-chain application on Mainnet, offering easy access to mint/redeem $goUSD with $USDC",
+        "Deployed crypto exchange dashboard on the Algorand network",
+        "Designed reusable components bridging functionality with PyTeal smart contracts"
+      ]
+    },
+    {
+      "role": "Software Engineer Intern",
+      "company": "Space Platform",
+      "location": "Brisbane, Australia",
+      "period": "Nov 2021 — Feb 2022",
+      "blurb": "Privacy-first PropTech company providing real-time foot traffic analytics for retail, offices, and precincts",
+      "bullets": [
+        "Developed a responsive demo dashboard with custom reusable React components, utilising Websockets for continuous real-time analytics feeds",
+        "Configured login functionality and authorization with Socket.IO-client and JWT Authentication",
+        "Developed reusable Chart.js for multi-level building analytics"
+      ]
+    },
+    {
+      "role": "Frontend Developer Intern",
+      "company": "AskDr",
+      "location": "Singapore",
+      "period": "June 2021 — Sept 2021",
+      "blurb": "Singapore healthtech platform connecting users with doctor-verified health guidance",
+      "bullets": []
+    }
+  ],
+  "projects": [
+    {
+      "title": "AI Financial Analysis Bot — Aemantic",
+      "org": "Personal Project",
+      "bullets": [
+        "A financial analysis bot generating structured financial insights for US stock tickers, including ROI, aggregates and market fundamentals",
+        "Architected a multi-agent system using LangChain to perform automated financial deep-dives and sentiment analysis"
+      ],
+      "stack": "GCP, FastAPI, Vite, LangChain, OpenAI, Yahoo Finance, Supabase"
+    },
+    {
+      "title": "GBR Group Co",
+      "org": "Freelance Developer",
+      "bullets": [
+        "Launched their corporate website gbrgroupco.com, working closely with the Founders"
+      ],
+      "stack": "Vite + React, Cloudflare, Tanstack Router, TailwindCSS, Bun, Material UI"
+    },
+    {
+      "title": "EAIT Industry Mentor",
+      "org": "University of Queensland",
+      "bullets": [
+        "Mentored two junior engineers over 6 months, providing career guidance and technical training across DevOps practices",
+        "Conducted mock interviews and resume reviews to prepare mentees for graduate engineering roles"
+      ]
+    },
+    {
+      "title": "Pacemates Run Club",
+      "org": "Founder",
+      "bullets": [
+        "Built a running community of 50+ members, organising weekly training sessions, interval workouts, and race-day events across Brisbane"
+      ]
+    },
+    {
+      "title": "HotHack Hackathon",
+      "org": "Team Leader",
+      "bullets": [
+        "Led a team of 4 and built a streamlined data collection dashboard for artist managers",
+        "Presented our ideation to reality of the dashboard at The Precinct @ Fortitude Valley"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Cloud & Platform",
+      "items": [
+        "AWS (EKS, ECS, VPC, S3, IAM, R53, ACM, ALB/NLB)",
+        "Google Cloud (SecOps SIEM)"
+      ]
+    },
+    {
+      "category": "Orchestration",
+      "items": [
+        "Kubernetes",
+        "Docker",
+        "Helm Charts",
+        "Karpenter",
+        "Gateway API"
+      ]
+    },
+    {
+      "category": "IaC",
+      "items": [
+        "Terraform",
+        "AWS CloudFormation",
+        "Bash/Python Automation"
+      ]
+    },
+    {
+      "category": "CI/CD",
+      "items": [
+        "Octopus Deploy",
+        "GitHub Actions"
+      ]
+    },
+    {
+      "category": "Observability",
+      "items": [
+        "New Relic",
+        "Splunk",
+        "Prometheus",
+        "Grafana"
+      ]
+    },
+    {
+      "category": "Development",
+      "items": [
+        "Python",
+        "TypeScript",
+        "React",
+        "Node.js",
+        "Go (Golang)"
+      ]
+    },
+    {
+      "category": "AI",
+      "items": [
+        "Claude Code",
+        "LangChain",
+        "Model Context Protocol (MCP)"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Solutions Architect – Associate",
+      "date": "May 2024"
+    }
+  ],
+  "education": [
+    {
+      "school": "University of Queensland",
+      "degree": "Bachelor of Computer Science, majored in Machine Learning",
+      "location": "Brisbane, Australia",
+      "period": "Feb 2019 — July 2022",
+      "bullets": [
+        "Sponsorship Director of UQ Malaysian's Students' Association (UQMSA) — 2021/2022",
+        "Virtual Singapore Startup AdVenture with UQ Ventures",
+        "Queensland University Musical Choir (QUMS)"
+      ]
+    }
+  ],
+  "interests": [
+    "Endurance sports — TCS Sydney Marathon 2023, Bridge to Brisbane 2024, EVA Air Sunshine Coast 2024; training for triathlon",
+    "Video production — filming (Sony ZV-E10 II) and editing in DaVinci Resolve",
+    "Financial markets reader — The Edge Malaysia + Singapore",
+    "Languages: English (Professional), Mandarin (Conversational), Malay (Conversational)"
+  ],
+  "pdfUrl": "https://d3tplfwk9gtha4.cloudfront.net/documents/JianYangLee-Resume-June2026-v4.pdf"
+}
