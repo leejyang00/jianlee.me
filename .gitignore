@@ -36,3 +36,11 @@ photos
 
 # Local data dumps (Phase 1 exports); a copy lives in S3
 backups/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+backend_override.tf
