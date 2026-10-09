@@ -76,35 +76,6 @@ export const markdownContentQueryOptions = (filename: string) => queryOptions({
   enabled: !!filename,
 });
 
-// Upload markdown file
-export async function uploadMarkdownFile(file: File) {
-  const formData = new FormData();
-  formData.append('file', file);
-
-  const res = await api.markdown.content.$post({
-    form: formData
-  });
-  
-  if (!res.ok) {
-    throw new Error("Failed to upload markdown file");
-  }
-  
-  return res.json();
-}
-
-// Delete markdown file
-export async function deleteMarkdownFile(filename: string) {
-  const res = await api.markdown.content[":filename"].$delete({
-    param: { filename }
-  });
-  
-  if (!res.ok) {
-    throw new Error("Failed to delete markdown file");
-  }
-  
-  return res.json();
-}
-
 async function getMarkdownDatabase() {
   const res = await api.markdown.database.$get();
   if (!res.ok) {

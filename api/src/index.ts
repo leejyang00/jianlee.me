@@ -10,7 +10,7 @@ const app = new Hono()
 
 app.use(logger());
 app.use(cors({
-  origin: ['https://jianlee.me', 'https://www.jianlee.me', 'http://localhost:5173'],
+  origin: ['https://jianlee.me', 'https://www.jianlee.me', 'https://v1.jianlee.me', 'http://localhost:5173'],
   // allowHeaders: ['Content-Type', 'Authorization'],
   // allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   // exposeHeaders: ['Content-Type', 'Authorization'],
