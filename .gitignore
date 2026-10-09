@@ -44,3 +44,7 @@ backups/
 *.tfplan
 crash.log
 backend_override.tf
+
+# Claude Code: commit shared commands, not local worktrees or settings
+.claude/worktrees/
+.claude/settings.local.json
