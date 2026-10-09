@@ -33,3 +33,6 @@ photos
 # Cloudflare
 .wrangler/
 .dev.vars
+
+# Local data dumps (Phase 1 exports); a copy lives in S3
+backups/
