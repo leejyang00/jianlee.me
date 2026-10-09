@@ -1,0 +1,12 @@
+{
+  "name": "Jian Yang Lee",
+  "tagline": "DevOps engineer in Singapore, building products on the side.",
+  "bio": "I'm a DevOps Engineer II on the Digital team at Vistra in Singapore. Before that I did DevOps and full-stack work at Flight Centre in Brisbane. I'm Malaysian, and outside work I build Burno and Aemantic.",
+  "photo": "https://d3tplfwk9gtha4.cloudfront.net/images/profile.jpg",
+  "socials": [
+    { "platform": "linkedin", "label": "LinkedIn", "handle": "Jian Yang Lee", "url": "https://www.linkedin.com/in/jianyanglee/" },
+    { "platform": "github", "label": "GitHub", "handle": "@leejyang00", "url": "https://github.com/leejyang00" },
+    { "platform": "instagram", "label": "Instagram", "handle": "@jianyangleee", "url": "https://www.instagram.com/jianyangleee/" },
+    { "platform": "x", "label": "X", "handle": "@jianyangleee", "url": "https://x.com/jianyangleee" }
+  ]
+}
