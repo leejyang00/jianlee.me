@@ -19,6 +19,7 @@ const SOURCES: Record<string, { repo: string; public: boolean; context?: boolean
     { repo: "aemantic/aemantic_backend_client", public: false },
     { repo: "aemantic/aemantic_eng_handbook", public: false, context: true },
   ],
+  "jianlee-me": [{ repo: "leejyang00/jianlee.me", public: true }],
 };
 
 // Orgs to scan for active repos that aren't in SOURCES yet.
