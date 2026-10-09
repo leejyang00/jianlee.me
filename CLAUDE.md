@@ -15,7 +15,7 @@ Any PR that changes what the site looks like must show it, so the reviewer never
    bun run screenshot -- --base http://localhost:4399 --out /tmp/pr-shots \
      /books/ "/|section[aria-labelledby=products]"
    ```
-   Each shot is taken in light and dark, at desktop (1280px) and mobile (390px).
+   Each shot is taken in light and dark, at desktop (1280px) and mobile (390px). For sticky or scroll-dependent UI, use an anchor shot such as `"/resume/#skills"`, which captures the viewport after jumping there.
 3. Look at the screenshots yourself before publishing. Fix anything broken first.
 4. Publish them to the `pr-screenshots` branch (never commit screenshots to a working branch):
    ```sh
