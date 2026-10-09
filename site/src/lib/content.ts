@@ -22,6 +22,10 @@ export async function getNow() {
   return entries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
 
+export function formatMonth(date: Date) {
+  return date.toLocaleDateString("en-GB", { month: "short", year: "numeric", timeZone: "UTC" });
+}
+
 export function formatDate(date: Date) {
   return date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 }

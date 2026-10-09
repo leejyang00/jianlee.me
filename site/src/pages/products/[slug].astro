@@ -3,7 +3,7 @@ import { render, type CollectionEntry } from "astro:content";
 import Icon from "../../components/Icon.astro";
 import StatusPill from "../../components/StatusPill.astro";
 import Base from "../../layouts/Base.astro";
-import { getProducts, hasDetailPage } from "../../lib/content";
+import { formatMonth, getProducts, hasDetailPage } from "../../lib/content";
 
 export async function getStaticPaths() {
   const products = await getProducts();
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const { product } = Astro.props;
-const { name, url, tagline, status, logo, socials } = product.data;
+const { name, url, tagline, status, logo, socials, startedAt } = product.data;
 const { Content } = await render(product);
 ---
 
@@ -44,6 +44,13 @@ const { Content } = await render(product);
           <StatusPill status={status} />
         </div>
         <p class="mt-1 text-muted">{tagline}</p>
+        {
+          startedAt && (
+            <p class="mt-1 text-sm text-muted">
+              Started <time datetime={startedAt.toISOString().slice(0, 7)}>{formatMonth(startedAt)}</time>
+            </p>
+          )
+        }
       </div>
     </div>
   </header>
