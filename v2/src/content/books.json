@@ -1,5 +1,44 @@
 [
   {
+    "volume_id": "yxfJDVXClucC",
+    "title": "How To Win Friends and Influence People",
+    "authors": [
+      "Dale Carnegie"
+    ],
+    "published_year": 2009,
+    "page_count": 291,
+    "categories": [
+      "Business & Economics / General",
+      "Business & Economics / Leadership",
+      "Family & Relationships / General",
+      "Psychology / General",
+      "Psychology / Applied Psychology",
+      "Psychology / Interpersonal Relations",
+      "Self-Help / Personal Growth / Success",
+      "Self-Help / Communication & Social Skills"
+    ],
+    "read_year": 2026,
+    "affiliate_link": "https://books.google.com/books?id=yxfJDVXClucC",
+    "thumbnail": "https://d3tplfwk9gtha4.cloudfront.net/books/yxfJDVXClucC.jpg"
+  },
+  {
+    "volume_id": "N6MLBAAAQBAJ",
+    "title": "Multiple Streams of Income",
+    "subtitle": "How to Generate a Lifetime of Unlimited Wealth",
+    "authors": [
+      "Robert G. Allen"
+    ],
+    "published_year": 2005,
+    "page_count": 336,
+    "categories": [
+      "Business & Economics / Real Estate / General",
+      "Business & Economics / General"
+    ],
+    "read_year": 2026,
+    "affiliate_link": "https://books.google.com/books?id=N6MLBAAAQBAJ",
+    "thumbnail": "https://d3tplfwk9gtha4.cloudfront.net/books/N6MLBAAAQBAJ.jpg"
+  },
+  {
     "volume_id": "cw0PEAAAQBAJ",
     "title": "AI 2041",
     "subtitle": "Ten Visions for Our Future",
