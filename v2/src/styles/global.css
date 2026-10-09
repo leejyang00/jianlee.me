@@ -12,6 +12,12 @@
   --muted: #6a6058;
   --accent: #22706c;
   --accent-soft: #339995;
+  /* Build-log product tags. Each passes WCAG AA as small text on --bg. */
+  --tag-burno: #a8431b;
+  --tag-aemantic: #5b45a8;
+  --tag-jianlee-me: #22706c;
+  /* A now entry sets --entry to its product's tag colour; everywhere else it's the accent. */
+  --entry: var(--accent);
   color-scheme: light;
 }
 
@@ -23,6 +29,9 @@
   --muted: #a7a19a;
   --accent: #80e7d9;
   --accent-soft: #80e7d9;
+  --tag-burno: #ffa585;
+  --tag-aemantic: #c4b5fd;
+  --tag-jianlee-me: #80e7d9;
   color-scheme: dark;
 }
 
@@ -68,7 +77,7 @@
   @apply space-y-4 leading-relaxed;
 }
 .prose a {
-  @apply text-accent underline decoration-accent/40 transition-colors hover:decoration-accent;
+  @apply text-(--entry) underline decoration-(--entry)/40 transition-colors hover:decoration-(--entry);
 }
 .prose strong {
   @apply font-semibold;
