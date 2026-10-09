@@ -6,11 +6,11 @@ argument-hint: "[--since YYYY-MM-DD] [burno|aemantic]"
 
 # Update the build log
 
-Turns recent merged PRs into `site/src/content/now/*.md` entries. The log is **public** at `/now`, on the home page and in `/now/rss.xml`, and most Aemantic repos are **private**. Being public-safe matters more than being complete.
+Turns recent merged PRs into `v2/src/content/now/*.md` entries. The log is **public** at `/now`, on the home page and in `/now/rss.xml`, and most Aemantic repos are **private**. Being public-safe matters more than being complete.
 
 ## 1. Gather
 
-From the repo root:
+From `v2/`:
 
 ```sh
 bun scripts/build-log-sources.ts --bodies            # since each product's last entry
@@ -30,13 +30,13 @@ The window starts the day *after* the newest entry, so PRs merged later on the s
 
 ## 3. Write
 
-Frontmatter must match the `now` schema in `site/src/content.config.ts`:
+Frontmatter must match the `now` schema in `v2/src/content.config.ts`:
 
 ```md
 ---
 title: "Burno: picture cards, pace and a crowd counter"
 date: 2026-10-09
-product: burno          # slug from site/src/content/products/
+product: burno          # slug from v2/src/content/products/
 links:                  # optional
   - label: "burno.app"
     url: https://burno.app
@@ -45,7 +45,7 @@ links:                  # optional
 One or two short paragraphs.
 ```
 
-- **Voice:** first person, plain, specific, no hype or exclamation marks. Prefix the title with the product name ("Aemantic: …") unless the title already names it. Match the existing entries in `site/src/content/now/`.
+- **Voice:** first person, plain, specific, no hype or exclamation marks. Prefix the title with the product name ("Aemantic: …") unless the title already names it. Match the existing entries in `v2/src/content/now/`.
 - **Facts only from the PRs.** Never invent numbers, user counts, revenue, dates or features. Numbers in PR descriptions are often mock or example data ("1,284 workouts"). Don't use them unless the PR says they're real.
 
 ### Public-safety rules (non-negotiable)

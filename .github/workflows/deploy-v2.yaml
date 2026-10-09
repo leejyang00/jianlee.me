@@ -1,6 +1,6 @@
 name: Deploy v2
 
-# Builds site/ and syncs it to the S3 bucket behind CloudFront.
+# Builds v2/ and syncs it to the S3 bucket behind CloudFront.
 # Repo variables (Settings > Secrets and variables > Actions > Variables), from `terraform output`:
 #   AWS_REGION, AWS_DEPLOY_ROLE_ARN, SITE_BUCKET, CLOUDFRONT_DISTRIBUTION_ID
 
@@ -10,7 +10,7 @@ on:
       - v2
       - main
     paths:
-      - site/**
+      - v2/**
       - .github/workflows/deploy-v2.yaml
   workflow_dispatch:
 
@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: site
+        working-directory: v2
     steps:
       - uses: actions/checkout@v5
 
@@ -39,7 +39,7 @@ jobs:
       - name: Install
         run: bun install --frozen-lockfile
 
-      # astro check + astro build -> site/dist. Astro only emits _astro/ when a page
+      # astro check + astro build -> v2/dist. Astro only emits _astro/ when a page
       # has bundled JS or external CSS (styles are inlined today), so make sure it
       # exists: the syncs below then upload nothing and still prune stale assets.
       - name: Check and build
