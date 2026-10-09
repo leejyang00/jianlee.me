@@ -30,6 +30,7 @@ const site = defineCollection({
   loader: singleton("src/content/site.json"),
   schema: z.object({
     name: z.string(),
+    location: z.string(),
     tagline: z.string(),
     bio: z.string(),
     photo: z.url(),
