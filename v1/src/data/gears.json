@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "created_at": "2025-03-30T02:10:35.712151+00:00",
+    "title": "Sony Alpha ZVE10 II",
+    "description": "APS-C Interchangeable Lens Mirrorless",
+    "amazon_link": "https://amzn.to/3DUFJce",
+    "image_link": "https://d3tplfwk9gtha4.cloudfront.net/gears/zve10m2.jpg",
+    "category": "filming"
+  },
+  {
+    "id": 2,
+    "created_at": "2025-03-30T02:13:48.479643+00:00",
+    "title": "Sony 11mm F1.8",
+    "description": "Ultra-Wide-Angle Prime for APS-C Cameras",
+    "amazon_link": "https://amzn.to/3QNFjXV",
+    "image_link": "https://d3tplfwk9gtha4.cloudfront.net/gears/sony11mm.jpg",
+    "category": "filming"
+  },
+  {
+    "id": 3,
+    "created_at": "2025-03-30T02:14:39.430427+00:00",
+    "title": "DJI Mic",
+    "description": "(2 TX + 1 RX + Charging Case) - Wireless Lavalier Microphone",
+    "amazon_link": "https://amzn.to/4j2HoLC",
+    "image_link": "https://d3tplfwk9gtha4.cloudfront.net/gears/djimic.jpg",
+    "category": "filming"
+  },
+  {
+    "id": 4,
+    "created_at": "2025-03-30T02:15:13.029379+00:00",
+    "title": "JOBY GorillaPod",
+    "description": "Action Video Tripod (Black and Red)",
+    "amazon_link": "https://amzn.to/4hROr93",
+    "image_link": "https://d3tplfwk9gtha4.cloudfront.net/gears/joby.jpg",
+    "category": "filming"
+  },
+  {
+    "id": 5,
+    "created_at": "2025-03-30T02:15:54.426144+00:00",
+    "title": "SAMSUNG T7 Shield",
+    "description": "SSD (1TB) - up to 1050MB/s, USB 3.2 Gen2, IP65 Rated",
+    "amazon_link": "https://amzn.to/41O9tAQ",
+    "image_link": "https://d3tplfwk9gtha4.cloudfront.net/gears/samsungt7.jpg",
+    "category": "filming"
+  },
+  {
+    "id": 6,
+    "created_at": "2025-03-30T02:33:41.399657+00:00",
+    "title": "Apple Magic Keyboard",
+    "description": "Wireless Bluetooth Rechargeable Works with Mac iPad iPhone",
+    "amazon_link": "https://amzn.to/4jv2bYL",
+    "image_link": "https://d3tplfwk9gtha4.cloudfront.net/gears/applekeyboard.jpg",
+    "category": "productivity"
+  },
+  {
+    "id": 7,
+    "created_at": "2025-03-30T02:37:27.584062+00:00",
+    "title": "Logitech MX Master 3S",
+    "description": "Wireless Performance Mouse with Ultra-fast Scrolling",
+    "amazon_link": "https://amzn.to/425QAYQ",
+    "image_link": "https://d3tplfwk9gtha4.cloudfront.net/gears/logimouse.jpg",
+    "category": "productivity"
+  },
+  {
+    "id": 9,
+    "created_at": "2025-03-30T02:42:54.61983+00:00",
+    "title": "Sony WH-1000XM5",
+    "description": "The Best Wireless Noise Canceling Headphones, 30-Hour Battery",
+    "amazon_link": "https://amzn.to/4l6h8lk",
+    "image_link": "https://d3tplfwk9gtha4.cloudfront.net/gears/sonyheadphones.jpg",
+    "category": "productivity"
+  },
+  {
+    "id": 8,
+    "created_at": "2025-03-30T02:40:08.009542+00:00",
+    "title": "NEXSTAND K2 ",
+    "description": "Laptop Stand, Adjustable Height (15-30cm), Foldable Travel Stand",
+    "amazon_link": "https://amzn.to/4hU3xuK",
+    "image_link": "https://d3tplfwk9gtha4.cloudfront.net/gears/nexstand.jpg",
+    "category": "productivity"
+  },
+  {
+    "id": 10,
+    "created_at": "2025-03-30T02:47:56.2038+00:00",
+    "title": "Dell S2722QC",
+    "description": "27-inch 4K UHD (3840 x 2160) Monitor, 60Hz",
+    "amazon_link": "https://amzn.to/41OYHdw",
+    "image_link": "https://d3tplfwk9gtha4.cloudfront.net/gears/dell.jpg",
+    "category": "productivity"
+  }
+]

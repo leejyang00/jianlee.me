@@ -1,0 +1,76 @@
+{
+  "pacemates.md": {
+    "filename": "pacemates.md",
+    "frontmatter": {
+      "title": "Pacemates Run Club: The Untold Story",
+      "date": "2024-07-19",
+      "description": "The real journey behind building a weekly running community, from initial excitement to the challenges of sustaining engagement and the lessons learned when dreams meet reality.",
+      "tags": [
+        "running",
+        "community",
+        "entrepreneurship",
+        "fitness"
+      ],
+      "image": "pacemates.jpg",
+      "slug": "pacemates",
+      "read_time": "5"
+    },
+    "content": "\nFrom an ideation to reality. This was one of my favourite projects that I've done, so much so that it was out of my comfort zone.\n\n**Instagram:** [@pacematesrunclub](https://www.instagram.com/pacematesrunclub/)  \n**Strava:** [Pacemates Run Club](https://www.strava.com/clubs/1180710)\n\n## Background\n\nMy journey began back in 2020 when Covid hit, couldn't do much exercise with places restricted or high risk to exposure. My only available options was running. Plus, I was pretty active in Strava previously for my road cycling adventures, so what other ways to gamify it! Fast forward to 2023, when my good friend, Ethan, introduced me the ideation of running a marathon. 42.2 km.\n\n\"You're insane\", I told him.\n\n\"Where?\" To which he replied, \"Sydney…\"\n\n\"So I'm gonna be running the longest distance I've had, plus in one of the prettiest city in the world?\" If you know me well enough, I'm always up for a challenge. \"COUNT ME IN!\", I said.\n\n## Why\n\nWhy a run club? Because I've been running alone and I want to build a community. You know that saying, **\"If you wanna go fast, go alone. If you wanna go far, go TOGETHER.\"** Plus, it's hard these days finding the kind of people that fits into your social group. I wanted to meet new people in the community area that has similar interest. So instead of searching for them, I'll bring them to me :)\n\n## Journey\n\nWe started off in October 2023. It was fresh, we were excited, called in a few friends, plus friends of friends, to join us in our runs.\n\nQuestions: Whats the best time to run? What day should it be? How bout running it twice a week to cater to cater both students and working adults? What should be the right distance? What's the route gonna be? What are the sequence of events that should be days before the run, on the run day, and after, to keep our member highly engaged to wanna come back?\n\nAll these questions, I had to answer...\n\nso, every Tuesdays @ 7pm, Southbank Brisbane. 5km easy pace run. \"easy\"…\n\n![Pacemates Run Club](/pacemates/last-dance.jpg)\n\nWe started off from 3 to 5 runners per week, and once word got out, we were peaking around 15 runners in a week. I know, 172 IG followers, 3000+ views on reels, 30+ members in our Strava club, I thought we would have at least 20+ runners per week am I right? Unfortunately that reality didn't came. But I'm always grateful for the ones that made time coming out on a weekday night running with a guy that's chasing his dreams. I brought in a few friends to help out with the club.\n\nWe have Instagram, WhatsApp group, Strava club to give updates, plus a website that never got used to it's fullest potential. We had all the social reachability as much as we could, yet, the numbers weren't peaking as much as we thought we could. And did you know we've got a merch? Pacemates Run Club merch. Shopify store, online purchase + delivery, our communities running all in our merch... [it was all a dream]\n\nWhat really happened was, a POC shirt, bought 6 of them from a local supplier. Dollars spent, $240. Dollars earned, $0. Profit -$240. Here's one of my last marathon I did where i wore the merch.\n\n## Learnings\n\nThe best thing about running your own club is meeting new people. Every week it was almost always a surprise to have new runners joining us, when I thought the worsts of having just me. I think finding the right people to run a club together is important too, to have the right goals and mindset, especially with similar interests. Throughout my journey, I wouldn't have done it without my friends that have helped me along the way. Their guidance, support, commitment, and advice, truly shape the club as how it went.\n\nWould I do this again? Propably not, just cuz my focus is elsewhere now. Do I regret running the club? Never. The numerous people I've met, learnings through the should do/not do, priceless in my eyes. Lessons learned only through doing.\n\n## Closing\n\nUnfortunately it ended on July 2024, I was retiring the club as the people joining our weekly runs were stagnating, friends that helped me had other commitments, I was left mostly alone running the social media space. I've decided to close the club, and ended the journey.\n\nNevertheless, this won't be my last projects. See you in the next one 😄 !\n\n**Thanks to:** Henry, Kinn, Steven, Sandeep, Dino, Eleesha, Edison and all my friends + strangers I've met and helped out. You know who you are 😉 \n",
+    "size": 4796
+  },
+  "gbr-group-co.md": {
+    "filename": "gbr-group-co.md",
+    "frontmatter": {
+      "title": "My Building Journey: GBR Group Co's Corporate Website",
+      "date": "2025-01-25",
+      "description": "A deep dive into building GBR Group Co's corporate website, covering the technical challenges, infrastructure decisions, and lessons learned from developing a modern business website.",
+      "tags": [
+        "devops",
+        "career",
+        "infrastructure",
+        "react",
+        "typescript",
+        "tailwind"
+      ],
+      "image": "gbrgroup.png",
+      "slug": "gbr-group-co",
+      "read_time": "8"
+    },
+    "content": "\n![GBR Group Co](/gbrgroupco.png)\n\n## The Project\n\nThis marks my first client-based project - developing a corporate website for GBR Group Co., a company operating across the ASEAN region. The website needed to showcase their diverse holdings, strategic partnerships, product distribution networks, and market presence throughout Southeast Asia.\n\n## The Vision\n\nKinn, the founder, approached me with a clear vision: create a static website that embodies professionalism, credibility, and a strong corporate presence. The goal was to establish GBR Group Co. as a trusted industry leader, reinforcing its brand identity through a sleek, modern, and minimalistic design that would resonate with potential partners and clients across the region.\n\n## Technical Stack & Architecture\n\n**Website:** [www.gbrgroupco.com](https://kitsui-v2.pages.dev/)  \n**Frontend Stack:** Vite, React, TypeScript, Tailwind CSS  \n**UI Components:** Shadcn UI, Material UI  \n**Deployment:** Cloudflare Pages  \n**Performance:** Optimized for global accessibility across ASEAN markets\n\n#### Why This Stack?\n\n- **Vite + React + TypeScript**: For fast development, type safety, and maintainable code\n- **Tailwind CSS**: Rapid styling with consistent design system\n- **Shadcn UI + Material UI**: Professional component library for corporate aesthetics\n- **Cloudflare Pages**: Global CDN for optimal performance across ASEAN region\n\n## Key Features & Challenges\n\n#### 1. **Responsive Design**\nThe website needed to work seamlessly across devices used by business professionals throughout ASEAN - from desktop workstations to mobile devices used during business travel.\n\n#### 2. **Performance Optimization**\nWith users potentially accessing the site from various countries across Southeast Asia, performance was crucial. Cloudflare's global CDN ensures fast loading times regardless of location.\n\n#### 3. **Professional Branding**\nCreating a design that conveyed trust, stability, and corporate sophistication while maintaining modern aesthetics was essential for establishing credibility in the business community.\n\n#### 4. **Content Management**\nStructuring the content to effectively communicate GBR Group Co's complex business operations, partnerships, and market presence across multiple ASEAN countries.\n\n## Development Process\n\nThe project followed an iterative approach:\n1. **Discovery & Planning**: Understanding GBR Group Co's business model and target audience\n2. **Design Phase**: Creating wireframes and mockups that aligned with corporate branding\n3. **Development**: Building the responsive website with modern web technologies\n4. **Testing**: Ensuring cross-browser compatibility and performance optimization\n5. **Deployment**: Setting up Cloudflare Pages for global distribution\n\n## Lessons Learned\n\n#### Client Communication\nWorking with a real client taught me the importance of clear communication, setting expectations, and delivering on promises. Regular updates and milestone check-ins were crucial for project success.\n\n#### Technical Decision Making\nChoosing the right technology stack for a corporate website requires balancing performance, maintainability, and business requirements. The combination of modern tools with proven reliability was key.\n\n#### Business Understanding\nUnderstanding the client's business model, target audience, and market positioning was essential for creating an effective website that serves its intended purpose.\n\n## Results & Impact\n\nThe website successfully established GBR Group Co's online presence as a professional, credible business entity. The modern design and technical implementation provide a solid foundation for their digital marketing efforts across the ASEAN region.\n\n## Future Considerations\n\nThe static site architecture allows for easy updates and maintenance, while the global CDN ensures optimal performance as GBR Group Co continues to expand its presence across Southeast Asia.\n\n---\n\n![GBR Marketing](/gbr-group-co/gbr-marketing.jpg)\n\n![GBR Partner](/gbr-group-co/gbr-partner.jpg)\n\n![GBR Key](/gbr-group-co/gbr-key.jpg)\n",
+    "size": 4493
+  },
+  "devops-journey.md": {
+    "filename": "devops-journey.md",
+    "frontmatter": {
+      "title": "My DevOps Journey: From Developer to Infrastructure Engineer",
+      "date": "2024-02-20",
+      "description": "Reflecting on my transition from software development to DevOps engineering and the lessons learned along the way.",
+      "tags": [
+        "devops",
+        "career",
+        "infrastructure"
+      ],
+      "image": "/images/devops-journey.jpg",
+      "slug": "devops-journey",
+      "read_time": "3"
+    },
+    "content": "\n## The Beginning\n\nMy journey into DevOps started as a traditional software developer. I was comfortable writing code, building features, and deploying applications manually. But as the applications I worked on grew in complexity, I began to see the limitations of manual deployment processes.\n\n## The Turning Point\n\nThe real turning point came when I joined a startup that was experiencing rapid growth. Our manual deployment process was becoming a bottleneck, and we were spending more time fixing deployment issues than building new features.\n\nKey Challenges I Faced:\n\n- **Manual deployments** taking hours instead of minutes\n- **Inconsistent environments** between development and production\n- **No automated testing** in the deployment pipeline\n- **Limited monitoring** and observability\n\n## Learning Infrastructure as Code\n\nI started learning about Infrastructure as Code (IaC) with Terraform. The concept of managing infrastructure through code was revolutionary to me. No more manual server configurations or environment setup!\n\n```hcl\n# Example Terraform configuration\nresource \"aws_instance\" \"web\" {\n  ami           = \"ami-12345678\"\n  instance_type = \"t3.micro\"\n  \n  tags = {\n    Name = \"WebServer\"\n  }\n}\n```\n\n## Embracing CI/CD\n\nNext, I dove into CI/CD pipelines. GitHub Actions became my go-to tool for automating the build, test, and deployment process.\n\n## The Results\n\nAfter implementing these DevOps practices:\n\n- **Deployment time** reduced from 2 hours to 10 minutes\n- **Zero-downtime deployments** became the norm\n- **Faster feedback loops** for developers\n- **Improved reliability** and monitoring\n\n## Lessons Learned\n\n1. **Start small** - Don't try to implement everything at once\n2. **Automate everything** - If you do something twice, automate it\n3. **Monitor and observe** - You can't improve what you can't measure\n4. **Security first** - Build security into your pipeline from day one\n\n## Looking Forward\n\nThe DevOps journey never really ends. There's always something new to learn, whether it's Kubernetes, cloud-native technologies, or new automation tools.\n\n*What's your DevOps journey been like? I'd love to hear about your experiences!* \n",
+    "size": 2515
+  },
+  "hello-world.md": {
+    "filename": "hello-world.md",
+    "frontmatter": {
+      "title": "Hello World: My First Blog Post",
+      "date": "2024-01-15",
+      "description": "Welcome to my blog! This is my first post about getting started with dynamic content.",
+      "tags": [
+        "introduction",
+        "blog"
+      ],
+      "image": "/images/hello-world.jpg",
+      "slug": "hello-world"
+    },
+    "content": "\n# Hello World: My First Blog Post\n\nWelcome to my blog! This is my first post about getting started with dynamic content.\n\n## What I'll be writing about\n\nI plan to share insights about:\n- DevOps and cloud infrastructure\n- My journey as a DevOps engineer\n- Running and fitness\n- Technology and development\n\n## Getting Started\n\nThis blog post is written in Markdown and stored as a file. The content is loaded dynamically using the `gray-matter` library to parse the frontmatter metadata.\n\nStay tuned for more posts! \n",
+    "size": 769
+  }
+}
