@@ -1,0 +1,96 @@
+---
+import ThemeToggle from "../components/ThemeToggle.astro";
+import { getSite } from "../lib/content";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const site = { data: await getSite() };
+
+const { title, description = site.data.tagline } = Astro.props;
+const pageTitle = title ? `${title} | ${site.data.name}` : site.data.name;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const nav = [
+  { href: "/now/", label: "Now" },
+  { href: "/resume/", label: "Resume" },
+  { href: "/books/", label: "Books" },
+];
+const current = Astro.url.pathname.replace(/\/?$/, "/");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#f1e6db" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.data.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={site.data.photo} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@jianyangleee" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={site.data.photo} />
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.data.name}: build log`} href="/now/rss.xml" />
+
+    <!-- Light by default; dark only if the visitor chose it. Runs before paint so there is no flash of the wrong theme. -->
+    <script is:inline>
+      (function () {
+        var stored = null;
+        try {
+          stored = localStorage.getItem("theme");
+        } catch (e) {}
+        var dark = stored === "dark";
+        document.documentElement.classList.toggle("dark", dark);
+      })();
+    </script>
+  </head>
+  <body class="min-h-dvh">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3">Skip to content</a>
+    <div class="mx-auto flex min-h-dvh max-w-[640px] flex-col px-5 sm:px-6">
+      <header class="flex items-center justify-between py-6">
+        <a href="/" class="font-semibold tracking-tight hover:text-accent">{site.data.name}</a>
+        <nav aria-label="Main" class="flex items-center gap-1 text-sm">
+          {
+            nav.map((item) => (
+              <a
+                href={item.href}
+                aria-current={current === item.href ? "page" : undefined}
+                class="rounded-md px-2.5 py-1.5 text-muted hover:text-fg aria-[current=page]:text-fg aria-[current=page]:font-medium"
+              >
+                {item.label}
+              </a>
+            ))
+          }
+          <ThemeToggle />
+        </nav>
+      </header>
+
+      <main id="main" class="flex-1 pb-16">
+        <slot />
+      </main>
+
+      <footer class="flex items-center justify-between border-t border-border py-6 text-sm text-muted">
+        <span>© {new Date().getFullYear()} {site.data.name}</span>
+        <a href="https://v1.jianlee.me" class="hover:text-fg">v1</a>
+      </footer>
+    </div>
+  </body>
+</html>

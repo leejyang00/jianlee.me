@@ -1,0 +1,62 @@
+name: Infra plan
+
+# fmt + validate + plan on PRs touching infra/. Read-only: never applies.
+# Repo variables: AWS_REGION, AWS_PLAN_ROLE_ARN (from `terraform output plan_role_arn`).
+
+on:
+  pull_request:
+    paths:
+      - infra/**
+      - .github/workflows/infra-plan.yaml
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: infra-plan-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "~1.11"
+          terraform_wrapper: false
+
+      - name: Format
+        run: terraform fmt -check -recursive -diff
+
+      - name: Validate bootstrap
+        working-directory: infra/bootstrap
+        run: terraform init -backend=false -input=false && terraform validate
+
+      - name: Validate
+        run: terraform init -backend=false -input=false && terraform validate
+
+      # The plan steps skip until infra is applied and AWS_PLAN_ROLE_ARN exists.
+      - uses: aws-actions/configure-aws-credentials@v5
+        if: vars.AWS_PLAN_ROLE_ARN != ''
+        with:
+          role-to-assume: ${{ vars.AWS_PLAN_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      # -lock=false: the plan role can only read state, and a plan never writes it.
+      - name: Plan
+        if: vars.AWS_PLAN_ROLE_ARN != ''
+        run: |
+          terraform init -input=false -reconfigure
+          terraform plan -input=false -no-color -lock=false | tee plan.txt
+          {
+            echo "## terraform plan"
+            echo '```'
+            grep -E '^\s+# |^Plan:|^No changes' plan.txt || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

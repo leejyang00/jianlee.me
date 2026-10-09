@@ -1,0 +1,65 @@
+---
+import Icon from "../components/Icon.astro";
+import NowEntry from "../components/NowEntry.astro";
+import ProductCard from "../components/ProductCard.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import Base from "../layouts/Base.astro";
+import { getNow, getProducts, getSite } from "../lib/content";
+
+const site = await getSite();
+const products = await getProducts();
+const latest = (await getNow()).slice(0, 3);
+---
+
+<Base>
+  <section class="pt-6 pb-12">
+    <img
+      src={site.photo}
+      alt={`Photo of ${site.name}`}
+      width="96"
+      height="96"
+      fetchpriority="high"
+      class="size-24 rounded-full object-cover ring-4 ring-surface"
+    />
+    <h1 class="mt-6 text-4xl font-bold tracking-tight text-balance sm:text-5xl">
+      Hi, I'm <span class="text-accent">{site.name.split(" ")[0]}</span> 👋
+    </h1>
+    <ul class="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1 text-muted">
+      <li class="flex items-center gap-1.5"><Icon name="pin" class="size-4" />{site.location}</li>
+    </ul>
+    <p class="mt-3 text-lg text-balance">{site.tagline}</p>
+    <p class="mt-4 leading-relaxed text-muted">{site.bio}</p>
+  </section>
+
+  <section class="pb-12" aria-labelledby="products">
+    <h2 id="products" class="mb-4 text-sm font-semibold tracking-wide text-accent uppercase">Products</h2>
+    <div class="space-y-3">
+      {products.map((product) => <ProductCard product={product} />)}
+    </div>
+  </section>
+
+  {
+    latest.length > 0 && (
+      <section class="pb-12" aria-labelledby="latest">
+        <div class="mb-2 flex items-baseline justify-between">
+          <h2 id="latest" class="text-sm font-semibold tracking-wide text-accent uppercase">
+            Latest from the build log
+          </h2>
+          <a href="/now/" class="text-sm text-accent hover:underline">
+            All entries →
+          </a>
+        </div>
+        <ul class="divide-y divide-border">
+          {latest.map((entry) => (
+            <NowEntry entry={entry} compact />
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section aria-labelledby="socials">
+    <h2 id="socials" class="mb-4 text-sm font-semibold tracking-wide text-accent uppercase">Find me</h2>
+    <SocialLinks />
+  </section>
+</Base>

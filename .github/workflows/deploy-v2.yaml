@@ -1,0 +1,79 @@
+name: Deploy v2
+
+# Builds v2/ and syncs it to the S3 bucket behind CloudFront.
+# Repo variables (Settings > Secrets and variables > Actions > Variables), from `terraform output`:
+#   AWS_REGION, AWS_DEPLOY_ROLE_ARN, SITE_BUCKET, CLOUDFRONT_DISTRIBUTION_ID
+
+on:
+  push:
+    branches:
+      - v2
+      - main
+    paths:
+      - v2/**
+      - .github/workflows/deploy-v2.yaml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+# Never run two deploys at once; a newer push waits for the current one.
+concurrency:
+  group: deploy-v2
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # Skip (not fail) until infra is applied and the repo variables exist.
+    if: vars.SITE_BUCKET != ''
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: v2
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Install
+        run: bun install --frozen-lockfile
+
+      # astro check + astro build -> v2/dist. Astro only emits _astro/ when a page
+      # has bundled JS or external CSS (styles are inlined today), so make sure it
+      # exists: the syncs below then upload nothing and still prune stale assets.
+      - name: Check and build
+        run: |
+          bun run check
+          mkdir -p dist/_astro
+
+      - uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      # Hashed assets first, so new HTML never references a file that isn't uploaded yet.
+      - name: Upload hashed assets
+        run: |
+          aws s3 sync dist/_astro "s3://${{ vars.SITE_BUCKET }}/_astro" \
+            --cache-control "public, max-age=31536000, immutable"
+
+      # Browsers revalidate HTML every time; CloudFront keeps it for 5 minutes and is
+      # invalidated below. Removes files that are no longer in the build.
+      - name: Upload pages
+        run: |
+          aws s3 sync dist "s3://${{ vars.SITE_BUCKET }}" \
+            --exclude "_astro/*" \
+            --cache-control "public, max-age=0, s-maxage=300, must-revalidate" \
+            --delete
+
+      - name: Remove stale hashed assets
+        run: aws s3 sync dist/_astro "s3://${{ vars.SITE_BUCKET }}/_astro" --delete
+
+      - name: Invalidate CloudFront
+        working-directory: .
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --paths "/*" \
+            --query 'Invalidation.Id' --output text

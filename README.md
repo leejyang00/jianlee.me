@@ -1,28 +1,17 @@
-# Portfolio Website - jianlee.me
+# jianlee.me
 
-My personal portfolio website built with React and Vite, showcasing my projects and skills.
+My personal site. The repo holds two separate apps that share nothing:
 
-## 🚀 Live Demo
-Visit the live site: [jianlee.me](https://jianlee.me)
+| Folder | Site | Stack | Served at |
+|---|---|---|---|
+| [`v2/`](v2/) | Current | Astro (static) + Tailwind, content in Markdown/JSON | [jianlee.me](https://jianlee.me) on AWS S3 + CloudFront |
+| [`v1/`](v1/) | Archive, frozen | Vite + React SPA reading JSON snapshots, no backend | [v1.jianlee.me](https://v1.jianlee.me) on Cloudflare Pages |
 
-## 🛠️ Built With
-- [React](https://reactjs.org/) - UI Library
-- [Vite](https://vitejs.dev/) - Build Tool
-- [Bun](https://bun.sh/) - JavaScript Runtime & Package Manager
-- [Cloudflare Pages](https://pages.cloudflare.com/) - Hosting & Deployment
+- [`infra/`](infra/): Terraform for v2's hosting
+- [`docs/`](docs/): the v1 audit and the v2 build brief
+- [`CLAUDE.md`](CLAUDE.md): how the site is managed day to day
 
-## 🏗️ Getting Started
-
-### Prerequisites
-- [Bun](https://bun.sh/) installed on your machine
-
-
-## 🔄 Development Workflow
-- `bun run dev` - Start development server
-- `bun run build` - Build for production
-- `bun run preview` - Preview production build locally
-
-## 📧 Contact
-Jian Yang Lee - [jianyang.lee75@gmail.com](mailto:jianyang.lee75@gmail.com)
-
-Project Link: [https://github.com/leejyang00/jianlee.me](https://github.com/leejyang00/jianlee.me)
+```sh
+cd v2 && bun install && bun run dev    # current site
+cd v1 && bun install && bun run dev    # archive
+```

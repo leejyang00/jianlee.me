@@ -33,3 +33,18 @@ photos
 # Cloudflare
 .wrangler/
 .dev.vars
+
+# Local data dumps (Phase 1 exports); a copy lives in S3
+backups/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+backend_override.tf
+
+# Claude Code: commit shared commands, not local worktrees or settings
+.claude/worktrees/
+.claude/settings.local.json
