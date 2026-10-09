@@ -1,0 +1,20 @@
+[
+  {
+    "id": 2,
+    "title": "My Building Journey: GBR Group Co's Corporate Website",
+    "date": "2025-01-25",
+    "description": "A deep dive into building GBR Group Co's corporate website, covering the technical challenges, infrastructure decisions, and lessons learned from developing a modern business website.",
+    "image": "gbrgroup.png",
+    "slug": "gbr-group-co",
+    "read_time": 8
+  },
+  {
+    "id": 3,
+    "title": "Pacemates Run Club: The Untold Story",
+    "date": "2024-07-19",
+    "description": "The real journey behind building a weekly running community, from initial excitement to the challenges of sustaining engagement and the lessons learned when dreams meet reality.",
+    "image": "pacemates.jpg",
+    "slug": "pacemates",
+    "read_time": 3
+  }
+]

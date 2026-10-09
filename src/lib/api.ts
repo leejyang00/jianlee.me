@@ -1,92 +1,53 @@
-import { hc } from "hono/client";
-import { type ApiRoutes } from "@api/index";
+// v1 is frozen: these used to call api.jianlee.me (a Worker reading Supabase).
+// src/data/ holds that API's responses as of 2026-10-10, so v1.jianlee.me keeps
+// working with no backend. Same exports as before, so the pages are unchanged.
 import { queryOptions } from "@tanstack/react-query";
 import { BlogPost } from "./types/markdown";
+import books from "@/data/books.json";
+import gears from "@/data/gears.json";
+import markdownFiles from "@/data/markdown-files.json";
+import markdownContent from "@/data/markdown-content.json";
+import blogPosts from "@/data/blog_posts.json";
 
-const BASE_URL = process.env.NODE_ENV === 'development' // NODE_ENV is set by bun
-  ? 'http://localhost:8787' // backend api url for development
-  : 'https://api.jianlee.me'; // backend api url for production
-
-const client = hc<ApiRoutes>(BASE_URL);
-
-export const api = client.v1;
-
-async function getBooks() {
-  const res = await api.books_v1.$get();
-  if (!res.ok) {
-    throw new Error("Server Error");
-  }
-  const data = await res.json();
-  return data;
-}
+// The old Hono client's types never resolved (api/ can't see its @/db alias), so the
+// pages were written against `any`. Keep that, so they compile exactly as before.
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const frozen = (data: unknown) => data as any;
 
 export const booksQueryOptions = queryOptions({
   queryKey: ["get-books"],
-  queryFn: getBooks,
+  queryFn: async () => frozen(books),
   staleTime: Infinity,
 });
-
-async function getGears() {
-  const res = await api.gears.$get();
-  if (!res.ok) {
-    throw new Error("Server Error");
-  }
-  const data = await res.json();
-  return data;
-}
 
 export const gearsQueryOptions = queryOptions({
   queryKey: ["get-gears"],
-  queryFn: getGears,
+  queryFn: async () => frozen(gears),
   staleTime: Infinity,
 });
 
-// Markdown API functions
-async function getMarkdownFiles() {
-  const res = await api.markdown.$get();
-  console.log(res, 'res');
-  if (!res.ok) {
-    throw new Error("Failed to fetch markdown files");
-  }
-  const data = await res.json();
-  return data;
-}
-
 export const markdownFilesQueryOptions = queryOptions({
   queryKey: ["get-markdown-files"],
-  queryFn: getMarkdownFiles,
-  staleTime: 5 * 60 * 1000, // 5 minutes
+  queryFn: async () => frozen(markdownFiles),
+  staleTime: Infinity,
 });
 
-async function getMarkdownContent(filename: string) {
-  const res = await api.markdown.content[":filename"].$get({
-    param: { filename }
+const content: Record<string, unknown> = markdownContent;
+
+export const markdownContentQueryOptions = (filename: string) =>
+  queryOptions({
+    queryKey: ["get-markdown-content", filename],
+    queryFn: async () => {
+      const file = content[filename];
+      if (!file) throw new Error("File not found");
+      return frozen(file);
+    },
+    staleTime: Infinity,
+    enabled: !!filename,
   });
-  if (!res.ok) {
-    throw new Error("Failed to fetch markdown content");
-  }
-  const data = await res.json();
-  return data;
-}
-
-export const markdownContentQueryOptions = (filename: string) => queryOptions({
-  queryKey: ["get-markdown-content", filename],
-  queryFn: () => getMarkdownContent(filename),
-  staleTime: 10 * 60 * 1000, // 10 minutes
-  enabled: !!filename,
-});
-
-async function getMarkdownDatabase() {
-  const res = await api.markdown.database.$get();
-  if (!res.ok) {
-    throw new Error("Failed to fetch markdown database");
-  }
-  const data = await res.json();
-  return data;
-}
 
 export const getMarkdownDatabaseQuery = queryOptions({
   queryKey: ["get-markdown-database"],
-  queryFn: (): Promise<BlogPost[]> => getMarkdownDatabase(),
-  staleTime: 10 * 60 * 1000, // 10 minutes
+  queryFn: async (): Promise<BlogPost[]> => frozen(blogPosts),
+  staleTime: Infinity,
 });
