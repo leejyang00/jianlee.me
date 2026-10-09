@@ -11,6 +11,14 @@ interface Props {
 const { entry, compact = false } = Astro.props;
 const { title, date, product, links } = entry.data;
 const { Content } = await render(entry);
+
+// One colour per product so the tags are easy to tell apart. Unknown products fall back to the accent.
+const tagColors: Record<string, string> = {
+  burno: "bg-tag-burno/12 text-tag-burno",
+  aemantic: "bg-tag-aemantic/12 text-tag-aemantic",
+  "jianlee-me": "bg-tag-jianlee-me/12 text-tag-jianlee-me",
+};
+const tagColor = (product && tagColors[product]) ?? "bg-accent-soft/12 text-accent";
 ---
 
 {
@@ -29,7 +37,7 @@ const { Content } = await render(entry);
         <time datetime={date.toISOString()} class="tabular-nums">
           {formatDate(date)}
         </time>
-        {product && <span class="rounded-full bg-accent-soft/12 px-2 py-0.5 text-xs font-medium text-accent">{product}</span>}
+        {product && <span class:list={["rounded-full px-2 py-0.5 text-xs font-medium", tagColor]}>{product}</span>}
       </div>
       <h2 class="mt-1.5 text-lg font-semibold">
         <a href={`#${entry.id}`} class="hover:text-accent">

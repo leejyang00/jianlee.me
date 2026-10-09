@@ -12,6 +12,10 @@
   --muted: #6a6058;
   --accent: #22706c;
   --accent-soft: #339995;
+  /* Build-log product tags. Each passes WCAG AA as small text on --bg. */
+  --tag-burno: #a8431b;
+  --tag-aemantic: #5b45a8;
+  --tag-jianlee-me: #22706c;
   color-scheme: light;
 }
 
@@ -23,6 +27,9 @@
   --muted: #a7a19a;
   --accent: #80e7d9;
   --accent-soft: #80e7d9;
+  --tag-burno: #ffa585;
+  --tag-aemantic: #c4b5fd;
+  --tag-jianlee-me: #80e7d9;
   color-scheme: dark;
 }
 
@@ -34,6 +41,9 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-tag-burno: var(--tag-burno);
+  --color-tag-aemantic: var(--tag-aemantic);
+  --color-tag-jianlee-me: var(--tag-jianlee-me);
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
