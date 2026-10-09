@@ -12,35 +12,32 @@ const { entry, compact = false } = Astro.props;
 const { title, date, product, links } = entry.data;
 const { Content } = await render(entry);
 
-// One colour per product so the tags are easy to tell apart. Unknown products fall back to the accent.
-const tagColors: Record<string, string> = {
-  burno: "bg-tag-burno/12 text-tag-burno",
-  aemantic: "bg-tag-aemantic/12 text-tag-aemantic",
-  "jianlee-me": "bg-tag-jianlee-me/12 text-tag-jianlee-me",
-};
-const tagColor = (product && tagColors[product]) ?? "bg-accent-soft/12 text-accent";
+// Each product has its own colour (--tag-* in global.css). The entry's tag, links and title hover use it;
+// entries without a known product keep the accent.
+const coloured = ["burno", "aemantic", "jianlee-me"];
+const entryStyle = product && coloured.includes(product) ? `--entry: var(--tag-${product})` : undefined;
 ---
 
 {
   compact ? (
-    <li>
+    <li style={entryStyle}>
       <a href={`/now/#${entry.id}`} class="group flex items-baseline justify-between gap-4 py-2">
-        <span class="group-hover:text-accent">{title}</span>
+        <span class="group-hover:text-(--entry)">{title}</span>
         <time datetime={date.toISOString()} class="shrink-0 text-sm text-muted tabular-nums">
           {formatDate(date)}
         </time>
       </a>
     </li>
   ) : (
-    <article id={entry.id} class="scroll-mt-6 border-b border-border py-8 first:pt-0 last:border-0">
+    <article id={entry.id} style={entryStyle} class="scroll-mt-6 border-b border-border py-8 first:pt-0 last:border-0">
       <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted">
         <time datetime={date.toISOString()} class="tabular-nums">
           {formatDate(date)}
         </time>
-        {product && <span class:list={["rounded-full px-2 py-0.5 text-xs font-medium", tagColor]}>{product}</span>}
+        {product && <span class="rounded-full bg-(--entry)/12 px-2 py-0.5 text-xs font-medium text-(--entry)">{product}</span>}
       </div>
       <h2 class="mt-1.5 text-lg font-semibold">
-        <a href={`#${entry.id}`} class="hover:text-accent">
+        <a href={`#${entry.id}`} class="hover:text-(--entry)">
           {title}
         </a>
       </h2>
@@ -51,7 +48,7 @@ const tagColor = (product && tagColors[product]) ?? "bg-accent-soft/12 text-acce
         <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
           {links.map((link) => (
             <li>
-              <a href={link.url} class="text-accent hover:underline" rel="noopener">
+              <a href={link.url} class="text-(--entry) hover:underline" rel="noopener">
                 {link.label} ↗
               </a>
             </li>

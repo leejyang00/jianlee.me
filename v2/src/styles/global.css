@@ -16,6 +16,8 @@
   --tag-burno: #a8431b;
   --tag-aemantic: #5b45a8;
   --tag-jianlee-me: #22706c;
+  /* A now entry sets --entry to its product's tag colour; everywhere else it's the accent. */
+  --entry: var(--accent);
   color-scheme: light;
 }
 
@@ -41,9 +43,6 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
-  --color-tag-burno: var(--tag-burno);
-  --color-tag-aemantic: var(--tag-aemantic);
-  --color-tag-jianlee-me: var(--tag-jianlee-me);
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
@@ -78,7 +77,7 @@
   @apply space-y-4 leading-relaxed;
 }
 .prose a {
-  @apply text-accent underline decoration-accent/40 transition-colors hover:decoration-accent;
+  @apply text-(--entry) underline decoration-(--entry)/40 transition-colors hover:decoration-(--entry);
 }
 .prose strong {
   @apply font-semibold;
