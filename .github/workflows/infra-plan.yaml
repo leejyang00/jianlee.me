@@ -24,7 +24,7 @@ jobs:
       run:
         working-directory: infra
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: hashicorp/setup-terraform@v3
         with:
@@ -42,7 +42,7 @@ jobs:
         run: terraform init -backend=false -input=false && terraform validate
 
       # The plan steps skip until infra is applied and AWS_PLAN_ROLE_ARN exists.
-      - uses: aws-actions/configure-aws-credentials@v4
+      - uses: aws-actions/configure-aws-credentials@v5
         if: vars.AWS_PLAN_ROLE_ARN != ''
         with:
           role-to-assume: ${{ vars.AWS_PLAN_ROLE_ARN }}
