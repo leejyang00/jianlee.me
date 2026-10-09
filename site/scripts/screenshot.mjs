@@ -4,8 +4,9 @@
 //
 //   node scripts/screenshot.mjs [--base http://localhost:4321] [--out dir] <shot>...
 //
-// A shot is a route ("/books/") or a route plus a CSS selector ("/|section[aria-labelledby=products]")
-// to capture just one component. Each shot is taken in light and dark, at desktop
+// A shot is a route ("/books/") for the full page, a route plus a CSS selector
+// ("/|section[aria-labelledby=products]") to capture just one component, or a route with
+// an anchor ("/resume/#skills") to capture the viewport scrolled there (sticky UI). Each shot is taken in light and dark, at desktop
 // (1280px) and mobile (390px, 2x), and saved as <out>/<name>-<theme>-<device>.png.
 
 import { spawn } from "node:child_process";
@@ -123,6 +124,7 @@ try {
         );
 
         let clip;
+        const anchored = !selector && route.includes("#");
         if (selector) {
           const { result } = await send(
             "Runtime.evaluate",
@@ -134,6 +136,10 @@ try {
           );
           if (!result.value) throw new Error(`Selector not found on ${route}: ${selector}`);
           clip = { ...JSON.parse(result.value), scale: 1 };
+        } else if (anchored) {
+          // Anchor shots capture just the viewport after jumping there, so sticky/scroll UI
+          // shows where the reader sees it. (captureBeyondViewport would re-lay out the page.)
+          await new Promise((resolve) => setTimeout(resolve, 800));
         } else {
           const { cssContentSize } = await send("Page.getLayoutMetrics", {}, sessionId);
           clip = { x: 0, y: 0, width: metrics.width, height: Math.ceil(cssContentSize.height), scale: 1 };
@@ -141,7 +147,7 @@ try {
 
         const { data } = await send(
           "Page.captureScreenshot",
-          { format: "png", clip, captureBeyondViewport: true },
+          anchored ? { format: "png" } : { format: "png", clip, captureBeyondViewport: true },
           sessionId,
         );
         const file = join(out, `${name}-${theme}-${deviceName}.png`);

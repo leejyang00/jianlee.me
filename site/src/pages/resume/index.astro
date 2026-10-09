@@ -6,10 +6,25 @@ import Base from "../../layouts/Base.astro";
 const entry = await getEntry("resume", "main");
 if (!entry) throw new Error("src/content/resume.json is missing");
 const resume = entry.data;
+
+// Roles newer than this stay expanded; older ones collapse to a one-line summary.
+const OPEN_ROLES = 2;
+
+const sections = [
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "skills", label: "Skills" },
+  { id: "certifications", label: "Certifications" },
+  { id: "education", label: "Education" },
+  { id: "interests", label: "Interests" },
+];
+
+const heading = "scroll-mt-20 mb-4 text-sm font-semibold tracking-wide text-muted uppercase";
+const bullets = "list-disc space-y-1.5 pl-5 text-[0.95rem] leading-relaxed marker:text-muted";
 ---
 
 <Base title="Resume" description={`${resume.headline}, ${resume.location}.`}>
-  <header class="pt-6 pb-8">
+  <header class="pt-6 pb-6">
     <div class="flex flex-wrap items-start justify-between gap-4">
       <div>
         <h1 class="text-3xl font-bold tracking-tight">Resume</h1>
@@ -25,42 +40,100 @@ const resume = entry.data;
     <p class="mt-6 leading-relaxed">{resume.profile}</p>
   </header>
 
-  <section class="pb-10" aria-labelledby="experience">
-    <h2 id="experience" class="mb-4 text-sm font-semibold tracking-wide text-muted uppercase">Experience</h2>
-    <ol class="space-y-8">
+  <!-- Sticky section bar: always shows where you are and jumps to any section. -->
+  <nav
+    aria-label="Resume sections"
+    class="sticky top-0 z-10 -mx-5 mb-8 border-b border-border bg-bg/90 px-5 backdrop-blur sm:-mx-6 sm:px-6 print:hidden"
+  >
+    <ul class="-mb-px flex gap-1 overflow-x-auto py-2 [scrollbar-width:none]">
       {
-        resume.experience.map((job) => (
-          <li>
-            <div class="flex flex-wrap items-baseline justify-between gap-x-4">
-              <h3 class="font-semibold">{job.role}</h3>
-              <span class="text-sm text-muted tabular-nums">{job.period}</span>
-            </div>
-            <p class="text-sm text-muted">
-              {job.company} · {job.location}
-            </p>
-            {job.blurb && <p class="mt-2 text-sm italic text-muted">{job.blurb}</p>}
-            {job.bullets.length > 0 && (
-              <ul class="mt-3 list-disc space-y-1.5 pl-5 text-[0.95rem] leading-relaxed marker:text-muted">
-                {job.bullets.map((bullet) => (
-                  <li>{bullet}</li>
-                ))}
-              </ul>
-            )}
+        sections.map((section) => (
+          <li class="shrink-0">
+            <a
+              href={`#${section.id}`}
+              data-section-link={section.id}
+              class="block rounded-full px-3 py-1.5 text-sm text-muted transition-colors hover:text-fg aria-[current=true]:bg-surface aria-[current=true]:font-medium aria-[current=true]:text-fg aria-[current=true]:ring-1 aria-[current=true]:ring-border"
+            >
+              {section.label}
+            </a>
           </li>
         ))
+      }
+    </ul>
+  </nav>
+
+  <section data-section="experience" class="pb-10" aria-labelledby="experience">
+    <div class="flex items-baseline justify-between">
+      <h2 id="experience" class={heading}>Experience</h2>
+      <button type="button" data-toggle-roles class="text-sm text-accent hover:underline print:hidden">
+        Expand all
+      </button>
+    </div>
+    <ol class="divide-y divide-border">
+      {
+        resume.experience.map((job, i) =>
+          job.bullets.length === 0 && !job.blurb ? (
+            // Nothing to expand, so no chevron: the indent keeps it aligned with the others.
+            <li class="py-4 pl-6 first:pt-0">
+              <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+                <span class="font-semibold">{job.role}</span>
+                <span class="text-sm text-muted tabular-nums">{job.period}</span>
+              </div>
+              <p class="text-sm text-muted">
+                {job.company} · {job.location}
+              </p>
+            </li>
+          ) : (
+          <li>
+            <details open={i < OPEN_ROLES} data-role class="group py-4 first:pt-0">
+              <summary class="flex cursor-pointer list-none gap-3 [&::-webkit-details-marker]:hidden">
+                <Icon
+                  name="chevron"
+                  class="mt-1.5 size-3 shrink-0 text-muted transition-transform group-open:rotate-90"
+                />
+                <span class="min-w-0 flex-1">
+                  <span class="flex flex-wrap items-baseline justify-between gap-x-4">
+                    <span class="font-semibold">{job.role}</span>
+                    <span class="text-sm text-muted tabular-nums">{job.period}</span>
+                  </span>
+                  <span class="block text-sm text-muted">
+                    {job.company} · {job.location}
+                    {job.bullets.length > 0 && (
+                      <span class="group-open:hidden">
+                        {" "}
+                        · {job.bullets.length} highlight{job.bullets.length === 1 ? "" : "s"}
+                      </span>
+                    )}
+                  </span>
+                </span>
+              </summary>
+              <div class="pl-6">
+                {job.blurb && <p class="mt-2 text-sm italic text-muted">{job.blurb}</p>}
+                {job.bullets.length > 0 && (
+                  <ul class:list={["mt-3", bullets]}>
+                    {job.bullets.map((bullet) => (
+                      <li>{bullet}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </details>
+          </li>
+          ),
+        )
       }
     </ol>
   </section>
 
-  <section class="pb-10" aria-labelledby="projects">
-    <h2 id="projects" class="mb-4 text-sm font-semibold tracking-wide text-muted uppercase">Projects</h2>
+  <section data-section="projects" class="pb-10" aria-labelledby="projects">
+    <h2 id="projects" class={heading}>Projects</h2>
     <ul class="space-y-6">
       {
         resume.projects.map((project) => (
           <li>
             <h3 class="font-semibold">{project.title}</h3>
             <p class="text-sm text-muted">{project.org}</p>
-            <ul class="mt-2 list-disc space-y-1.5 pl-5 text-[0.95rem] leading-relaxed marker:text-muted">
+            <ul class:list={["mt-2", bullets]}>
               {project.bullets.map((bullet) => (
                 <li>{bullet}</li>
               ))}
@@ -72,8 +145,8 @@ const resume = entry.data;
     </ul>
   </section>
 
-  <section class="pb-10" aria-labelledby="skills">
-    <h2 id="skills" class="mb-4 text-sm font-semibold tracking-wide text-muted uppercase">Skills</h2>
+  <section data-section="skills" class="pb-10" aria-labelledby="skills">
+    <h2 id="skills" class={heading}>Skills</h2>
     <dl class="space-y-3">
       {
         resume.skills.map((group) => (
@@ -86,8 +159,8 @@ const resume = entry.data;
     </dl>
   </section>
 
-  <section class="pb-10" aria-labelledby="certifications">
-    <h2 id="certifications" class="mb-4 text-sm font-semibold tracking-wide text-muted uppercase">Certifications</h2>
+  <section data-section="certifications" class="pb-10" aria-labelledby="certifications">
+    <h2 id="certifications" class={heading}>Certifications</h2>
     <ul class="space-y-2">
       {
         resume.certifications.map((cert) => (
@@ -100,8 +173,8 @@ const resume = entry.data;
     </ul>
   </section>
 
-  <section class="pb-10" aria-labelledby="education">
-    <h2 id="education" class="mb-4 text-sm font-semibold tracking-wide text-muted uppercase">Education</h2>
+  <section data-section="education" class="pb-10" aria-labelledby="education">
+    <h2 id="education" class={heading}>Education</h2>
     {
       resume.education.map((school) => (
         <div class="mb-6 last:mb-0">
@@ -113,7 +186,7 @@ const resume = entry.data;
             {school.degree} · {school.location}
           </p>
           {school.bullets.length > 0 && (
-            <ul class="mt-3 list-disc space-y-1.5 pl-5 text-[0.95rem] leading-relaxed marker:text-muted">
+            <ul class:list={["mt-3", bullets]}>
               {school.bullets.map((bullet) => (
                 <li>{bullet}</li>
               ))}
@@ -124,10 +197,97 @@ const resume = entry.data;
     }
   </section>
 
-  <section aria-labelledby="interests">
-    <h2 id="interests" class="mb-4 text-sm font-semibold tracking-wide text-muted uppercase">Interests</h2>
-    <ul class="list-disc space-y-1.5 pl-5 text-[0.95rem] leading-relaxed marker:text-muted">
+  <section data-section="interests" aria-labelledby="interests">
+    <h2 id="interests" class={heading}>Interests</h2>
+    <ul class={bullets}>
       {resume.interests.map((interest) => <li>{interest}</li>)}
     </ul>
   </section>
+
+  <a
+    href="#main"
+    data-back-to-top
+    aria-label="Back to top"
+    class="pointer-events-none fixed right-5 bottom-5 grid size-10 place-items-center rounded-full border border-border bg-surface text-muted opacity-0 shadow-sm transition-[opacity,translate] hover:text-fg data-[raised]:-translate-y-14 data-[visible]:pointer-events-auto data-[visible]:opacity-100 print:hidden"
+  >
+    <Icon name="arrow" class="size-4 -rotate-45" />
+  </a>
 </Base>
+
+<script>
+  // Highlight the section currently in view in the sticky bar.
+  const links = new Map(
+    [...document.querySelectorAll<HTMLAnchorElement>("[data-section-link]")].map((a) => [a.dataset.sectionLink!, a]),
+  );
+  const sections = [...document.querySelectorAll<HTMLElement>("[data-section]")];
+  const setCurrent = (id: string | undefined) => {
+    for (const [key, link] of links) {
+      if (key === id) {
+        link.setAttribute("aria-current", "true");
+        // Keep the active chip visible on narrow screens. Scrolling the bar itself (not
+        // scrollIntoView) avoids cancelling the page's in-progress smooth scroll.
+        const bar = link.closest("ul");
+        if (bar && (link.offsetLeft < bar.scrollLeft || link.offsetLeft + link.offsetWidth > bar.scrollLeft + bar.clientWidth)) {
+          bar.scrollTo({ left: link.offsetLeft - 16 });
+        }
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    }
+  };
+  // The current section is the last one whose top has passed just under the sticky bar.
+  // At the very bottom, the last section wins even if it's too short to reach the bar.
+  const updateCurrent = () => {
+    const atBottom = innerHeight + scrollY >= document.documentElement.scrollHeight - 4;
+    const passed = sections.filter((section) => section.getBoundingClientRect().top <= 96);
+    const current = atBottom ? sections.at(-1) : passed.at(-1);
+    setCurrent(current?.dataset.section);
+  };
+  let frame = 0;
+  addEventListener(
+    "scroll",
+    () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(updateCurrent);
+    },
+    { passive: true },
+  );
+  updateCurrent();
+
+  // Expand / collapse every role at once.
+  const roles = [...document.querySelectorAll<HTMLDetailsElement>("[data-role]")];
+  const toggle = document.querySelector<HTMLButtonElement>("[data-toggle-roles]");
+  const syncToggle = () => {
+    if (toggle) toggle.textContent = roles.every((role) => role.open) ? "Collapse all" : "Expand all";
+  };
+  toggle?.addEventListener("click", () => {
+    const open = !roles.every((role) => role.open);
+    roles.forEach((role) => (role.open = open));
+    syncToggle();
+  });
+  roles.forEach((role) => role.addEventListener("toggle", syncToggle));
+  syncToggle();
+
+  // Printing (or "Save as PDF") should include every role.
+  addEventListener("beforeprint", () => roles.forEach((role) => (role.open = true)));
+
+  // Back-to-top button appears once the header has scrolled away.
+  const backToTop = document.querySelector<HTMLElement>("[data-back-to-top]");
+  addEventListener(
+    "scroll",
+    () => {
+      backToTop?.toggleAttribute("data-visible", scrollY > 600);
+      // Lift it above the footer at the very bottom so it doesn't cover the footer links.
+      backToTop?.toggleAttribute("data-raised", innerHeight + scrollY >= document.documentElement.scrollHeight - 80);
+    },
+    { passive: true },
+  );
+</script>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html) {
+      scroll-behavior: smooth;
+    }
+  }
+</style>
