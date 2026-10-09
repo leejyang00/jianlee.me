@@ -87,9 +87,12 @@ const current = Astro.url.pathname.replace(/\/?$/, "/");
         <slot />
       </main>
 
-      <footer class="flex items-center justify-between border-t border-border py-6 text-sm text-muted">
+      <footer class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-border py-6 text-sm text-muted">
         <span>© {new Date().getFullYear()} {site.data.name}</span>
-        <a href="https://v1.jianlee.me" class="hover:text-fg">v1</a>
+        <span>
+          Looking for the old site?{" "}
+          <a href="https://v1.jianlee.me" class="underline underline-offset-4 hover:text-fg">v1.jianlee.me</a>
+        </span>
       </footer>
     </div>
   </body>
