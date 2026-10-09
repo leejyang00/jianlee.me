@@ -7,7 +7,6 @@ status: building
 logo: https://d3tplfwk9gtha4.cloudfront.net/images/products/aemantic.png
 startedAt: 2026-01
 order: 1
-# TODO(jian): add the Instagram link under socials.
 ---
 
 Aemantic is a multi-agent AI finance assistant. It reads filings from SEC EDGAR and holdings from IBKR, and works over them with agents built on LangChain and MCP servers.
