@@ -3,7 +3,7 @@ name: Deploy Blog Posts Markdown to Supabase Storage
 on:
   push:
     branches:
-      - main
+      - v1
     paths:
       - 'src/lib/posts/**/*.md'
   workflow_dispatch:
