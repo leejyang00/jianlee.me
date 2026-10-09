@@ -5,6 +5,7 @@
 const OUT = "site/src/content/books.json";
 
 type SupabaseBook = {
+  created_at: string;
   volume_id: string;
   title: string;
   subtitle: string | null;
@@ -36,7 +37,10 @@ if (!input) {
   process.exit(1);
 }
 
-const rows = (await Bun.file(input).json()) as SupabaseBook[];
+// Within a year, list books in the order they were added.
+const rows = ((await Bun.file(input).json()) as SupabaseBook[]).sort((a, b) =>
+  a.created_at.localeCompare(b.created_at),
+);
 
 const books: Book[] = rows.map((row) => {
   const published_year = Number(String(row.published_date ?? "").slice(0, 4));
@@ -67,7 +71,7 @@ const books: Book[] = rows.map((row) => {
   };
 });
 
-// Newest reads first; within a year, keep the export order (insertion order).
+// Newest reads first (sort is stable, so insertion order holds within a year).
 books.sort((a, b) => b.read_year - a.read_year);
 
 await Bun.write(OUT, JSON.stringify(books, null, 2) + "\n");

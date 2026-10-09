@@ -1,8 +1,15 @@
 {
-  "headline": "DevOps Engineer",
-  "location": "Brisbane, Australia",
+  "headline": "DevOps Engineer II",
+  "location": "Singapore",
   "profile": "AWS-certified engineer with experience across full-stack development and cloud infrastructure, currently specialising in production-grade Kubernetes orchestration (10+ clusters across 20+ AWS accounts), Infrastructure as Code (Terraform), and high-availability cloud networking. Enhances Developer Experience (DevEx) through automated CI/CD pipelines, proactive observability (New Relic, Google SecOps), and AI-augmented development workflows using Claude Code.",
   "experience": [
+    {
+      "role": "DevOps Engineer II, Digital Team",
+      "company": "Vistra",
+      "location": "Singapore",
+      "period": "Aug 2026 — Present",
+      "bullets": []
+    },
     {
       "role": "DevOps Engineer, Platform Team",
       "company": "Flight Centre Travel Group",
