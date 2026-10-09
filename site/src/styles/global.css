@@ -2,14 +2,15 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* v1 palette: warm paper in light mode, charcoal in dark, teal accent in both. */
+/* v1 palette: warm paper in light mode, charcoal in dark, teal accent in both.
+   Light --accent is a touch darker than v1 so small teal text passes WCAG AA (4.7:1 on --bg). */
 :root {
   --bg: #f1e6db;
   --surface: #f8f1ea;
   --border: #e0d1c2;
   --fg: #1f1c19;
   --muted: #6a6058;
-  --accent: #2b7f7b;
+  --accent: #22706c;
   --accent-soft: #339995;
   color-scheme: light;
 }
@@ -56,6 +57,10 @@
   :focus-visible {
     @apply rounded-sm outline-2 outline-offset-2 outline-accent;
   }
+
+  ::selection {
+    @apply bg-accent-soft/25;
+  }
 }
 
 /* Markdown bodies (now entries, product pages). */
@@ -63,7 +68,7 @@
   @apply space-y-4 leading-relaxed;
 }
 .prose a {
-  @apply text-accent underline;
+  @apply text-accent underline decoration-accent/40 transition-colors hover:decoration-accent;
 }
 .prose strong {
   @apply font-semibold;
