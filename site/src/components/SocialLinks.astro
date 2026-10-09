@@ -9,14 +9,18 @@ const { socials } = await getSite();
   {
     socials.map((social) => (
       <li>
+        {/* New tab on desktop so the site stays open. On mobile, these https profile URLs
+            open the native app when it's installed (Universal Links / App Links). */}
         <a
           href={social.url}
+          target="_blank"
           rel="me noopener"
           class="flex items-center gap-3 rounded-xl border border-border px-3 py-2.5 text-sm transition-colors hover:border-accent-soft hover:text-accent"
         >
           <Icon name={social.platform} class="size-4 shrink-0" />
           <span class="font-medium">{social.label}</span>
           <span class="ml-auto truncate text-muted">{social.handle}</span>
+          <span class="sr-only">(opens in a new tab)</span>
         </a>
       </li>
     ))

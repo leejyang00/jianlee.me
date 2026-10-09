@@ -110,6 +110,12 @@ try {
           { features: [{ name: "prefers-color-scheme", value: theme }] },
           sessionId,
         );
+        // The site defaults to light and ignores the OS setting, so pick the theme the way the toggle does.
+        await send(
+          "Page.addScriptToEvaluateOnNewDocument",
+          { source: `try { localStorage.setItem("theme", ${JSON.stringify(theme)}); } catch {}` },
+          sessionId,
+        );
         const loaded = once("Page.loadEventFired", sessionId);
         await send("Page.navigate", { url: new URL(route, base).href }, sessionId);
         await loaded;
