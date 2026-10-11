@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { hasDetailPage } from "../lib/content";
 import Icon from "./Icon.astro";
 import StatusPill from "./StatusPill.astro";
 
@@ -9,10 +8,7 @@ interface Props {
 }
 
 const { product } = Astro.props;
-const { name, url, tagline, status, logo, slug } = product.data;
-// Cards link to the detail page when there is one, otherwise straight to the product.
-const detail = hasDetailPage(product);
-const href = detail ? `/products/${slug}/` : url;
+const { name, url, tagline, status, logo } = product.data;
 ---
 
 <article
@@ -34,9 +30,9 @@ const href = detail ? `/products/${slug}/` : url;
     <div class="flex flex-wrap items-center gap-2">
       <h3 class="font-semibold">
         <a
-          href={href}
-          target={detail ? undefined : "_blank"}
-          rel={detail ? undefined : "noopener"}
+          href={url}
+          target="_blank"
+          rel="noopener"
           class="after:absolute after:inset-0 after:rounded-2xl"
         >
           {name}
