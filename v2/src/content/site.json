@@ -7,7 +7,7 @@
   "socials": [
     { "platform": "linkedin", "label": "LinkedIn", "handle": "Jian Yang Lee", "url": "https://www.linkedin.com/in/jianyanglee/" },
     { "platform": "github", "label": "GitHub", "handle": "@leejyang00", "url": "https://github.com/leejyang00" },
-    { "platform": "instagram", "label": "Instagram", "handle": "@jianyangleee", "url": "https://www.instagram.com/jianyangleee/" },
+    { "platform": "instagram", "label": "Instagram", "handle": "@jianlee.me", "url": "https://www.instagram.com/jianlee.me/" },
     { "platform": "x", "label": "X", "handle": "@jianyangleee", "url": "https://x.com/jianyangleee" }
   ]
 }
