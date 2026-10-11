@@ -26,7 +26,7 @@ The window starts the day *after* the newest entry, so PRs merged later on the s
 - One entry per product per **theme or burst of work**, usually a launch, a feature, or a few days of related changes. Don't write one entry per PR. Roughly 2–6 PRs feed each entry.
 - **Lead with what a user can see or do.** Mention infra or refactors only when they're the point, and then in a sentence.
 - Skip on their own: chores, dependency bumps, CI tweaks, internal docs, agent or tooling setup, and planning docs. `context only` repos (the eng handbook) explain *why*. They're never the subject.
-- **jianlee.me:** write about changes to the site itself (new pages, redesigns, hosting). Skip pure content PRs: new now entries, books added, copy and CV tweaks. The build log shouldn't log itself.
+- **jianlee.me:** write about changes to the site itself (new pages, redesigns, hosting) and visible content fixes, such as a swapped book cover or a corrected CV detail. Skip only PRs that add to the build log itself (new now entries) and routine additions with nothing new to say, such as one more book on the shelf. The build log shouldn't log itself.
 - Date each entry by the **last merged PR** it covers. The file name is `YYYY-MM-DD-<short-slug>.md`.
 
 ## 3. Write
