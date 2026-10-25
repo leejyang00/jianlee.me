@@ -4,7 +4,7 @@ slug: aemantic
 url: https://app.aemantic.com
 tagline: An AI portfolio explainer that shows what's really inside your investments, straight from SEC filings.
 status: building
-logo: https://d3tplfwk9gtha4.cloudfront.net/images/products/aemantic-white.png
+logo: https://d3tplfwk9gtha4.cloudfront.net/images/products/aemantic-mark.png
 startedAt: 2026-01
 order: 1
 ---
