@@ -57,6 +57,7 @@ Always set `product`. The script uses it to find where each product's last entry
 - Leave out internal detail that's in PR bodies: milestone codes (M2, M3, W38, "Phase 5.2"), `NOW.md` tasks, session names, "founder notes", agent names, ADR numbers, internal URLs, account IDs, vendor keys, pricing and strategy.
 - **Never** read `aemantic/aemantic_founder_notes`, even when a PR body links to it.
 - Say "in dev" when a PR says it's dev-only or a prototype. Don't imply it's live for users.
+- **Aemantic ships straight to prod** (there's no separate dev environment that comes first), so a merged Aemantic PR is live. Don't write "in dev" for it. A product's `status: building` means the product hasn't launched yet, not that its features are in dev. Only say "in dev" when a PR itself says the feature is a prototype or behind a flag.
 - Public repos (Burno, jianlee.me): linking the app (`https://burno.app`, `https://jianlee.me`) is fine. Link a PR only if it adds something. Never mention bucket names, account IDs or other infra identifiers.
 
 ## 4. Check and hand off
